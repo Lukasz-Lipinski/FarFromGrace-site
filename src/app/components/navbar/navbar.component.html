@@ -1,0 +1,13 @@
+<mat-toolbar>
+    <p>Far From Grace</p>
+    @for (link of getLinks; track trackLink) {
+    <a
+        mat-button
+        [routerLink]="link.href"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{
+            exact: true
+        }"
+    >{{ link.label }}</a>
+    }
+</mat-toolbar>
