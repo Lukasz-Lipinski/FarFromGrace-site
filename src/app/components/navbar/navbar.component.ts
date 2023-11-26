@@ -14,10 +14,6 @@ interface ILink {
 export class NavbarComponent {
   private links: ILink[] = [
     {
-      href: "/",
-      label: "Home"
-    },
-    {
       href: "/about",
       label: "About"
     },
@@ -33,6 +29,11 @@ export class NavbarComponent {
 
   public get getLinks(): ILink[] {
     return this.links;
+  }
+
+  private src: string = "../../../assets/svg/logo/Logo-FFG-01-_2_.svg";
+  get getSrc() {
+    return this.src;
   }
 
   trackLink = (index: number): string => `${this.links[index].label}-${index}`;

@@ -1,20 +1,18 @@
-<>
-    @defer {
+@defer {
+<div class="container container-full container-center">
+  <ul class="list">
     @for (item of getMerch; track $index) {
-    <mat-card class="card-size">
-        <mat-card-header>
-            <mat-card-title>{{ item.name }}</mat-card-title>
-            <mat-card-subtitle>{{ item.price }} zł</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-            {{item.description}}
-        </mat-card-content>
-        <mat-card-actions>
-            buy
-        </mat-card-actions>
-    </mat-card>
+    <app-item-card
+      class="list-item"
+      [setName]="item.name"
+      [setPrice]="item.price"
+      [setCategory]="item.category"
+      [setImg]="item.img"
+      [setDescription]="item.description"
+    />
     }
-    } @loading (minimum 2s) {
-    <p>loading</p>
-    }
-</>
+  </ul>
+</div>
+}@loading (minimum 2s) {
+<app-spinner />
+} @error { error }

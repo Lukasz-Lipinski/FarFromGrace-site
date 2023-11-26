@@ -1,3 +1,20 @@
-.card-size {
-    max-width: 250px;
+.list {
+  display: flex;
+  gap: 1rem;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  width: 90%;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+  &-item {
+    transform: translateY(0px);
+    transition: all 0.3s;
+
+    &:hover {
+      box-shadow: 1px 1px 20px 2px gray;
+      transform: translateY(-6px);
+    }
+  }
 }

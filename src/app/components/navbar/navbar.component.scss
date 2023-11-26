@@ -1,0 +1,15 @@
+// .transparent {
+//   opacity: 0.4;
+// }
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: #211e28;
+  box-sizing: content-box;
+  opacity: 0.87;
+  box-shadow: 1px 0 12px 8px hsla(0, 0, 0, 0.8);
+  a {
+    text-decoration: none;
+  }
+}
