@@ -1,0 +1,105 @@
+// FFG Far From Grace Pallete
+$dark-primary-text: #e9e3de;
+$dark-secondary-text2: #625E5D;
+
+$background: hsl(258, 14%, 14%);
+$glass-background: hsla(258, 14%, 14%, 0.87);
+
+//primary color
+$md-ffgpallete: (
+    50 : #f6f4f2,
+    100 : #e9e3de,
+    200 : #dbd0c8,
+    300 : #ccbdb1,
+    400 : #c1afa1,
+    500 : #b6a190,
+    600 : #af9988,
+    700 : #a68f7d,
+    800 : #9e8573,
+    900 : #8e7461,
+    A100 : #ffffff,
+    A200 : #ffe1cc,
+    A400 : #ffc499,
+    A700 : #ffb580,
+    contrast: (50: $dark-secondary-text2,
+        100: $dark-secondary-text2,
+        200: $dark-secondary-text2,
+        300: $dark-secondary-text2,
+        400: $dark-secondary-text2,
+        500: $dark-primary-text,
+        600: $dark-primary-text,
+        700: $dark-primary-text,
+        800: $dark-primary-text,
+        900: $dark-primary-text,
+        A100: $dark-secondary-text2,
+        A200: $dark-primary-text,
+        A400: $dark-primary-text,
+        A700: $dark-primary-text,
+    )
+);
+
+//warn color
+$md-ffgwarn: (
+    50 : #fdf9ed,
+    100 : #faefd3,
+    200 : #f6e4b5,
+    300 : #f2d997,
+    400 : #f0d181,
+    500 : #edc96b,
+    600 : #ebc363,
+    700 : #e8bc58,
+    800 : #e5b54e,
+    900 : #e0a93c,
+    A100 : #faefd3,
+    A200 : #f2d997,
+    A400 : #ebc363,
+    A700 : #e0a93c,
+    contrast: (50: $dark-secondary-text2,
+        100: $dark-secondary-text2,
+        200: $dark-secondary-text2,
+        300: $dark-secondary-text2,
+        400: $dark-secondary-text2,
+        500: $dark-primary-text,
+        600: $dark-primary-text,
+        700: $dark-primary-text,
+        800: $dark-primary-text,
+        900: $dark-primary-text,
+        A100: $dark-secondary-text2,
+        A200: $dark-primary-text,
+        A400: $dark-primary-text,
+        A700: $dark-primary-text,
+    )
+);
+
+//error color
+$md-ffgerror: (
+    50 : #f5e0e1,
+    100 : #e6b3b4,
+    200 : #d58083,
+    300 : #c44d51,
+    400 : #b8262b,
+    500 : #ab0006,
+    600 : #a40005,
+    700 : #9a0004,
+    800 : #910003,
+    900 : #800002,
+    A100 : #ffadad,
+    A200 : #ff7a7a,
+    A400 : #ff4747,
+    A700 : #ff2e2e,
+    contrast: (50: $dark-secondary-text2,
+        100: $dark-secondary-text2,
+        200: $dark-secondary-text2,
+        300: $dark-secondary-text2,
+        400: $dark-secondary-text2,
+        500: $dark-primary-text,
+        600: $dark-primary-text,
+        700: $dark-primary-text,
+        800: $dark-primary-text,
+        900: $dark-primary-text,
+        A100: $dark-secondary-text2,
+        A200: $dark-primary-text,
+        A400: $dark-primary-text,
+        A700: $dark-primary-text,
+    )
+);

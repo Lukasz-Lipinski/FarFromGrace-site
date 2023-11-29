@@ -1,6 +1,7 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
+@import "./app/styles/ffg-styles.scss";
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -11,18 +12,18 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$farfromgrace-site-primary: mat.define-palette(mat.$indigo-palette);
-$farfromgrace-site-accent: mat.define-palette(mat.$indigo-palette, A200, A100, A400);
-
-// The warn palette is optional (defaults to red).
-$farfromgrace-site-warn: mat.define-palette(mat.$red-palette);
+$farfromgrace-site-primary: mat.define-palette($md-ffgpallete);
+$farfromgrace-site-accent: mat.define-palette($md-ffgwarn, A400, A100, A700);
+$farfromgrace-site-warn: mat.define-palette($md-ffgerror, A200, A100, A400);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
 $farfromgrace-site-theme: mat.define-light-theme((color: (primary: $farfromgrace-site-primary,
         accent: $farfromgrace-site-accent,
         warn: $farfromgrace-site-warn,
-      )));
+      ),
+
+    ));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -30,10 +31,22 @@ $farfromgrace-site-theme: mat.define-light-theme((color: (primary: $farfromgrace
 @include mat.all-component-themes($farfromgrace-site-theme);
 
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "Ubuntu";
+  src: src("/src/assets/font/Ubuntu-Bold.ttf");
+  src: src("assets/font/Ubuntu-Bold.ttf");
+  src: src("assets/font/Ubuntu-Italic.ttf");
+  src: src("assets/font/Ubuntu-Light.ttf");
+  src: src("assets/font/Ubuntu-LightItalic.ttf");
+  src: src("assets/font/Ubuntu-Medium.ttf");
+  src: src("assets/font/Ubuntu-MediumItalic.ttf");
+  src: src("assets/font/Ubuntu-Regular.ttf");
+}
 
 html,
 body {
   height: 100%;
+  color: $dark-primary-text !important;
 }
 
 body {
@@ -44,7 +57,7 @@ body {
   background-position: center;
   background-size: contain;
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: "Ubuntu";
 }
 
 .container {
@@ -57,5 +70,14 @@ body {
 
   &-center {
     justify-content: center;
+  }
+}
+
+.glass {
+  background-color: $glass-background;
+  border-radius: 12px;
+
+  &-border {
+    border: 1px solid $dark-primary-text;
   }
 }
