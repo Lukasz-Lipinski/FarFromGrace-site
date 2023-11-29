@@ -1,18 +1,13 @@
 @if (isSidebar) {
-<mat-grid-list
-    cols="4"
-    style="border: 1px solid white;"
->
-    <mat-grid-tile colspan="1">sidebar</mat-grid-tile>
-    <mat-grid-tile colspan="3">
-        <app-content-box>
-            <ng-content></ng-content>
-        </app-content-box>
-    </mat-grid-tile>
-</mat-grid-list>
-}
-@else {
-<app-content-box>
+<div class="container sidebar-box">
+  <div>sidebar</div>
+  <app-content-box [isFullSize]="true">
     <ng-content></ng-content>
+  </app-content-box>
+</div>
+
+} @else {
+<app-content-box>
+  <ng-content></ng-content>
 </app-content-box>
 }
