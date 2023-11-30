@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatCardModule } from "@angular/material/card";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { MatGridListModule } from "@angular/material/grid-list";
+import { MatFormFieldModule } from "@angular/material/form-field";
 
 import { NavbarComponent } from '../components/navbar/navbar.component';
 import { ItemCardComponent } from '../components/item-card/item-card.component';
@@ -17,7 +19,7 @@ import { ContentBoxComponent } from '../components/content-box/content-box.compo
 import { LayoutComponent } from '../components/layout/layout.component';
 
 const components: any[] = [NavbarComponent, ItemCardComponent, SpinnerComponent, LayoutComponent, ContentBoxComponent, SidebarComponent, NavbarLogoComponent];
-const services: any[] = [CommonModule, MatGridListModule, MatCardModule, MatToolbarModule, MatButtonModule, RouterModule, MatIconModule];
+const services: any[] = [CommonModule, ReactiveFormsModule,MatFormFieldModule, MatGridListModule, MatCardModule, MatToolbarModule, MatButtonModule, RouterModule, MatIconModule];
 
 @NgModule({
   imports: [
