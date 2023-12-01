@@ -1,8 +1,20 @@
-<aside class="sidebar">
-  <form>
-    <mat-form-field>
-      <input mat />
-    </mat-form-field>
+<aside class="sidebar glass glass-border">
+  <h2>Filter</h2>
+  <form
+    class="filter"
+    [formGroup]="sidebarFormGetter"
+  >
+    @for (productRange of productsRangeGetter; track $index) {
+    <mat-checkbox
+      labelPosition="after"
+      color="primary"
+    >
+      <mat-label class="filter-text">
+        {{productRange}}
+      </mat-label>
+    </mat-checkbox>
+    }
+
     <div>cena</div>
     <div></div>
   </form>

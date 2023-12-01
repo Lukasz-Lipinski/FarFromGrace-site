@@ -1,0 +1,17 @@
+@import "../../styles/ffg-styles.scss";
+@import "../../styles/ffg-styles.scss";
+
+.sidebar {
+    padding: 0px 16px;
+
+    h2 {
+        text-align: center;
+        padding-block: 20px;
+    }
+
+    .filter {
+        &-text {
+            color: $dark-primary-text;
+        }
+    }
+}
