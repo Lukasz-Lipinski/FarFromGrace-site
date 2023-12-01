@@ -1,4 +1,10 @@
+@defer {
 <app-navbar />
 <main>
   <router-outlet />
 </main>
+} @placeholder (minimum 2s) {
+<div class="first-spinner">
+  <app-spinner />
+</div>
+}

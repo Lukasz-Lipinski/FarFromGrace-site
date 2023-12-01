@@ -20,17 +20,28 @@ interface IFilterFormControl {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SidebarComponent implements OnInit {
+  getDisplayWidth = (value: number) => `${value}zł`;
+
+  private maxVal = 1000;
+  get getMaxVal() {
+    return this.maxVal;
+  }
+  private minVal = 0;
+  get getMinVal() {
+    return this.minVal;
+  }
+  private productType: string = Category[Category.Hat];
   private sidebarForm = new FormGroup<IFilterForm>({
     maxPrice: new FormControl<number>(1000, {
       nonNullable: true,
       validators: [
-        Validators.max(1000),
+        Validators.max(this.maxVal),
       ]
     }),
     minPrice: new FormControl<number>(0, {
       nonNullable: true,
       validators: [
-        Validators.min(0)
+        Validators.min(this.minVal)
       ]
     }),
     productType: new FormControl<string>(Category[Category.Hat], {
@@ -57,9 +68,6 @@ export class SidebarComponent implements OnInit {
   get formControlsGetter(): IFilterFormControl[] {
     return this.formControls;
   }
-  private maxPrice: number = 1000;
-  private minPrice: number = 0;
-  private productType: string = Category[Category.Hat];
 
   private productsRange: string[] = [
     Category[Category.Hat],

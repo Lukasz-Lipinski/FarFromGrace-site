@@ -10,6 +10,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MatSliderModule } from "@angular/material/slider";
 
 import { NavbarComponent } from '../components/navbar/navbar.component';
 import { ItemCardComponent } from '../components/item-card/item-card.component';
@@ -20,7 +21,7 @@ import { ContentBoxComponent } from '../components/content-box/content-box.compo
 import { LayoutComponent } from '../components/layout/layout.component';
 
 const components: any[] = [NavbarComponent, ItemCardComponent, SpinnerComponent, LayoutComponent, ContentBoxComponent, SidebarComponent, NavbarLogoComponent];
-const services: any[] = [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatCheckboxModule, MatGridListModule, MatCardModule, MatToolbarModule, MatButtonModule, RouterModule, MatIconModule];
+const services: any[] = [CommonModule, ReactiveFormsModule, MatSliderModule,MatFormFieldModule, MatCheckboxModule, MatGridListModule, MatCardModule, MatToolbarModule, MatButtonModule, RouterModule, MatIconModule];
 
 @NgModule({
   imports: [

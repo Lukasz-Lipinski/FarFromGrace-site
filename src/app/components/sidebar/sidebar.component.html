@@ -1,21 +1,27 @@
 <aside class="sidebar glass glass-border">
-  <h2>Filter</h2>
-  <form
-    class="filter"
-    [formGroup]="sidebarFormGetter"
-  >
-    @for (productRange of productsRangeGetter; track $index) {
-    <mat-checkbox
-      labelPosition="after"
-      color="primary"
-    >
-      <mat-label class="filter-text">
-        {{productRange}}
-      </mat-label>
-    </mat-checkbox>
-    }
+  <form class="filter" [formGroup]="sidebarFormGetter">
+    <div>
+      <h4>Category</h4>
+      @for (productRange of productsRangeGetter; track $index) {
+      <div>
+        <mat-checkbox labelPosition="after" color="primary">
+          <mat-label class="filter-text">
+            {{ productRange }}
+          </mat-label>
+        </mat-checkbox>
+      </div>
+      }
+    </div>
 
-    <div>cena</div>
-    <div></div>
+    <h4>Price</h4>
+    <mat-slider showTickMarks discrete [displayWith]="getDisplayWidth">
+      <input [value]="getMinVal" matSliderStartThumb />
+      <input [value]="getMaxVal" matSliderEndThumb />
+    </mat-slider>
+
+    <button mat-fab extended>
+      <mat-icon>filter_list</mat-icon>
+      Filter
+    </button>
   </form>
 </aside>
