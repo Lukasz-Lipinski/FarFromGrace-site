@@ -1,10 +1,11 @@
 .content-box {
-    margin: 0 auto;
-    padding: 2rem;
-    max-width: 1024px;
+  margin: 0 auto;
+  padding: 2rem;
+  max-width: 1200px;
 
-  &.full {
-      width: 100%;
-      max-width: 100%;
-    }
+}
+
+.full {
+  width: 100%;
+  max-width: none;
 }

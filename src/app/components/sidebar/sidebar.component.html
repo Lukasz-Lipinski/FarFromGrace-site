@@ -1,12 +1,20 @@
 <aside class="sidebar glass glass-border">
-  <form class="filter" [formGroup]="sidebarFormGetter">
-    <div>
+  <form
+    class="filter"
+    [formGroup]="sidebarFormGetter"
+    (ngSubmit)="onFilter()"
+  >
+    <div formGroupName="productTypes">
       <h4>Category</h4>
       @for (productRange of productsRangeGetter; track $index) {
       <div>
-        <mat-checkbox labelPosition="after" color="primary">
+        <mat-checkbox
+          labelPosition="after"
+          color="primary"
+          [formControlName]="productRange.controlName"
+        >
           <mat-label class="filter-text">
-            {{ productRange }}
+            {{ productRange.label }}
           </mat-label>
         </mat-checkbox>
       </div>
@@ -14,14 +22,30 @@
     </div>
 
     <h4>Price</h4>
-    <mat-slider showTickMarks discrete [displayWith]="getDisplayWidth">
-      <input [value]="getMinVal" matSliderStartThumb />
-      <input [value]="getMaxVal" matSliderEndThumb />
+    <mat-slider
+      showTickMarks
+      discrete
+      [displayWith]="getDisplayWidth"
+    >
+      <input
+        [value]="getMinVal"
+        matSliderStartThumb
+        formControlName="minPrice"
+      />
+      <input
+        [value]="getMaxVal"
+        formControlName="maxPrice"
+        matSliderEndThumb
+      />
     </mat-slider>
-
-    <button mat-fab extended>
+    <button
+      type="submit"
+      mat-fab
+      extended
+    >
       <mat-icon>filter_list</mat-icon>
       Filter
     </button>
+
   </form>
 </aside>
