@@ -133,7 +133,7 @@ export class SidebarComponent implements OnInit {
 
   onFilter() {
     const { maxPrice, minPrice, productTypes } = this.sidebarForm.value;
-
+    console.log(maxPrice, minPrice, productTypes);
     this.router.navigate(['/merch'], {
       queryParams: {
         maxPrice,

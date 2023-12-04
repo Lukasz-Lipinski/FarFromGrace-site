@@ -36,7 +36,12 @@ export class MerchPageComponent implements OnInit {
   private filterOpts = signal<Partial<IFilterOpts>>({});
   private filteredMerch = computed(
     () => !Object.keys(this.filterOpts()).length ? this.merch() : this.merch().filter(
-      item => item.price > this.filterOpts().minPrice! && item.price < this.filterOpts().maxPrice!
+      item => this.filterOpts().categories ?
+        (this.filterOpts().categories?.includes(Category[item.category].toLowerCase()) &&
+          item.price > this.filterOpts().minPrice! &&
+          item.price < this.filterOpts().maxPrice!) :
+        (item.price > this.filterOpts().minPrice! &&
+          item.price < this.filterOpts().maxPrice!)
     )
   );
   get getMerch() {
@@ -60,7 +65,7 @@ export class MerchPageComponent implements OnInit {
       return this.filterOpts.set({
         minPrice: +queryParams.minPrice,
         maxPrice: +queryParams.maxPrice,
-        categories
+        categories: categories.length ? categories : undefined
       });
 
     })

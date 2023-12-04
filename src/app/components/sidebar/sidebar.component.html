@@ -23,19 +23,19 @@
 
     <h4>Price</h4>
     <mat-slider
+      [min]="getMinVal"
+      [max]="getMaxVal"
       showTickMarks
       discrete
       [displayWith]="getDisplayWidth"
     >
       <input
-        [value]="getMinVal"
         matSliderStartThumb
         formControlName="minPrice"
       />
       <input
-        [value]="getMaxVal"
-        formControlName="maxPrice"
         matSliderEndThumb
+        formControlName="maxPrice"
       />
     </mat-slider>
     <button
