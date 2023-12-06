@@ -23,15 +23,20 @@ export class MerchPageComponent implements OnInit {
   private activatedRoute = inject(ActivatedRoute);
 
   private merch = signal<IMerch[]>([
-    { name: 'T-shirt', price: 120, img: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', description: 'T-shirt description', category: Category.Tshirt }
-    , { name: 'Hat', price: 40, img: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', description: 'Hat description', category: Category.Hat }
-    , { name: 'Hoodie', price: 200, img: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', description: 'Hoodie description', category: Category.Hoodie }
-    , { name: 'Sweater', price: 150, img: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', description: 'Sweater description', category: Category.Sweater }
-    , { name: 'T-shirt', price: 80, img: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', description: 'T-shirt description', category: Category.Tshirt }
-    , { name: 'Hat', price: 56, img: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', description: 'Hat description', category: Category.Hat }
-    , { name: 'Hoodie', price: 129, img: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', description: 'Hoodie description', category: Category.Hoodie }
-    , { name: 'Sweater', price: 200, img: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', description: 'Sweater description', category: Category.Sweater }
-    , { name: 'T-shirt', price: 100, img: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', description: 'T-shirt description', category: Category.Tshirt }
+    { name: 'T-shirt', price: 120, img: 'assets/merch/t-shirt.png', description: 'T-shirt description', category: Category.Tshirt }
+    , { name: 'Hat', price: 40, img: 'assets/merch/hat.png', description: 'Hat description', category: Category.Hat }
+    , { name: 'Hoodie', price: 200, img: 'assets/merch/hoodie.png', description: 'Hoodie description', category: Category.Hoodie }
+    , { name: 'Sweater', price: 150, img: 'assets/merch/sweater.png', description: 'Sweater description', category: Category.Sweater }
+    , { name: 'T-shirt', price: 80, img: 'assets/merch/t-shirt.png', description: 'T-shirt description', category: Category.Tshirt }
+    , { name: 'Hat', price: 56, img: 'assets/merch/hat.png', description: 'Hat description', category: Category.Hat }
+    , { name: 'Hoodie', price: 129, img: 'assets/merch/hoodie.png', description: 'Hoodie description', category: Category.Hoodie }
+    , { name: 'Sweater', price: 200, img: 'assets/merch/sweater.png', description: 'Sweater description', category: Category.Sweater }
+    , { name: 'T-shirt', price: 100, img: 'assets/merch/t-shirt.png', description: 'T-shirt description', category: Category.Tshirt }
+    , { name: 'T-shirt', price: 401, img: 'assets/merch/t-shirt.png', description: 'T-shirt description', category: Category.Tshirt }
+    , { name: 'Hat', price: 93, img: 'assets/merch/hat.png', description: 'Hat description', category: Category.Hat }
+    , { name: 'Hoodie', price: 259, img: 'assets/merch/hoodie.png', description: 'Hoodie description', category: Category.Hoodie }
+    , { name: 'Sweater', price: 120, img: 'assets/merch/sweater.png', description: 'Sweater description', category: Category.Sweater }
+    , { name: 'T-shirt', price: 600, img: 'assets/merch/t-shirt.png', description: 'T-shirt description', category: Category.Tshirt }
   ]);
   private filterOpts = signal<Partial<IFilterOpts>>({});
   private filteredMerch = computed(

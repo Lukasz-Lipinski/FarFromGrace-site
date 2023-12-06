@@ -3,8 +3,8 @@
 .card-size {
   width: 200px;
   height: auto;
+}
 
-  &:hover {
-    box-shadow: 1px 1px 1px 1px $dark-primary-text;
-  }
+mat-card {
+  background-color: #af9988;
 }
