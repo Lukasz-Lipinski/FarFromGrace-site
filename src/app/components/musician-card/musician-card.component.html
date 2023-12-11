@@ -1,0 +1,21 @@
+<mat-card>
+    <mat-card-content>
+        <img
+            mat-card-xl-image
+            [align]="GetImgPosition"
+            srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Bob_Hardy_with_Franz_Ferdinand_at_Les_Escales_2019.jpg/800px-Bob_Hardy_with_Franz_Ferdinand_at_Les_Escales_2019.jpg"
+            [alt]="GetNick"
+        />
+        <div>
+            <p>{{GetName }} <span class="nick">"{{ GetNick }}"</span> {{ GetSurname }}
+            </p>
+
+            <p>{{ GetRole }}</p>
+        </div>
+    </mat-card-content>
+    <div>
+        @for (paragraph of GetDescription; track $index) {
+        <p>{{ paragraph }}</p>
+        }
+    </div>
+</mat-card>

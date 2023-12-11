@@ -1,5 +1,7 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { ChangeDetectionStrategy, Component, OnInit, computed, inject } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
+import { ContentService } from './content/content.service';
 
 @Component({
   selector: 'app-about-page',
@@ -10,6 +12,12 @@ import { SharedModule } from '../../shared/shared.module';
   imports: [SharedModule]
 })
 export class AboutPageComponent implements OnInit {
+  private contentService = inject(ContentService);
+  private musiciansData = toSignal(this.contentService.getMusiciansInfo());
+
+  get getMusiciansData() {
+    return this.musiciansData()
+  }
 
   constructor() { }
 

@@ -1,7 +1,17 @@
-@defer {
+@defer (when getMusiciansData){
 <app-layout>
-    <p>about-page works!</p>
+    @for (musician of getMusiciansData; track $index) {
+    <app-musician-card
+        [SetName]="musician.name"
+        [SetSurname]="musician.surname"
+        [SetImage]="musician.img"
+        [SetDescription]="musician.description"
+        [SetImgPosition]="musician.imgPosition"
+        [SetNick]="musician.nick"
+        [SetRole]="musician.role"
+    />
+    }
 </app-layout>
-} @loading (minimum 2s) {
+} @placeholder {
 <app-spinner />
 }

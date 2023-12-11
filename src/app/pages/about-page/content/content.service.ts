@@ -1,9 +1,9 @@
 import { Injectable, signal } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, delay, of, tap, } from 'rxjs';
 
-type Role = "Bassist" | "Guitarist" | "Drummer" | "Vocalist/Guitarist";
+export type Role = "Bassist" | "Guitarist" | "Drummer" | "Vocalist/Guitarist";
 
-interface IMusican {
+export interface IMusican {
   name: string;
   nick: string;
   surname: string;
@@ -14,10 +14,10 @@ interface IMusican {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ContentService {
-  private musicians = signal<IMusican[]>([
+  private backendData = signal<IMusican[]>([
     {
       name: "Łukasz",
       nick: "Wookie",
@@ -69,11 +69,22 @@ export class ContentService {
       imgPosition: 'right'
     }
   ])
+  private musicians = signal<IMusican[]>([]);
 
-constructor() { }
+  constructor() { }
 
-getMusiciansInfo() {
-  return this.musicians();
-}
+  getMusiciansInfo(): Observable<IMusican[]> {
+    if (!this.musicians().length) {
+      return of(this.backendData())
+        .pipe(
+          delay(2000),
+          tap((data) => {
+            this.musicians.set(data);
+          })
+        );
+    }
+
+    return of(this.musicians());
+  }
 
 }

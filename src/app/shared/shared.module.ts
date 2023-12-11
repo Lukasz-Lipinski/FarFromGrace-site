@@ -18,9 +18,10 @@ import { SpinnerComponent } from "../components/spinner/spinner.component";
 import { SidebarComponent } from '../components/sidebar/sidebar.component';
 import { NavbarLogoComponent } from '../components/navbar-logo/navbar-logo.component';
 import { LayoutComponent } from '../components/layout/layout.component';
+import { MusicianCardComponent } from '../components/musician-card/musician-card.component';
 
-const components: any[] = [NavbarComponent, ItemCardComponent, SpinnerComponent, LayoutComponent, SidebarComponent, NavbarLogoComponent];
-const services: any[] = [CommonModule, ReactiveFormsModule, MatSliderModule,MatFormFieldModule, MatCheckboxModule, MatGridListModule, MatCardModule, MatToolbarModule, MatButtonModule, RouterModule, MatIconModule];
+const components: any[] = [NavbarComponent, ItemCardComponent, SpinnerComponent, LayoutComponent, SidebarComponent, NavbarLogoComponent, MusicianCardComponent];
+const services: any[] = [CommonModule, ReactiveFormsModule, MatSliderModule, MatFormFieldModule, MatCheckboxModule, MatGridListModule, MatCardModule, MatToolbarModule, MatButtonModule, RouterModule, MatIconModule];
 
 @NgModule({
   imports: [
