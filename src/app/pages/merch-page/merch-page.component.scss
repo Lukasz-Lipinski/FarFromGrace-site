@@ -1,12 +1,14 @@
+@import "../../styles/ffg-styles.scss";
+
 .list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, $ffg-card-size);
+  justify-content: center;
+  align-content: flex-start;
+  gap: 20px;
   box-sizing: border-box;
-  width: 100%;
   list-style-type: none;
-  padding: 16px 20px;
-  margin: 0;
+  padding: 0;
 
   &-item {
     transform: translateY(0px);

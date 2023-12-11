@@ -1,21 +1,23 @@
 @defer {
 <app-layout [isSidebar]="true">
   <app-sidebar Sidebar />
-  <ul
+  <div
+    class="box"
     Content
-    class="list"
   >
-    @for (item of getMerch; track $index) {
-    <app-item-card
-      class="list-item"
-      [setName]="item.name"
-      [setPrice]="item.price"
-      [setCategory]="item.category"
-      [setImg]="item.img"
-      [setDescription]="item.description"
-    />
-    }
-  </ul>
+    <ul class="list">
+      @for (item of getMerch; track $index) {
+      <app-item-card
+        class="list-item"
+        [setName]="item.name"
+        [setPrice]="item.price"
+        [setCategory]="item.category"
+        [setImg]="item.img"
+        [setDescription]="item.description"
+      />
+      }
+    </ul>
+  </div>
 </app-layout>
 
 }@loading (minimum 2s) {
