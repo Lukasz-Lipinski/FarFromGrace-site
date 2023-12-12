@@ -1,7 +1,8 @@
 import { toSignal } from '@angular/core/rxjs-interop';
-import { ChangeDetectionStrategy, Component, OnInit, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild, computed, inject } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
 import { ContentService } from './content/content.service';
+import { MusicianCardComponent } from '../../components/musician-card/musician-card.component';
 
 @Component({
   selector: 'app-about-page',
@@ -14,10 +15,9 @@ import { ContentService } from './content/content.service';
 export class AboutPageComponent implements OnInit {
   private contentService = inject(ContentService);
   private musiciansData = toSignal(this.contentService.getMusiciansInfo());
-
   get getMusiciansData() {
     return this.musiciansData()
-  }
+  };
 
   constructor() { }
 

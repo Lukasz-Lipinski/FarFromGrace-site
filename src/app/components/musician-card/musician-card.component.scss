@@ -1,6 +1,45 @@
+@import "../../styles/ffg-styles.scss";
+
 .nick {
     text-transform: uppercase;
     font-size: small;
     font-style: italic;
     color: grey;
+}
+
+mat-card {
+    background-color: $background;
+    gap: 12px;
+}
+
+@keyframes ShowLeftAnimation {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes ShowRightAnimation {
+    0% {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.show-left {
+    animation: ShowLeftAnimation 1.4s ease-out 0s 1 normal;
+}
+
+.show-right {
+    animation: ShowRightAnimation 1.4s ease-out 0s 1 normal;
 }

@@ -8,6 +8,9 @@ import { Role } from '../../pages/about-page/content/content.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MusicianCardComponent {
+  get setShowAnimation() {
+    return "show-" + this.GetImgPosition;
+  };
   private name!: string;
   get GetName() {
     return this.name;
