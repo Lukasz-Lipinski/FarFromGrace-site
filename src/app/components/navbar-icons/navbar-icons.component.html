@@ -1,8 +1,11 @@
 <div>
     @for (icon of getIcons; track $index) {
-    <button mat-icon-button>
-        <i-bs [name]="icon"></i-bs>
-
-    </button>
+    <a
+        mat-icon-button
+        [href]="icon.href"
+        target="_blank"
+    >
+        <i-bs [name]="icon.name"></i-bs>
+    </a>
     }
 </div>

@@ -10,14 +10,23 @@ describe('NavbarIconsComponent', () => {
     await TestBed.configureTestingModule({
       imports: [NavbarIconsComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(NavbarIconsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe("DOM tests", () => {
+    it('should create', () => {
+      expect(component).toBeTruthy();
+    });
   });
+
+  describe("Class tests", () => {
+    it("returns 4 links", () => {
+      const links = component.getIcons;
+      expect(links.length).toBe(4);
+    });
+  })
 });
