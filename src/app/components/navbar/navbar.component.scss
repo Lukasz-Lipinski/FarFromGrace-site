@@ -3,11 +3,17 @@
 .navbar {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 16px;
   background-color: $glass-background;
   box-sizing: content-box;
   box-shadow: 1px 0 12px 8px hsla(0, 0, 0, 0.8);
   border-bottom: 1px solid $dark-primary-text;
+
+  div {
+    display: flex;
+    align-items: center;
+  }
 
   a {
     text-decoration: none;

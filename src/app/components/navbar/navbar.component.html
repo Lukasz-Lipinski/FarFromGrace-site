@@ -1,15 +1,17 @@
 <nav class="navbar">
-  <app-navbar-logo />
-  @for (link of getLinks; track trackLink) {
-  <a
-    mat-button
-    color="warn"
-    [routerLink]="link.href"
-    routerLinkActive="active"
-    [routerLinkActiveOptions]="{
-      exact: true
-    }"
-    >{{ link.label }}</a
-  >
-  }
+  <div>
+    <app-navbar-logo />
+    @for (link of getLinks; track trackLink) {
+    <a
+      mat-button
+      color="warn"
+      [routerLink]="link.href"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{
+        exact: true
+      }"
+    >{{ link.label }}</a>
+    }
+  </div>
+  <app-navbar-icons />
 </nav>

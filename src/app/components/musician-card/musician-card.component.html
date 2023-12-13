@@ -1,4 +1,16 @@
-<mat-card [class]="setShowAnimation">
+<mat-card
+    [class]="setShowAnimation"
+    class="gap"
+>
+    <mat-card-header>
+        <mat-card-title>
+            <p>{{GetName }} <span class="nick">"{{ GetNick }}"</span> {{ GetSurname }}
+            </p>
+        </mat-card-title>
+        <mat-card-subtitle>
+            <p>{{ GetRole }}</p>
+        </mat-card-subtitle>
+    </mat-card-header>
     <mat-card-content>
         <img
             mat-card-xl-image
@@ -7,15 +19,9 @@
             [alt]="GetNick"
         />
         <div>
-            <p>{{GetName }} <span class="nick">"{{ GetNick }}"</span> {{ GetSurname }}
-            </p>
-
-            <p>{{ GetRole }}</p>
+            @for (paragraph of GetDescription; track $index) {
+            <p>{{ paragraph }}</p>
+            }
         </div>
     </mat-card-content>
-    <div>
-        @for (paragraph of GetDescription; track $index) {
-        <p>{{ paragraph }}</p>
-        }
-    </div>
 </mat-card>
