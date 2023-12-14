@@ -24,7 +24,7 @@ describe('Service: Content', () => {
       providers: [{
         provide: ContentService,
         useValue: {
-          getMusiciansInfo: () => of(mockedData()).pipe(delay(100));
+          getMusiciansInfo: () => of(mockedData()).pipe(delay(100))
         }
       }]
     }).compileComponents();
