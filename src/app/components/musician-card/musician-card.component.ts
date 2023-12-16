@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Role } from '../../pages/about-page/content/content.service';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { Role, IMusican } from '../../pages/about-page/content/content.service';
 
 @Component({
   selector: 'app-musician-card',
@@ -8,6 +8,7 @@ import { Role } from '../../pages/about-page/content/content.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MusicianCardComponent {
+  @Output() musicianDataEmitter = new EventEmitter<IMusican>();
   private name!: string;
   get GetName() {
     return this.name;
@@ -71,4 +72,17 @@ export class MusicianCardComponent {
   }) set SetDescription(value: string[]) {
     this.description = value;
   };
+
+  public showDetails() {
+    const musicianData: IMusican = {
+      name: this.name,
+      surname: this.surname,
+      nick: this.nick,
+      img: this.image,
+      role: this.role,
+      imgPosition: this.imgPosition,
+      description: this.description,
+    }
+    this.musicianDataEmitter.emit(musicianData);
+  }
 }

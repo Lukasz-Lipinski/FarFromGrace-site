@@ -11,6 +11,7 @@ import { MatGridListModule } from "@angular/material/grid-list";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatSliderModule } from "@angular/material/slider";
+import { MatDialogModule } from '@angular/material/dialog';
 import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
 
 import { NavbarComponent } from '../components/navbar/navbar.component';
@@ -23,7 +24,7 @@ import { MusicianCardComponent } from '../components/musician-card/musician-card
 import { NavbarIconsComponent } from '../components/navbar-icons/navbar-icons.component';
 
 const components: any[] = [NavbarComponent, ItemCardComponent, SpinnerComponent, NavbarIconsComponent, LayoutComponent, SidebarComponent, NavbarLogoComponent, MusicianCardComponent];
-const services: any[] = [NgxBootstrapIconsModule.pick(allIcons), CommonModule, ReactiveFormsModule, MatSliderModule, MatIconModule, MatFormFieldModule, MatCheckboxModule, MatGridListModule, MatCardModule, MatToolbarModule, MatButtonModule, RouterModule, MatIconModule];
+const services: any[] = [NgxBootstrapIconsModule.pick(allIcons), CommonModule, MatDialogModule, ReactiveFormsModule, MatSliderModule, MatIconModule, MatFormFieldModule, MatCheckboxModule, MatGridListModule, MatCardModule, MatToolbarModule, MatButtonModule, RouterModule, MatIconModule];
 
 @NgModule({
   imports: [

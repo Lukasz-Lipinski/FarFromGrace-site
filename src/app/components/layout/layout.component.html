@@ -1,5 +1,8 @@
 @if (isSidebar) {
-<div class="container sidebar-box container-full">
+<div
+  class="container sidebar-box container-full"
+  [ngClass]="getClassOptions"
+>
   <ng-content select="[Sidebar]"></ng-content>
   <div class="glass glass-border">
     <ng-content select="[Content]"></ng-content>
@@ -7,7 +10,10 @@
 </div>
 
 } @else {
-<div class="container container-column glass glass-border">
+<div
+  class="container glass glass-border"
+  [ngClass]="getClassOptions"
+>
   <ng-content></ng-content>
 </div>
 }

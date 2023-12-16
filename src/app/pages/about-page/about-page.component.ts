@@ -1,9 +1,8 @@
 import { toSignal } from '@angular/core/rxjs-interop';
-import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild, computed, inject } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, ChangeDetectionStrategy, Component, ContentChild, OnInit, ViewChild, inject, signal } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
-import { ContentService } from './content/content.service';
-import { MusicianCardComponent } from '../../components/musician-card/musician-card.component';
-
+import { ContentService, IMusican } from './content/content.service';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-about-page',
   templateUrl: './about-page.component.html',
@@ -18,10 +17,17 @@ export class AboutPageComponent implements OnInit {
   get getMusiciansData() {
     return this.musiciansData()
   };
+  private selectedMusician = signal<IMusican | null>(null);
+  get getSelectedMusician() {
+    return this.selectedMusician();
+  }
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  showDialogWithData($event: IMusican) {
+    this.selectedMusician.set($event);
+  }
 }

@@ -1,5 +1,5 @@
 @defer (when getMusiciansData){
-<app-layout>
+<app-layout [justifyContentCenter]="true">
     @for (musician of getMusiciansData; track $index) {
     <app-musician-card
         [SetName]="musician.name"
@@ -9,8 +9,12 @@
         [SetImgPosition]="musician.imgPosition"
         [SetNick]="musician.nick"
         [SetRole]="musician.role"
+        (musicianDataEmitter)="showDialogWithData($event)"
     />
     }
+    {{
+        getSelectedMusician | json
+    }}
 </app-layout>
 } @placeholder {
 <app-spinner #spinner />

@@ -8,4 +8,14 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 })
 export class LayoutComponent {
   @Input() isSidebar: boolean = false;
+  @Input() verticalContent: boolean = false;
+  @Input() justifyContentCenter: boolean = false;
+
+  get getClassOptions() {
+    const verticalContent = this.verticalContent ? "container-column" : "";
+    const justifyContentCenter = this.justifyContentCenter ? "container-center" : "";
+    const alignItemsCenter = this.justifyContentCenter && this.verticalContent ? "container-column" : "";
+
+    return `${verticalContent} ${justifyContentCenter} ${alignItemsCenter}`;
+  }
 }

@@ -1,15 +1,14 @@
 @import "../../styles/ffg-styles.scss";
 
-.nick {
-    text-transform: uppercase;
-    font-size: small;
-    font-style: italic;
-    color: grey;
-}
-
-mat-card {
-    background-color: $background;
+.avatar {
+    max-width: 250px;
+    height: auto;
+    border-radius: 12px;
     border: 1px solid red;
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 @keyframes ShowLeftAnimation {
