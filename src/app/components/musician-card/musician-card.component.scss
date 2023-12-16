@@ -36,10 +36,6 @@ mat-card {
     }
 }
 
-.show-left {
-    animation: ShowLeftAnimation 1.4s ease-out 0s 1 normal;
-}
-
-.show-right {
-    animation: ShowRightAnimation 1.4s ease-out 0s 1 normal;
+.show {
+    animation: ShowLeftAnimation 0.5s ease-out 0s 1 normal;
 }
