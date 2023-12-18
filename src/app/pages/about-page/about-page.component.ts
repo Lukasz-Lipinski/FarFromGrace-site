@@ -1,8 +1,10 @@
 import { toSignal } from '@angular/core/rxjs-interop';
-import { AfterContentChecked, AfterContentInit, ChangeDetectionStrategy, Component, ContentChild, OnInit, ViewChild, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject, signal } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
 import { ContentService, IMusican } from './content/content.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ModalComponent } from '../../components/modal/modal.component';
+
 @Component({
   selector: 'app-about-page',
   templateUrl: './about-page.component.html',
@@ -21,13 +23,17 @@ export class AboutPageComponent implements OnInit {
   get getSelectedMusician() {
     return this.selectedMusician();
   }
-
+  private modal = inject(MatDialog);
   constructor() { }
 
   ngOnInit() {
   }
 
   showDialogWithData($event: IMusican) {
+    this.modal.open(ModalComponent, {
+      enterAnimationDuration: 200,
+      exitAnimationDuration: 200
+    });
     this.selectedMusician.set($event);
   }
 }

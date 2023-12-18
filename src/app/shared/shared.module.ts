@@ -22,8 +22,9 @@ import { NavbarLogoComponent } from '../components/navbar-logo/navbar-logo.compo
 import { LayoutComponent } from '../components/layout/layout.component';
 import { MusicianCardComponent } from '../components/musician-card/musician-card.component';
 import { NavbarIconsComponent } from '../components/navbar-icons/navbar-icons.component';
+import { ModalComponent } from '../components/modal/modal.component';
 
-const components: any[] = [NavbarComponent, ItemCardComponent, SpinnerComponent, NavbarIconsComponent, LayoutComponent, SidebarComponent, NavbarLogoComponent, MusicianCardComponent];
+const components: any[] = [NavbarComponent, ModalComponent, ItemCardComponent, SpinnerComponent, NavbarIconsComponent, LayoutComponent, SidebarComponent, NavbarLogoComponent, MusicianCardComponent];
 const services: any[] = [NgxBootstrapIconsModule.pick(allIcons), CommonModule, MatDialogModule, ReactiveFormsModule, MatSliderModule, MatIconModule, MatFormFieldModule, MatCheckboxModule, MatGridListModule, MatCardModule, MatToolbarModule, MatButtonModule, RouterModule, MatIconModule];
 
 @NgModule({
