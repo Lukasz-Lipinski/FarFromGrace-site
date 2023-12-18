@@ -31,6 +31,9 @@ export class AboutPageComponent implements OnInit {
 
   showDialogWithData($event: IMusican) {
     this.modal.open(ModalComponent, {
+      data: {
+        musician: this.selectedMusician()
+      },
       enterAnimationDuration: 200,
       exitAnimationDuration: 200
     });
