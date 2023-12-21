@@ -1,8 +1,9 @@
 import { toSignal } from '@angular/core/rxjs-interop';
-import { AfterContentChecked, AfterContentInit, ChangeDetectionStrategy, Component, ContentChild, OnInit, ViewChild, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject, signal } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
 import { ContentService, IMusican } from './content/content.service';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import { MusicianDetailsComponent } from '../../components/musician-details/musician-details.component';
 @Component({
   selector: 'app-about-page',
   templateUrl: './about-page.component.html',
@@ -12,6 +13,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
   imports: [SharedModule]
 })
 export class AboutPageComponent implements OnInit {
+  private dialog = inject(MatDialog);
   private contentService = inject(ContentService);
   private musiciansData = toSignal(this.contentService.getMusiciansInfo());
   get getMusiciansData() {
@@ -29,5 +31,8 @@ export class AboutPageComponent implements OnInit {
 
   showDialogWithData($event: IMusican) {
     this.selectedMusician.set($event);
+    this.dialog.open(MusicianDetailsComponent, {
+      data: $event
+    });
   }
 }
