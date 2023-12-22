@@ -1,6 +1,34 @@
-<h2 mat-dialog-title>{{ getData.nick }}</h2>
+<h2 mat-dialog-title>
+    <div>
+        {{getData.name}} {{ getData.nick }} {{ getData.surname }}
+        <button
+            mat-flat-button
+            mat-dialog-close
+        >
+            X
+        </button>
+    </div>
+</h2>
 <div mat-dialog-content>
-    {{
-        getData | json
-    }}
+    <div>
+        {{getData.role}}
+    </div>
+    <div>
+        @for (item of getData.description; track $index) {
+        <p>{{item}}</p>
+        }
+    </div>
+    <h2>Equipment</h2>
+    <ul>
+        @for (item of getData.equpiment; track $index) {
+        <h2>
+            {{item.header}}
+        </h2>
+        @for (eq of item.list; track $index) {
+        <li>
+            {{ eq }}
+        </li>
+        }
+        }
+    </ul>
 </div>

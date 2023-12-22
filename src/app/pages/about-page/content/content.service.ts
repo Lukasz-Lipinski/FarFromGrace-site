@@ -3,6 +3,11 @@ import { Observable, delay, of, tap, } from 'rxjs';
 
 export type Role = "Bassist" | "Guitarist" | "Drummer" | "Vocalist/Guitarist";
 
+export interface IEquipmentItem {
+  header: "Guitars" | "Drums" | "Amps" | "Basses" | "Amp Modelers" | "Shellset";
+  list: string[]
+}
+
 export interface IMusican {
   name: string;
   nick: string;
@@ -11,6 +16,8 @@ export interface IMusican {
   img: string;
   imgPosition: "left" | "right";
   description: string[];
+  equpiment: IEquipmentItem[];
+
 }
 
 @Injectable({
@@ -29,7 +36,23 @@ export class ContentService {
         "He plays on the rythm guitar and is one of FFG founders!"
       ],
       img: "img",
-      imgPosition: 'left'
+      imgPosition: 'left',
+      equpiment: [
+        {
+          header: "Guitars",
+          list: [
+            "Solar V1.6 BOP Artist LTD Evertune",
+            "Ibanez RG 7421 White"
+          ]
+        },
+        {
+          header: "Amp Modelers",
+          list: [
+            "Helix Stomp",
+            "Sinxmix simulations"
+          ]
+        }
+      ]
     },
     {
       name: "Jasiek",
@@ -42,7 +65,23 @@ export class ContentService {
         "He likes watching Kapitan Bomba as fuck and has a pug named 'Winston' as Parkway Drive vocalist!"
       ],
       img: "img",
-      imgPosition: 'right'
+      imgPosition: 'right',
+      equpiment: [
+        {
+          header: "Guitars",
+          list: [
+            "Skervesen 7 Bariton BrownFlamedTop Premium",
+            "Skervesen 7 GreenBlueFlamedTop Premium"
+          ]
+        },
+        {
+          header: "Amp Modelers",
+          list: [
+            "Fractal floor FM3 - for gigs",
+            "Kemper - backup"
+          ]
+        }
+      ]
     },
     {
       name: "Konrad",
@@ -54,7 +93,22 @@ export class ContentService {
         "Fan of sports especially gym! Yeah it's true his farts has extra proteins and called as 'anabolic fart'",
       ],
       img: "img",
-      imgPosition: 'left'
+      imgPosition: 'left',
+      equpiment: [
+        {
+          header: "Basses",
+          list: [
+            "Ibanez Headless 5 Black WDM",
+            "Fender White v4"
+          ]
+        },
+        {
+          header: "Amp Modelers",
+          list: [
+            "Helix Stomp"
+          ]
+        }
+      ]
     },
     {
       name: "Paweł",
@@ -66,7 +120,35 @@ export class ContentService {
         "Fan of heavy metal, he likes groove and fat riffs as fuck!",
       ],
       img: "img",
-      imgPosition: 'right'
+      imgPosition: 'right',
+      equpiment: [
+        {
+          header: "Drums",
+          list: [
+            "DW Satin Oil Set Regal Blue Gold",
+            '22" x 18" Bass Drum',
+            '08" x 07" Tom Tom',
+            '10" x 08" Tom Tom',
+            '12" x 09" Tom Tom',
+            '14" x 12" Stand Tom(X)',
+            '16" x 14" Stand Tom',
+            '14" x 6,5" Snare Drum',
+          ]
+        },
+        {
+          header: "Shellset",
+          list: [
+            '14" HHX Compression Hi-Hats',
+            '19" AAXtreme Chinese',
+            '19" HHX Stage Crash',
+            '21" HHX Stage Crash',
+            '20" HHX Stage Crash',
+            '19" Paragon Chinese/15" HH thin Crash(stacked)',
+            '15" HHX Stage Hats',
+            '22" Legacy Ride (as crash)',
+            '21" AAXtreme Chinese',]
+        }
+      ]
     }
   ])
   private musicians = signal<IMusican[]>([]);
@@ -88,3 +170,4 @@ export class ContentService {
   }
 
 }
+

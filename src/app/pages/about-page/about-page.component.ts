@@ -15,6 +15,10 @@ import { MusicianDetailsComponent } from '../../components/musician-details/musi
 export class AboutPageComponent implements OnInit {
   private dialog = inject(MatDialog);
   private contentService = inject(ContentService);
+  private ffgMembersPicture = "assets/about/all_members.webp";
+  get getFFGMembersPicture() {
+    return this.ffgMembersPicture;
+  }
   private musiciansData = toSignal(this.contentService.getMusiciansInfo());
   get getMusiciansData() {
     return this.musiciansData()

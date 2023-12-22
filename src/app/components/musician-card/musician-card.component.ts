@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { Role, IMusican } from '../../pages/about-page/content/content.service';
+import { Role, IMusican, IEquipmentItem } from '../../pages/about-page/content/content.service';
 
 @Component({
   selector: 'app-musician-card',
@@ -72,6 +72,15 @@ export class MusicianCardComponent {
   }) set SetDescription(value: string[]) {
     this.description = value;
   };
+  private equipment!: IEquipmentItem[];
+  get getEquipment() {
+    return this.equipment;
+  };
+  @Input({
+    required: true
+  }) set SetEquipment(value: IEquipmentItem[]) {
+    this.equipment = value;
+  }
 
   public showDetails() {
     const musicianData: IMusican = {
@@ -82,6 +91,7 @@ export class MusicianCardComponent {
       role: this.role,
       imgPosition: this.imgPosition,
       description: this.description,
+      equpiment: this.equipment
     }
     this.musicianDataEmitter.emit(musicianData);
   }

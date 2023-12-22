@@ -2,6 +2,7 @@
 <div
   class="container sidebar-box container-full"
   [ngClass]="getClassOptions"
+  [style.--gapValue]="getGap"
 >
   <ng-content select="[Sidebar]"></ng-content>
   <div class="glass glass-border">
@@ -13,6 +14,7 @@
 <div
   class="container glass glass-border"
   [ngClass]="getClassOptions"
+  [style.gap]="getGap"
 >
   <ng-content></ng-content>
 </div>

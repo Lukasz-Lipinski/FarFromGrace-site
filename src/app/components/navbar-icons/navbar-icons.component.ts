@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { IconNamesEnum } from 'ngx-bootstrap-icons';
 
 interface ILinkWithIcon {
@@ -13,13 +13,14 @@ interface ILinkWithIcon {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavbarIconsComponent {
+
   private icons: ILinkWithIcon[] = [
     {
       href: "https://www.facebook.com/ffgmetalcore",
       name: IconNamesEnum.Facebook,
     },
     {
-      href: "",
+      href: "https://www.instagram.com/farfromgrace_official",
       name: IconNamesEnum.Instagram,
     },
     {
@@ -34,4 +35,5 @@ export class NavbarIconsComponent {
   get getIcons() {
     return this.icons;
   }
+
 }

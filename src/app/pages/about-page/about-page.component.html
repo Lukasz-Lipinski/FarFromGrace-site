@@ -1,18 +1,36 @@
-@defer (when getMusiciansData){
-<app-layout [justifyContentCenter]="true">
-    @for (musician of getMusiciansData; track $index) {
-    <app-musician-card
-        [SetName]="musician.name"
-        [SetSurname]="musician.surname"
-        [SetImage]="musician.img"
-        [SetDescription]="musician.description"
-        [SetImgPosition]="musician.imgPosition"
-        [SetNick]="musician.nick"
-        [SetRole]="musician.role"
-        (musicianDataEmitter)="showDialogWithData($event)"
-    />
-    }
+<!-- @defer (when getMusiciansData){ -->
+<app-layout
+    [verticalContent]="true"
+    [gap]="16"
+>
+    <div class="container gap">
+        <img
+            [srcset]="getFFGMembersPicture"
+            class="allMembersImg"
+        />
+        <div>
+            band details
+        </div>
+    </div>
+    <div class="container container-column container-column-ceonter">
+        <h2>Far From Grace Squad</h2>
+        <div class="container container-center">
+            @for (musician of getMusiciansData; track $index) {
+            <app-musician-card
+                [SetName]="musician.name"
+                [SetSurname]="musician.surname"
+                [SetImage]="musician.img"
+                [SetDescription]="musician.description"
+                [SetImgPosition]="musician.imgPosition"
+                [SetNick]="musician.nick"
+                [SetRole]="musician.role"
+                [SetEquipment]="musician.equpiment"
+                (musicianDataEmitter)="showDialogWithData($event)"
+            />
+            }
+        </div>
+    </div>
 </app-layout>
-} @placeholder {
+<!-- } @placeholder {
 <app-spinner #spinner />
-}
+} -->

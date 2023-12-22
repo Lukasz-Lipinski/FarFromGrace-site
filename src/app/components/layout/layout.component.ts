@@ -10,6 +10,7 @@ export class LayoutComponent {
   @Input() isSidebar: boolean = false;
   @Input() verticalContent: boolean = false;
   @Input() justifyContentCenter: boolean = false;
+  @Input() gap: number = 0;
 
   get getClassOptions() {
     const verticalContent = this.verticalContent ? "container-column" : "";
@@ -18,4 +19,7 @@ export class LayoutComponent {
 
     return `${verticalContent} ${justifyContentCenter} ${alignItemsCenter}`;
   }
+  get getGap() {
+    return this.gap + "px";
+  };
 }
