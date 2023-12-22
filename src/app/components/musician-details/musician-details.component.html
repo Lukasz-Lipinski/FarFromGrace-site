@@ -1,6 +1,15 @@
-<h2 mat-dialog-title>
-    <div>
-        {{getData.name}} {{ getData.nick }} {{ getData.surname }}
+<div mat-dialog-title>
+    <div class="container container-space-between">
+        <div class="container container-align-center">
+            <img
+                class="musician-details-avatar"
+                [srcset]="getData.imgAvatar"
+                [alt]="getData.name + getData.surname"
+            />
+            <h2>
+                {{getData.name}} {{ getData.nick }} {{ getData.surname }}
+            </h2>
+        </div>
         <button
             mat-flat-button
             color="warn"
@@ -9,22 +18,22 @@
             X
         </button>
     </div>
-</h2>
+</div>
 <div mat-dialog-content>
-    <div>
+    <h4>
         {{getData.role}}
-    </div>
+    </h4>
     <div>
         @for (item of getData.description; track $index) {
         <p>{{item}}</p>
         }
     </div>
-    <h3>Equipment</h3>
+    <h4>Equipment</h4>
     <ul>
         @for (item of getData.equpiment; track $index) {
-        <h4>
+        <h5>
             {{item.header}}
-        </h4>
+        </h5>
         @for (eq of item.list; track $index) {
         <li>
             {{ eq }}

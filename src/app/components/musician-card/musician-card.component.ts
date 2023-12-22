@@ -36,14 +36,23 @@ export class MusicianCardComponent {
   }) set SetNick(value: string) {
     this.nick = value;
   }
-  private image!: string;
-  get GetImage() {
-    return this.image;
+  private imageMain!: string;
+  get GetImageMain() {
+    return this.imageMain;
   };
   @Input({
     required: true
-  }) set SetImage(value: string) {
-    this.image = value;
+  }) set SetImageMain(value: string) {
+    this.imageMain = value;
+  };
+  private imageAvatar!: string;
+  get GetImageAvatar() {
+    return this.imageAvatar;
+  };
+  @Input({
+    required: true
+  }) set SetImageAvatar(value: string) {
+    this.imageAvatar = value;
   };
   private role!: Role;
   get GetRole() {
@@ -87,7 +96,8 @@ export class MusicianCardComponent {
       name: this.name,
       surname: this.surname,
       nick: this.nick,
-      img: this.image,
+      imgAvatar: this.imageAvatar,
+      imgMain: this.imageMain,
       role: this.role,
       imgPosition: this.imgPosition,
       description: this.description,

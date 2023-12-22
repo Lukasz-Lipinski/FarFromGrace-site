@@ -1,13 +1,15 @@
 @import "../../styles/ffg-styles.scss";
 
 .avatar {
+    filter: brightness(40%);
     max-width: 250px;
     height: auto;
     border-radius: 12px;
-    border: 1px solid red;
+    transition: 0.3s all;
 
     &:hover {
         cursor: pointer;
+        filter: brightness(100%);
     }
 }
 

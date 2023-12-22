@@ -39,12 +39,13 @@
             <app-musician-card
                 [SetName]="musician.name"
                 [SetSurname]="musician.surname"
-                [SetImage]="musician.img"
+                [SetImageMain]="musician.imgMain"
                 [SetDescription]="musician.description"
                 [SetImgPosition]="musician.imgPosition"
                 [SetNick]="musician.nick"
                 [SetRole]="musician.role"
                 [SetEquipment]="musician.equpiment"
+                [SetImageAvatar]="musician.imgAvatar"
                 (musicianDataEmitter)="showDialogWithData($event)"
             />
             }

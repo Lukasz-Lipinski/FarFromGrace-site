@@ -14,6 +14,17 @@ h2 {
     }
 }
 
+p {
+    margin: auto 0;
+    text-align: justify;
+    padding: 14px;
+
+    @media only screen and (max-width: 1200px) {
+        padding: 0;
+    }
+
+}
+
 .allMembersImg {
     max-width: 720px;
     height: auto;

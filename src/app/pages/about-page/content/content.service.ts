@@ -13,7 +13,8 @@ export interface IMusican {
   nick: string;
   surname: string;
   role: Role;
-  img: string;
+  imgMain: string;
+  imgAvatar: string;
   imgPosition: "left" | "right";
   description: string[];
   equpiment: IEquipmentItem[];
@@ -35,7 +36,8 @@ export class ContentService {
         "Always annoyed guy that often has a problem with something!",
         "He plays on the rythm guitar and is one of FFG founders!"
       ],
-      img: "img",
+      imgMain: "assets/about/wookie-main.jpg",
+      imgAvatar: "assets/about/wookie-avatar.jpg",
       imgPosition: 'left',
       equpiment: [
         {
@@ -64,7 +66,8 @@ export class ContentService {
         "A technical brain of FFG and is one of FFG founders as Wookie!",
         "He likes watching Kapitan Bomba as fuck and has a pug named 'Winston' as Parkway Drive vocalist!"
       ],
-      img: "img",
+      imgMain: "assets/about/jasiek-main.jpg",
+      imgAvatar: "assets/about/jasiek-avatar.jpg",
       imgPosition: 'right',
       equpiment: [
         {
@@ -92,7 +95,8 @@ export class ContentService {
         "Extra the best bassist in the world! He plays using pick but sounds like a figner.",
         "Fan of sports especially gym! Yeah it's true his farts has extra proteins and called as 'anabolic fart'",
       ],
-      img: "img",
+      imgMain: "assets/about/kondzik-main.jpg",
+      imgAvatar: "assets/about/kondzik-avatar.jpg",
       imgPosition: 'left',
       equpiment: [
         {
@@ -119,7 +123,8 @@ export class ContentService {
         "Extra the best drummer in the world! He plays using especially designed drumsticks!",
         "Fan of heavy metal, he likes groove and fat riffs as fuck!",
       ],
-      img: "img",
+      imgMain: "assets/about/pawel-main.jpg",
+      imgAvatar: "assets/about/pawel-avatar.jpg",
       imgPosition: 'right',
       equpiment: [
         {
