@@ -3,6 +3,7 @@
         {{getData.name}} {{ getData.nick }} {{ getData.surname }}
         <button
             mat-flat-button
+            color="warn"
             mat-dialog-close
         >
             X
@@ -18,12 +19,12 @@
         <p>{{item}}</p>
         }
     </div>
-    <h2>Equipment</h2>
+    <h3>Equipment</h3>
     <ul>
         @for (item of getData.equpiment; track $index) {
-        <h2>
+        <h4>
             {{item.header}}
-        </h2>
+        </h4>
         @for (eq of item.list; track $index) {
         <li>
             {{ eq }}

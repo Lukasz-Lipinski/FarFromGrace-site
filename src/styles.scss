@@ -61,6 +61,12 @@ body {
 }
 
 .container {
+  @media only screen and (min-width: 1200px) {
+    & {
+      flex-wrap: nowrap;
+    }
+  }
+
   display: flex;
   flex-wrap: wrap;
 
