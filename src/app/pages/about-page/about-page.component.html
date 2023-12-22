@@ -3,7 +3,7 @@
     [verticalContent]="true"
     [gap]="16"
 >
-    <div class="container gap">
+    <div class="container gap show">
         <img
             [srcset]="getFFGMembersPicture"
             class="allMembersImg"
@@ -32,8 +32,8 @@
 
         </p>
     </div>
-    <div class="container container-column container-column-ceonter">
-        <h2>Far From Grace Squad</h2>
+    <div class="container container-column container-column-center">
+        <h2 class="show">Far From Grace Squad</h2>
         <div class="container container-center">
             @for (musician of getMusiciansData; track $index) {
             <app-musician-card

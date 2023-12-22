@@ -12,31 +12,3 @@
         filter: brightness(100%);
     }
 }
-
-@keyframes ShowLeftAnimation {
-    0% {
-        opacity: 0;
-        transform: translateX(-30px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes ShowRightAnimation {
-    0% {
-        opacity: 0;
-        transform: translateX(30px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-.show {
-    animation: ShowLeftAnimation 0.5s ease-out 0s 1 normal;
-}
