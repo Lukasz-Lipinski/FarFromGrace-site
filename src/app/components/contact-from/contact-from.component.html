@@ -1,0 +1,30 @@
+<form [formGroup]="getContactForm" class="container container-column">
+  @for (control of getFormControls; track $index) {
+  <mat-form-field>
+    @if (control !== "message") {
+    <ng-container>
+      <mat-label>{{ control | uppercase }}</mat-label>
+      <input
+        matInput
+        type="text"
+        [formControlName]="control"
+        [placeholder]="setPlaceholder(control)"
+      />
+      <mat-error></mat-error>
+    </ng-container>
+    } @else {
+    <ng-container>
+      <mat-label>{{ control | uppercase }}</mat-label>
+      <textarea
+        matInput
+        [formControlName]="control"
+        [placeholder]="setPlaceholder(control)"
+        rows="20"
+      ></textarea>
+      <mat-error></mat-error>
+    </ng-container>
+    }
+  </mat-form-field>
+  }
+  <button mat-raised-button color="accent" type="submit">Send</button>
+</form>

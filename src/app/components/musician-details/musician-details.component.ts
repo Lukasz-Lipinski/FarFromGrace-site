@@ -13,4 +13,9 @@ export class MusicianDetailsComponent {
   get getData() {
     return this.data;
   }
+
+  public get getFullname() : string {
+    return `${this.data.name} ${this.data.nick} ${this.data.surname}`
+  }
+
 }

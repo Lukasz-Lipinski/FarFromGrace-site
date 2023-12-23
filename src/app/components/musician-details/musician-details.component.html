@@ -1,44 +1,41 @@
 <div mat-dialog-title>
-    <div class="container container-space-between">
-        <div class="container container-align-center">
-            <img
-                class="musician-details-avatar"
-                [srcset]="getData.imgAvatar"
-                [alt]="getData.name + getData.surname"
-            />
-            <h2>
-                {{getData.name}} {{ getData.nick }} {{ getData.surname }}
-            </h2>
-        </div>
-        <button
-            mat-flat-button
-            color="warn"
-            mat-dialog-close
-        >
-            X
-        </button>
-    </div>
+  <div
+    class="container container-space-between container-full container-align-center"
+  >
+    <h2>{{ getFullname }}</h2>
+    <button mat-flat-button color="warn" mat-dialog-close>X</button>
+  </div>
 </div>
 <div mat-dialog-content>
-    <h4>
-        {{getData.role}}
-    </h4>
-    <div>
-        @for (item of getData.description; track $index) {
-        <p>{{item}}</p>
-        }
+  <div class="container pt">
+    <div class="container container-column container-column-center">
+      <img
+        class="musician-details-avatar"
+        [srcset]="getData.imgAvatar"
+        [alt]="getData.name + getData.surname"
+      />
+      <h4 class="role-header">
+        {{ getData.role }}
+      </h4>
     </div>
-    <h4>Equipment</h4>
+    <div class="description">
+      @for (item of getData.description; track $index) {
+      <p>{{ item }}</p>
+      }
+    </div>
+  </div>
+  <div class="content">
+    <h3>Equipment</h3>
     <ul>
-        @for (item of getData.equpiment; track $index) {
-        <h5>
-            {{item.header}}
-        </h5>
-        @for (eq of item.list; track $index) {
-        <li>
-            {{ eq }}
-        </li>
-        }
-        }
+      @for (item of getData.equpiment; track $index) {
+      <h4>
+        {{ item.header }}
+      </h4>
+      @for (eq of item.list; track $index) {
+      <li>
+        {{ eq }}
+      </li>
+      } }
     </ul>
+  </div>
 </div>

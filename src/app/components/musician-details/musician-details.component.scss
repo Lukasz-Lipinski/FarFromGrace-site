@@ -8,9 +8,30 @@ div {
     }
 }
 
+.mdc-dialog__title {
+  display: flex;
+  align-items: start;
+}
+
+.content {
+  padding: 12px;
+}
+
+.pt {
+  padding-top: 12px;
+}
+
 .musician-details-avatar {
     width: auto;
     border-radius: 12px;
-    max-height: 200px;
-    padding-right: 12px;
+    height: 200px;
+}
+
+h4.role-header {
+  margin-top: 4px;
+}
+
+.description {
+  padding: 8px 14px;
+  text-align: start;
 }

@@ -9,6 +9,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatSliderModule } from "@angular/material/slider";
 import { MatDialogModule } from '@angular/material/dialog';
@@ -23,9 +24,10 @@ import { LayoutComponent } from '../components/layout/layout.component';
 import { MusicianCardComponent } from '../components/musician-card/musician-card.component';
 import { NavbarIconsComponent } from '../components/navbar-icons/navbar-icons.component';
 import { MusicianDetailsComponent } from '../components/musician-details/musician-details.component';
+import { ContactFromComponent } from '../components/contact-from/contact-from.component';
 
-const components: any[] = [NavbarComponent, ItemCardComponent, SpinnerComponent, MusicianDetailsComponent, NavbarIconsComponent, LayoutComponent, SidebarComponent, NavbarLogoComponent, MusicianCardComponent];
-const services: any[] = [NgxBootstrapIconsModule.pick(allIcons), CommonModule, MatDialogModule, ReactiveFormsModule, MatSliderModule, MatIconModule, MatFormFieldModule, MatCheckboxModule, MatGridListModule, MatCardModule, MatToolbarModule, MatButtonModule, RouterModule, MatIconModule];
+const components: any[] = [NavbarComponent, ItemCardComponent, SpinnerComponent, ContactFromComponent ,MusicianDetailsComponent, NavbarIconsComponent, LayoutComponent, SidebarComponent, NavbarLogoComponent, MusicianCardComponent];
+const services: any[] = [NgxBootstrapIconsModule.pick(allIcons), MatInputModule, CommonModule, MatDialogModule, ReactiveFormsModule, MatSliderModule, MatIconModule, MatFormFieldModule, MatCheckboxModule, MatGridListModule, MatCardModule, MatToolbarModule, MatButtonModule, RouterModule, MatIconModule];
 
 @NgModule({
   imports: [
