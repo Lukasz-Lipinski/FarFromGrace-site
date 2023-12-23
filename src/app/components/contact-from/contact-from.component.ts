@@ -1,10 +1,16 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 interface IContactForm {
   email: FormControl<string>;
-  subcject: FormControl<string>;
+  subject: FormControl<string>;
   message: FormControl<string>;
+}
+
+interface IMessage {
+  email: string;
+  subject: string;
+  message: string;
 }
 
 @Component({
@@ -17,12 +23,22 @@ export class ContactFromComponent implements OnInit {
   private contactForm = new FormGroup<IContactForm>({
     email: new FormControl('', {
       nonNullable: true,
+      validators: [
+        Validators.required,
+        Validators.email
+      ]
     }),
-    subcject: new FormControl('', {
+    subject: new FormControl('', {
       nonNullable: true,
+      validators: [
+        Validators.required,
+      ]
     }),
     message: new FormControl('', {
       nonNullable: true,
+      validators: [
+        Validators.required,
+      ]
     }),
   });
   get getContactForm() { return this.contactForm; }
@@ -30,6 +46,8 @@ export class ContactFromComponent implements OnInit {
     const controls = Object.keys(this.contactForm.controls);
     return controls;
   }
+  @Output() sendEmailEmitter = new EventEmitter<IMessage>();
+
   constructor() { }
 
   ngOnInit() {
@@ -39,4 +57,17 @@ export class ContactFromComponent implements OnInit {
     return `Please assign ${control}`;
   }
 
+  onSendEmail() {
+    const { email, message, subject } = this.contactForm.controls;
+    const emailToSend: IMessage = {
+      email: email.value,
+      message: message.value,
+      subject: subject.value,
+    }
+    this.contactForm.valid  && this.sendEmailEmitter.emit(emailToSend);
+  }
+
+  get isFormInvalid() {
+    return this.contactForm.invalid;
+  }
 }

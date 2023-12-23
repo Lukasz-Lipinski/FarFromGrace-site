@@ -1,0 +1,12 @@
+@import "../../styles/ffg-styles.scss";
+
+mat-form-field {
+  mat-label {
+    color: $background;
+  }
+
+}
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: #c1afa1;
+}
+
