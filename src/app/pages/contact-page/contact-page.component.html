@@ -1,7 +1,9 @@
 @defer {
-<app-layout>
-  <app-contact-from />
+<app-layout [justifyContentCenter]="true">
+  <div class="glass glass-border form-box">
+    <app-contact-from />
+  </div>
 </app-layout>
 } @loading (minimum 2s) {
 <app-spinner />
-} @error { error }
+}

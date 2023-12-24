@@ -16,7 +16,6 @@ export class LayoutComponent {
     const verticalContent = this.verticalContent ? "container-column" : "";
     const justifyContentCenter = this.justifyContentCenter ? "container-center" : "";
     const alignItemsCenter = this.justifyContentCenter && this.verticalContent ? "container-column" : "";
-
     return `${verticalContent} ${justifyContentCenter} ${alignItemsCenter}`;
   }
   get getGap() {

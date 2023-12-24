@@ -1,5 +1,9 @@
 @import "../../styles/ffg-styles.scss";
 
+form {
+  width: 100%;
+}
+
 mat-form-field {
   mat-label {
     color: $background;
