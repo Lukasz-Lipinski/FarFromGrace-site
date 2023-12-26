@@ -13,6 +13,8 @@ import { MatInputModule } from "@angular/material/input";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatSliderModule } from "@angular/material/slider";
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from "@angular/material/divider";
+import { MatListModule } from "@angular/material/list";
 import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
 
 import { NavbarComponent } from '../components/navbar/navbar.component';
@@ -25,15 +27,17 @@ import { MusicianCardComponent } from '../components/musician-card/musician-card
 import { NavbarIconsComponent } from '../components/navbar-icons/navbar-icons.component';
 import { MusicianDetailsComponent } from '../components/musician-details/musician-details.component';
 import { ContactFromComponent } from '../components/contact-from/contact-from.component';
+import { NewsSectionComponent } from '../components/homepage-sections/news-section/news-section.component';
+import { IncomingGigsSectionComponent } from '../components/homepage-sections/incoming-gigs-section/incoming-gigs-section.component';
 
-const components: any[] = [NavbarComponent, ItemCardComponent, SpinnerComponent, ContactFromComponent ,MusicianDetailsComponent, NavbarIconsComponent, LayoutComponent, SidebarComponent, NavbarLogoComponent, MusicianCardComponent];
-const services: any[] = [NgxBootstrapIconsModule.pick(allIcons), MatInputModule, CommonModule, MatDialogModule, ReactiveFormsModule, MatSliderModule, MatIconModule, MatFormFieldModule, MatCheckboxModule, MatGridListModule, MatCardModule, MatToolbarModule, MatButtonModule, RouterModule, MatIconModule];
+const components: any[] = [NavbarComponent, ItemCardComponent, SpinnerComponent, NewsSectionComponent, IncomingGigsSectionComponent ,ContactFromComponent ,MusicianDetailsComponent, NavbarIconsComponent, LayoutComponent, SidebarComponent, NavbarLogoComponent, MusicianCardComponent];
+const services: any[] = [NgxBootstrapIconsModule.pick(allIcons), MatInputModule, MatListModule,MatDividerModule, CommonModule, MatDialogModule, ReactiveFormsModule, MatSliderModule, MatIconModule, MatFormFieldModule, MatCheckboxModule, MatGridListModule, MatCardModule, MatToolbarModule, MatButtonModule, RouterModule, MatIconModule];
 
 @NgModule({
   imports: [
     ...services,
   ],
   declarations: [...components],
-  exports: [...services, ...components]
+  exports: [...services, ...components],
 })
 export class SharedModule { }

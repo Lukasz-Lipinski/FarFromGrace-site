@@ -45,12 +45,17 @@ $farfromgrace-site-theme: mat.define-light-theme((color: (primary: $farfromgrace
 
 html,
 body {
-  height: 100%;
+  height: 100dvh;
   color: $dark-primary-text !important;
+  box-sizing: border-box;
+  * {
+    box-sizing: border-box;
+  }
 }
 
 body {
   background-image: url("./assets/background/background-with-mischief-color.jpg");
+  backdrop-filter: brightness(80%);
   background-color: black;
   background-repeat: no-repeat;
   background-origin: content-box;
@@ -102,4 +107,10 @@ body {
   &-border {
     border: 1px solid $dark-primary-text;
   }
+}
+
+.header-section {
+  text-indent: 1rem;
+    text-decoration: underline;
+
 }

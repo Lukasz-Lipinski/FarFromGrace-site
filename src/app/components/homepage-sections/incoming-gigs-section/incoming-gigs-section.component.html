@@ -1,0 +1,9 @@
+<h2 class="header-section">Incoming gigs</h2>
+<mat-list>
+  @for (incomingGig of getIncomingGigs; track $index) {
+  <mat-list-item>
+    {{ incomingGig | json }}
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  }
+</mat-list>

@@ -11,6 +11,7 @@ export class LayoutComponent {
   @Input() verticalContent: boolean = false;
   @Input() justifyContentCenter: boolean = false;
   @Input() gap: number = 0;
+  @Input() isBackground: boolean = true;
 
   get getClassOptions() {
     const verticalContent = this.verticalContent ? "container-column" : "";
@@ -21,4 +22,7 @@ export class LayoutComponent {
   get getGap() {
     return this.gap + "px";
   };
+  get getBackground() {
+    return this.isBackground ? "glass glass-border" : "";
+  }
 }

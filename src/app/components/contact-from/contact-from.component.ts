@@ -20,12 +20,13 @@ interface IMessage {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContactFromComponent implements OnInit {
+  emailRegexp = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
   private contactForm = new FormGroup<IContactForm>({
     email: new FormControl('', {
       nonNullable: true,
       validators: [
         Validators.required,
-        Validators.email
+        Validators.pattern(this.emailRegexp)
       ]
     }),
     subject: new FormControl('', {
@@ -71,3 +72,4 @@ export class ContactFromComponent implements OnInit {
     return this.contactForm.invalid;
   }
 }
+

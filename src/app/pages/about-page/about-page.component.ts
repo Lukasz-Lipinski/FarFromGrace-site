@@ -2,7 +2,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { ChangeDetectionStrategy, Component, OnInit, inject, signal } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
 import { ContentService, IMusican } from './content/content.service';
-import { MatDialog } from '@angular/material/dialog';
+import {  MatDialog } from '@angular/material/dialog';
 import { MusicianDetailsComponent } from '../../components/musician-details/musician-details.component';
 @Component({
   selector: 'app-about-page',
@@ -29,16 +29,21 @@ export class AboutPageComponent implements OnInit {
   }
 
   constructor() { }
-
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
   showDialogWithData($event: IMusican) {
     this.selectedMusician.set($event);
-    this.dialog.open(MusicianDetailsComponent, {
+
+    if (this.dialog.openDialogs.length) {
+      this.dialog.closeAll();
+    };
+
+   this.dialog.open(MusicianDetailsComponent, {
       enterAnimationDuration: 200,
       exitAnimationDuration: 200,
-      data: $event
+      data: $event,
+      panelClass: "customDialog"
     });
   }
 }
