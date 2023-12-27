@@ -43,7 +43,6 @@ export class AboutPageComponent implements OnInit {
       enterAnimationDuration: 200,
       exitAnimationDuration: 200,
       data: $event,
-      panelClass: "customDialog"
     });
   }
 }

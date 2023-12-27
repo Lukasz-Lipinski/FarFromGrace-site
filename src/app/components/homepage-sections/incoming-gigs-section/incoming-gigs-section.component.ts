@@ -1,14 +1,16 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
-interface IIncomingGig {
+export interface IIncomingGig {
   where: {
     city: string;
     club: string;
     address: string;
+    country: string;
   };
   who: string[];
   when: Date;
   link: string;
+  ticketsLink?: string;
   start: string;
 }
 
@@ -26,7 +28,8 @@ export class IncomingGigsSectionComponent implements OnInit {
       where: {
         city: 'Warszawa',
         club: 'Progresja',
-        address: 'ul.Fort Wola 22, 01-258'
+        address: 'ul.Fort Wola 22, 01-258',
+        country: 'Poland'
       },
       who: ['After The Burial', 'Far From Grace', 'Shadow of Intent'],
       start: '19:00'
@@ -34,10 +37,12 @@ export class IncomingGigsSectionComponent implements OnInit {
     {
       when: new Date('2024-08-09'),
       link: 'XXXXXXXXXXXXXXXXXXXXXX',
+      ticketsLink: "testests",
       where: {
         city: 'Derbyshire',
         club: 'Catton Hal',
-        address: 'Catton Hall w Walton-on-Trent w Derbyshire'
+        address: 'Catton Hall w Walton-on-Trent w Derbyshire',
+        country: 'UK'
       },
       who: ['Far From Grace'],
       start: '23:00'

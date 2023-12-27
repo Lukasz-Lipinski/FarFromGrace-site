@@ -29,8 +29,9 @@ import { MusicianDetailsComponent } from '../components/musician-details/musicia
 import { ContactFromComponent } from '../components/contact-from/contact-from.component';
 import { NewsSectionComponent } from '../components/homepage-sections/news-section/news-section.component';
 import { IncomingGigsSectionComponent } from '../components/homepage-sections/incoming-gigs-section/incoming-gigs-section.component';
+import { IncomingGigItemComponent } from '../components/homepage-sections/incoming-gigs-section/incoming-gig-item/incoming-gig-item.component';
 
-const components: any[] = [NavbarComponent, ItemCardComponent, SpinnerComponent, NewsSectionComponent, IncomingGigsSectionComponent ,ContactFromComponent ,MusicianDetailsComponent, NavbarIconsComponent, LayoutComponent, SidebarComponent, NavbarLogoComponent, MusicianCardComponent];
+const components: any[] = [NavbarComponent, ItemCardComponent, SpinnerComponent, IncomingGigItemComponent ,NewsSectionComponent, IncomingGigsSectionComponent ,ContactFromComponent ,MusicianDetailsComponent, NavbarIconsComponent, LayoutComponent, SidebarComponent, NavbarLogoComponent, MusicianCardComponent];
 const services: any[] = [NgxBootstrapIconsModule.pick(allIcons), MatInputModule, MatListModule,MatDividerModule, CommonModule, MatDialogModule, ReactiveFormsModule, MatSliderModule, MatIconModule, MatFormFieldModule, MatCheckboxModule, MatGridListModule, MatCardModule, MatToolbarModule, MatButtonModule, RouterModule, MatIconModule];
 
 @NgModule({
