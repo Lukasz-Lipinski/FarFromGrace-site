@@ -1,17 +1,44 @@
-<nav class="navbar">
-  <div>
-    <app-navbar-logo />
-    @for (link of getLinks; track trackLink) {
-    <a
-      mat-button
-      color="warn"
-      [routerLink]="link.href"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{
-        exact: true
-      }"
-    >{{ link.label }}</a>
-    }
+<nav>
+  <div class="navbar desktop">
+    <div>
+      <app-navbar-logo />
+      @for (link of getLinks; track trackLink) {
+      <a
+        mat-button
+        color="warn"
+        [routerLink]="link.href"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{
+          exact: true
+        }"
+        >{{ link.label }}</a
+      >
+      }
+    </div>
+    <app-navbar-icons />
   </div>
-  <app-navbar-icons />
+  <div class="mobile">
+    <mat-accordion hideToggle>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <button mat-icon-button>
+            <mat-icon>menu</mat-icon>
+          </button>
+        </mat-expansion-panel-header>
+        @for (link of getLinks; track trackLink) {
+        <a
+          class="mobile-link"
+          mat-button
+          color="warn"
+          [routerLink]="link.href"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{
+            exact: true
+          }"
+          >{{ link.label }}</a
+        >
+        }
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
 </nav>

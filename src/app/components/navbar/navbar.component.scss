@@ -1,14 +1,16 @@
 @import "../../styles/ffg-styles.scss";
 
+nav {
+  background-color: $glass-background;
+  box-sizing: content-box;
+  box-shadow: 1px 0 12px 8px hsla(0, 0, 0, 0.8);
+  border-bottom: 1px solid $dark-primary-text;
+}
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  background-color: $glass-background;
-  box-sizing: content-box;
-  box-shadow: 1px 0 12px 8px hsla(0, 0, 0, 0.8);
-  border-bottom: 1px solid $dark-primary-text;
 
   div {
     display: flex;
@@ -23,4 +25,24 @@
 .active {
   color: #c1afa1 !important;
   text-shadow: 1px 1px 10px #f6f4f2;
+}
+
+.desktop {
+  @media only screen and (max-width: 576px) {
+    display: none;
+  }
+}
+
+.mobile {
+  @media only screen and (min-width: 576px) {
+    display: none;
+  }
+  &-link {
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    margin: 8px 0;
+  }
+
 }
