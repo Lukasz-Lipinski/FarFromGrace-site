@@ -1,3 +1,8 @@
 <a routerLink="/">
-  <img [srcset]="getUrl" />
+  <img
+    [ngSrc]="getUrl"
+    height="60"
+    width="10"
+    priority
+  />
 </a>

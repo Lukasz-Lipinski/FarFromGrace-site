@@ -2,7 +2,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { ChangeDetectionStrategy, Component, OnInit, inject, signal } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
 import { ContentService, IMusican } from './content/content.service';
-import {  MatDialog } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { MusicianDetailsComponent } from '../../components/musician-details/musician-details.component';
 @Component({
   selector: 'app-about-page',
@@ -10,7 +10,7 @@ import { MusicianDetailsComponent } from '../../components/musician-details/musi
   styleUrls: ['./about-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [SharedModule]
+  imports: [SharedModule],
 })
 export class AboutPageComponent implements OnInit {
   private dialog = inject(MatDialog);
@@ -21,7 +21,7 @@ export class AboutPageComponent implements OnInit {
   }
   private musiciansData = toSignal(this.contentService.getMusiciansInfo());
   get getMusiciansData() {
-    return this.musiciansData()
+    return this.musiciansData();
   };
   private selectedMusician = signal<IMusican | null>(null);
   get getSelectedMusician() {
@@ -39,7 +39,7 @@ export class AboutPageComponent implements OnInit {
       this.dialog.closeAll();
     };
 
-   this.dialog.open(MusicianDetailsComponent, {
+    this.dialog.open(MusicianDetailsComponent, {
       enterAnimationDuration: 200,
       exitAnimationDuration: 200,
       data: $event,

@@ -1,7 +1,13 @@
 @defer (when getMusiciansData){
-<app-layout [verticalContent]="true" [gap]="16">
-  <div class="container gap show">
-    <img [srcset]="getFFGMembersPicture" class="allMembersImg" />
+<app-layout
+  [verticalContent]="true"
+  [gap]="16"
+>
+  <div class="container gap">
+    <img
+      [srcset]="getFFGMembersPicture"
+      class="allMembersImg"
+    />
     <p>
       details band details Lorem ipsum dolor sit amet consectetur adipisicing
       elit. Iure adipisci porro obcaecati eveniet sequi temporibus, assumenda

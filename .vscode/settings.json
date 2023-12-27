@@ -1,0 +1,8 @@
+{
+    "angular2-switcher.styleFormats": [
+        ".scss",
+        ".sass",
+        ".less",
+        ".css"
+    ]
+}

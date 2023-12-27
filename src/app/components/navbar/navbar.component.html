@@ -11,8 +11,7 @@
         [routerLinkActiveOptions]="{
           exact: true
         }"
-        >{{ link.label }}</a
-      >
+      >{{ link.label }}</a>
       }
     </div>
     <app-navbar-icons />
@@ -21,10 +20,24 @@
     <mat-accordion hideToggle>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
-          <button mat-icon-button>
-            <mat-icon>menu</mat-icon>
-          </button>
+          <div class="container container-full container-space-between container-align-center">
+            <button mat-icon-button>
+              <mat-icon color="warn">menu</mat-icon>
+            </button>
+            <app-navbar-logo />
+          </div>
         </mat-expansion-panel-header>
+        <a
+          class="mobile-link"
+          mat-button
+          color="warn"
+          routerLink="/"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{
+                            exact: true
+                          }"
+        >Home</a>
+
         @for (link of getLinks; track trackLink) {
         <a
           class="mobile-link"
@@ -35,9 +48,9 @@
           [routerLinkActiveOptions]="{
             exact: true
           }"
-          >{{ link.label }}</a
-        >
+        >{{ link.label }}</a>
         }
+        <app-navbar-icons />
       </mat-expansion-panel>
     </mat-accordion>
   </div>

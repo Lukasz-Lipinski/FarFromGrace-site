@@ -6,6 +6,7 @@ nav {
   box-shadow: 1px 0 12px 8px hsla(0, 0, 0, 0.8);
   border-bottom: 1px solid $dark-primary-text;
 }
+
 .navbar {
   display: flex;
   align-items: center;
@@ -37,12 +38,20 @@ nav {
   @media only screen and (min-width: 576px) {
     display: none;
   }
+
   &-link {
-    display: block;
     width: 100%;
     text-align: center;
+    vertical-align: middle;
     text-decoration: none;
     margin: 8px 0;
+  }
+}
+
+mat-accordion {
+  * {
+
+    background-color: $background;
   }
 
 }

@@ -1,11 +1,12 @@
-import { Injectable, signal } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Inject, Injectable, inject, signal } from '@angular/core';
 import { Observable, delay, of, tap, } from 'rxjs';
 
 export type Role = "Bassist" | "Guitarist" | "Drummer" | "Vocalist/Guitarist";
 
 export interface IEquipmentItem {
   header: "Guitars" | "Drums" | "Amps" | "Basses" | "Amp Modelers" | "Shellset";
-  list: string[]
+  list: string[];
 }
 
 export interface IMusican {
@@ -18,13 +19,15 @@ export interface IMusican {
   imgPosition: "left" | "right";
   description: string[];
   equpiment: IEquipmentItem[];
-
 }
+
+interface IBackendData { }
 
 @Injectable({
   providedIn: 'root',
 })
 export class ContentService {
+  private http = inject(HttpClient);
   private backendData = signal<IMusican[]>([
     {
       name: "Łukasz",
@@ -155,10 +158,19 @@ export class ContentService {
         }
       ]
     }
-  ])
+  ]);
   private musicians = signal<IMusican[]>([]);
 
-  constructor() { }
+  private homepageContentEN = signal<any>(null);
+  private homepageContentPL = signal<any>(null);
+
+  private aboutContentEN = signal<any>(null);
+  private aboutContentPL = signal<any>(null);
+
+  private merchContentEN = signal<any>(null);
+  private merchContentPL = signal<any>(null);
+
+  constructor(@Inject("Environment") private env: string) { }
 
   getMusiciansInfo(): Observable<IMusican[]> {
     if (!this.musicians().length) {
@@ -174,5 +186,31 @@ export class ContentService {
     return of(this.musicians());
   }
 
+  getHomePageContent() {
+    const urlEN = `${this.env}eng`;
+    const urlPL = `${this.env}eng`;
+    this.http
+      .get<IBackendData>(url)
+      .subscribe(
+        data => { }
+      );
+  }
+
+  getAboutPageContent() {
+    const url = "";
+    this.http
+      .get<IBackendData>(url)
+      .pipe()
+      .subscribe(
+        data => { }
+      );
+  }
+
+  getMetchPageContent() {
+    const url = "";
+    this.http
+      .get<IBackendData>(url)
+      .subscribe(data => { });
+  }
 }
 
