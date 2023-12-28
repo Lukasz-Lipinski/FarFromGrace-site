@@ -39,32 +39,22 @@ enum MonthsDictionary {
 export class IncomingGigItemComponent implements OnInit {
   @Input({
     required: true,
-  }) set setIncomingGig(val: IIncomingGig) {
-    this.gig.set({
+  }) set setIncomingGig(val: IIncomingGig | undefined) {
+    val ? this.gig.set({
       ...val,
       when: `${DaysDictionary[val.when.getDay()]}-${MonthsDictionary[val.when.getMonth()]}-${val.when.getFullYear()}`
-    });
+    })
+    : this.gig.set(null);
   };
-  private gig = signal<IGigItem>({
-    when: '',
-    link: '',
-    where: {
-      city: '',
-      club: '',
-      address: '',
-      country: '',
-    },
-    who: [''],
-    start: '',
-  });
+  private gig = signal<IGigItem | null>(null);
   get getGig() {
     return this.gig();
   }
   get getAddress() {
-    return `${this.gig().where.city}, ${this.gig().where.country}`;
+    return `${this.gig()?.where.city}, ${this.gig()?.where.country}`;
   }
   get getClub() {
-    return `${this.gig().where.address}, ${this.gig().where.club}`;
+    return `${this.gig()?.where.address}, ${this.gig()?.where.club}`;
   }
   constructor() { }
 

@@ -1,5 +1,7 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
+import { ActivatedRoute } from '@angular/router';
+import { ContentService } from '../about-page/content/content.service';
 
 @Component({
   selector: 'app-home-page',
@@ -11,9 +13,15 @@ import { SharedModule } from '../../shared/shared.module';
 
 })
 export class HomePageComponent implements OnInit {
+  private contentService = inject(ContentService);
+  get getGigs() {
+    return this.contentService.homepageContent().eng?.gigs;
+  }
+
   constructor() { }
 
   ngOnInit() {
+    this.contentService.getHomePageContent();
   }
 
 }

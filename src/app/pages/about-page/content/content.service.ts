@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable, inject, signal } from '@angular/core';
-import { Observable, delay, of, tap, } from 'rxjs';
+import { Inject, Injectable, computed, inject, signal } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { Observable, delay, map, of, tap, } from 'rxjs';
+import { IIncomingGig } from '../../../components/homepage-sections/incoming-gigs-section/incoming-gigs-section.component';
 
 export type Role = "Bassist" | "Guitarist" | "Drummer" | "Vocalist/Guitarist";
 
@@ -21,7 +23,19 @@ export interface IMusican {
   equpiment: IEquipmentItem[];
 }
 
-interface IBackendData { }
+interface IHomepageBackendData<T> {
+  gigs: T[];
+  news: string[];
+}
+
+interface IBackendData<T> {
+  pl: T | undefined;
+  eng: T | undefined;
+}
+
+interface IIncomingGigFromBackend extends Omit<IIncomingGig, "when"> {
+  when: string;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -161,8 +175,14 @@ export class ContentService {
   ]);
   private musicians = signal<IMusican[]>([]);
 
-  private homepageContentEN = signal<any>(null);
-  private homepageContentPL = signal<any>(null);
+  private homepageEN$ = toSignal(this.getHomePageContent());
+  private homepagePL$ = toSignal(this.getHomePageContent());
+   homepageContent = computed<IBackendData<IHomepageBackendData<IIncomingGig>>>(
+    () => ({
+      eng: this.homepageEN$(),
+      pl: this.homepageEN$()
+    })
+   );
 
   private aboutContentEN = signal<any>(null);
   private aboutContentPL = signal<any>(null);
@@ -186,31 +206,49 @@ export class ContentService {
     return of(this.musicians());
   }
 
-  getHomePageContent() {
-    const urlEN = `${this.env}eng`;
-    const urlPL = `${this.env}eng`;
-    this.http
-      .get<IBackendData>(url)
-      .subscribe(
-        data => { }
-      );
+  getHomePageContent(): Observable<IHomepageBackendData<IIncomingGig>> {
+    const urlEN = `${this.env}eng/home.json`;
+    const urlPL = `${this.env}pl/home.json`;
+
+    return this.http
+      .get<IHomepageBackendData<IIncomingGigFromBackend>>(urlEN)
+      .pipe(
+        map(
+          hpcontent => {
+            const { gigs } = hpcontent;
+            const allGigs: IIncomingGig[] = [];
+
+            for (let gig of gigs) {
+              allGigs.push({
+                ...gig,
+                when: new Date(gig.when)
+              })
+            };
+
+            return  {
+              ...hpcontent,
+              gigs: allGigs
+            }
+          }
+        )
+      )
   }
 
-  getAboutPageContent() {
-    const url = "";
-    this.http
-      .get<IBackendData>(url)
-      .pipe()
-      .subscribe(
-        data => { }
-      );
-  }
+  // getAboutPageContent() {
+  //   const url = "";
+  //   this.http
+  //     .get<IBackendData>(url)
+  //     .pipe()
+  //     .subscribe(
+  //       data => { }
+  //     );
+  // }
 
-  getMetchPageContent() {
-    const url = "";
-    this.http
-      .get<IBackendData>(url)
-      .subscribe(data => { });
-  }
+  // getMetchPageContent() {
+  //   const url = "";
+  //   this.http
+  //     .get<IBackendData>(url)
+  //     .subscribe(data => { });
+  // }
 }
 
