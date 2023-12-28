@@ -1,6 +1,11 @@
 <app-layout [verticalContent]="true" [gap]="28">
-  <app-news-section />
-  @if (getGigs) {
+  @if (getNews) {
+  <app-news-section [SetNews]="getNews" />
+  } @else {
+  <h2>No news added</h2>
+  } @if (getGigs) {
   <app-incoming-gigs-section [SetIncomingGigs]="getGigs" />
+  } @else {
+  <h2>No gigs are currently planned</h2>
   }
 </app-layout>

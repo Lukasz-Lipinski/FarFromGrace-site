@@ -1,7 +1,7 @@
 <div>
   <h2 class="header-section">News</h2>
   <div class="content container container-column">
-    @for (p of paragraphs; track $index) {
+    @for (p of getNews; track $index) {
     <p>{{ p }}</p>
     }
   </div>

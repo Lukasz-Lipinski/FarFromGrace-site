@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
-import { ActivatedRoute } from '@angular/router';
 import { ContentService } from '../about-page/content/content.service';
 
 @Component({
@@ -17,11 +16,13 @@ export class HomePageComponent implements OnInit {
   get getGigs() {
     return this.contentService.homepageContent().eng?.gigs;
   }
+  get getNews() {
+    return this.contentService.homepageContent().eng?.news;
+  }
 
   constructor() { }
 
   ngOnInit() {
-    this.contentService.getHomePageContent();
   }
 
 }

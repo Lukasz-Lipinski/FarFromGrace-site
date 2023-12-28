@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { Observable, delay, map, of, tap, } from 'rxjs';
+import { Observable, combineLatest, concatMap, delay, map, of, tap, } from 'rxjs';
 import { IIncomingGig } from '../../../components/homepage-sections/incoming-gigs-section/incoming-gigs-section.component';
 
 export type Role = "Bassist" | "Guitarist" | "Drummer" | "Vocalist/Guitarist";
@@ -175,12 +175,11 @@ export class ContentService {
   ]);
   private musicians = signal<IMusican[]>([]);
 
-  private homepageEN$ = toSignal(this.getHomePageContent());
-  private homepagePL$ = toSignal(this.getHomePageContent());
+  private homepage$ = toSignal(this.getHomePageContent());
    homepageContent = computed<IBackendData<IHomepageBackendData<IIncomingGig>>>(
     () => ({
-      eng: this.homepageEN$(),
-      pl: this.homepageEN$()
+      eng: this.homepage$()?.[0],
+      pl: this.homepage$()?.[1]
     })
    );
 
@@ -206,32 +205,38 @@ export class ContentService {
     return of(this.musicians());
   }
 
-  getHomePageContent(): Observable<IHomepageBackendData<IIncomingGig>> {
-    const urlEN = `${this.env}eng/home.json`;
-    const urlPL = `${this.env}pl/home.json`;
+  private mapGigsArray(gigs: IIncomingGigFromBackend[]): IIncomingGig[] {
+    const mappedGigs: IIncomingGig[] = [];
+    for (let gig of gigs) {
+      mappedGigs.push({
+        ...gig,
+        when: new Date(gig.when)
+      })
+     };
 
-    return this.http
-      .get<IHomepageBackendData<IIncomingGigFromBackend>>(urlEN)
-      .pipe(
-        map(
-          hpcontent => {
-            const { gigs } = hpcontent;
-            const allGigs: IIncomingGig[] = [];
+     return mappedGigs;
+  }
 
-            for (let gig of gigs) {
-              allGigs.push({
-                ...gig,
-                when: new Date(gig.when)
+  getHomePageContent(): Observable<[IHomepageBackendData<IIncomingGig>, IHomepageBackendData<IIncomingGig>]> {
+    const urlEN$ = this.http.get<IHomepageBackendData<IIncomingGigFromBackend>>(`${this.env}eng/home.json`);
+    const urlPL$ = this.http.get<IHomepageBackendData<IIncomingGigFromBackend>>(`${this.env}pl/home.json`);
+
+    return combineLatest<[IHomepageBackendData<IIncomingGigFromBackend>, IHomepageBackendData<IIncomingGigFromBackend>]>([urlEN$, urlPL$])
+            .pipe(
+              map(items => {
+
+               return [
+                {
+                  ...items[0],
+                  gigs: this.mapGigsArray(items[0].gigs)
+                },
+                {
+                  ...items[1],
+                  gigs: this.mapGigsArray(items[1].gigs)
+                }
+               ] as [IHomepageBackendData<IIncomingGig>, IHomepageBackendData<IIncomingGig>]
               })
-            };
-
-            return  {
-              ...hpcontent,
-              gigs: allGigs
-            }
-          }
-        )
-      )
+            )
   }
 
   // getAboutPageContent() {
