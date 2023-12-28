@@ -17,7 +17,7 @@ h2 {
 p {
     margin: auto 0;
     text-align: justify;
-    padding: 14px;
+    padding: 6px 14px;
 
     @media only screen and (max-width: 1200px) {
         padding: 0;
@@ -35,6 +35,10 @@ p {
 
 .gap {
     gap: 1rem;
+}
+
+.pb {
+  padding-top: 8px;
 }
 
 .container {
