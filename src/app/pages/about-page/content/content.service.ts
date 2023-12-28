@@ -28,6 +28,12 @@ interface IHomepageBackendData<T> {
   news: string[];
 }
 
+interface IAboutpageBackendData {
+  bandImg: string;
+  bio: string[];
+  musicians: IMusican[]
+}
+
 interface IBackendData<T> {
   pl: T | undefined;
   eng: T | undefined;
@@ -42,138 +48,6 @@ interface IIncomingGigFromBackend extends Omit<IIncomingGig, "when"> {
 })
 export class ContentService {
   private http = inject(HttpClient);
-  private backendData = signal<IMusican[]>([
-    {
-      name: "Łukasz",
-      nick: "Wookie",
-      surname: "Lipiński",
-      role: 'Vocalist/Guitarist',
-      description: [
-        "The best growler in the World! His guttural sounds as deepest helish fart!",
-        "Always annoyed guy that often has a problem with something!",
-        "He plays on the rythm guitar and is one of FFG founders!"
-      ],
-      imgMain: "assets/about/wookie-main.jpg",
-      imgAvatar: "assets/about/wookie-avatar.jpg",
-      imgPosition: 'left',
-      equpiment: [
-        {
-          header: "Guitars",
-          list: [
-            "Solar V1.6 BOP Artist LTD Evertune",
-            "Ibanez RG 7421 White"
-          ]
-        },
-        {
-          header: "Amp Modelers",
-          list: [
-            "Helix Stomp",
-            "Sinxmix simulations"
-          ]
-        }
-      ]
-    },
-    {
-      name: "Jasiek",
-      nick: "Januszek",
-      surname: "Pieszczoch",
-      role: 'Guitarist',
-      description: [
-        "Extra the best guitarist in the World! He is fan of tapping and leads lines!.",
-        "A technical brain of FFG and is one of FFG founders as Wookie!",
-        "He likes watching Kapitan Bomba as fuck and has a pug named 'Winston' as Parkway Drive vocalist!"
-      ],
-      imgMain: "assets/about/jasiek-main.jpg",
-      imgAvatar: "assets/about/jasiek-avatar.jpg",
-      imgPosition: 'right',
-      equpiment: [
-        {
-          header: "Guitars",
-          list: [
-            "Skervesen 7 Bariton BrownFlamedTop Premium",
-            "Skervesen 7 GreenBlueFlamedTop Premium"
-          ]
-        },
-        {
-          header: "Amp Modelers",
-          list: [
-            "Fractal floor FM3 - for gigs",
-            "Kemper - backup"
-          ]
-        }
-      ]
-    },
-    {
-      name: "Konrad",
-      nick: "KondziQ",
-      surname: "Kochutek",
-      role: 'Bassist',
-      description: [
-        "Extra the best bassist in the world! He plays using pick but sounds like a figner.",
-        "Fan of sports especially gym! Yeah it's true his farts has extra proteins and called as 'anabolic fart'",
-      ],
-      imgMain: "assets/about/kondzik-main.jpg",
-      imgAvatar: "assets/about/kondzik-avatar.jpg",
-      imgPosition: 'left',
-      equpiment: [
-        {
-          header: "Basses",
-          list: [
-            "Ibanez Headless 5 Black WDM",
-            "Fender White v4"
-          ]
-        },
-        {
-          header: "Amp Modelers",
-          list: [
-            "Helix Stomp"
-          ]
-        }
-      ]
-    },
-    {
-      name: "Paweł",
-      nick: "Pablo",
-      surname: "Kardis",
-      role: 'Drummer',
-      description: [
-        "Extra the best drummer in the world! He plays using especially designed drumsticks!",
-        "Fan of heavy metal, he likes groove and fat riffs as fuck!",
-      ],
-      imgMain: "assets/about/pawel-main.jpg",
-      imgAvatar: "assets/about/pawel-avatar.jpg",
-      imgPosition: 'right',
-      equpiment: [
-        {
-          header: "Drums",
-          list: [
-            "DW Satin Oil Set Regal Blue Gold",
-            '22" x 18" Bass Drum',
-            '08" x 07" Tom Tom',
-            '10" x 08" Tom Tom',
-            '12" x 09" Tom Tom',
-            '14" x 12" Stand Tom(X)',
-            '16" x 14" Stand Tom',
-            '14" x 6,5" Snare Drum',
-          ]
-        },
-        {
-          header: "Shellset",
-          list: [
-            '14" HHX Compression Hi-Hats',
-            '19" AAXtreme Chinese',
-            '19" HHX Stage Crash',
-            '21" HHX Stage Crash',
-            '20" HHX Stage Crash',
-            '19" Paragon Chinese/15" HH thin Crash(stacked)',
-            '15" HHX Stage Hats',
-            '22" Legacy Ride (as crash)',
-            '21" AAXtreme Chinese',]
-        }
-      ]
-    }
-  ]);
-  private musicians = signal<IMusican[]>([]);
 
   private homepage$ = toSignal(this.getHomePageContent());
    homepageContent = computed<IBackendData<IHomepageBackendData<IIncomingGig>>>(
@@ -183,27 +57,18 @@ export class ContentService {
     })
    );
 
-  private aboutContentEN = signal<any>(null);
-  private aboutContentPL = signal<any>(null);
+  private aboutpage$ = toSignal(this.getAboutPageContent());
+  aboutpageContent = computed<IBackendData<IAboutpageBackendData>>(
+    () => ({
+      eng: this.aboutpage$()?.[0],
+      pl: this.aboutpage$()?.[1]
+    })
+  );
 
   private merchContentEN = signal<any>(null);
   private merchContentPL = signal<any>(null);
 
   constructor(@Inject("Environment") private env: string) { }
-
-  getMusiciansInfo(): Observable<IMusican[]> {
-    if (!this.musicians().length) {
-      return of(this.backendData())
-        .pipe(
-          delay(2000),
-          tap((data) => {
-            this.musicians.set(data);
-          })
-        );
-    }
-
-    return of(this.musicians());
-  }
 
   private mapGigsArray(gigs: IIncomingGigFromBackend[]): IIncomingGig[] {
     const mappedGigs: IIncomingGig[] = [];
@@ -239,15 +104,11 @@ export class ContentService {
             )
   }
 
-  // getAboutPageContent() {
-  //   const url = "";
-  //   this.http
-  //     .get<IBackendData>(url)
-  //     .pipe()
-  //     .subscribe(
-  //       data => { }
-  //     );
-  // }
+  getAboutPageContent(): Observable<[IAboutpageBackendData, IAboutpageBackendData]> {
+    const urlEN$ = this.http.get<IAboutpageBackendData>(`${this.env}eng/about.json`);
+    const urlPL$ = this.http.get<IAboutpageBackendData>(`${this.env}pl/about.json`);
+    return combineLatest<[IAboutpageBackendData, IAboutpageBackendData]>([urlEN$,urlPL$])
+  }
 
   // getMetchPageContent() {
   //   const url = "";

@@ -1,5 +1,5 @@
 import { toSignal } from '@angular/core/rxjs-interop';
-import { ChangeDetectionStrategy, Component, OnInit, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, computed, inject, signal } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
 import { ContentService, IMusican } from './content/content.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -15,11 +15,16 @@ import { MusicianDetailsComponent } from '../../components/musician-details/musi
 export class AboutPageComponent implements OnInit {
   private dialog = inject(MatDialog);
   private contentService = inject(ContentService);
-  private ffgMembersPicture = "assets/about/all_members.webp";
-  get getFFGMembersPicture() {
-    return this.ffgMembersPicture;
+
+  get getBio() {
+    return this.contentService.aboutpageContent().eng?.bio;
   }
-  private musiciansData = toSignal(this.contentService.getMusiciansInfo());
+  get getFFGMembersPicture() {
+    return this.contentService.aboutpageContent().eng?.bandImg;
+  }
+  private musiciansData = computed(
+    () => this.contentService.aboutpageContent().eng?.musicians
+  );
   get getMusiciansData() {
     return this.musiciansData();
   };
