@@ -1,11 +1,8 @@
 @defer {
-<app-layout
-  [isBackground]="false"
-  [justifyContentCenter]="true"
->
+<app-layout [isBackground]="false" [justifyContentCenter]="true">
   <div class="glass glass-border form-box show">
     <h3>Write to us</h3>
-    <app-contact-from />
+    <app-contact-from (sendEmailEmitter)="onSend($event)" />
   </div>
 </app-layout>
 } @loading (minimum 2s) {

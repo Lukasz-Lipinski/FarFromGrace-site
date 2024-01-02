@@ -9,6 +9,9 @@ export const appConfig: ApplicationConfig = {
 
   providers: [provideRouter(routes), provideAnimations(), provideHttpClient(), {
     provide: "Environment",
-    useValue: 'https://farfromgrace-site-default-rtdb.europe-west1.firebasedatabase.app/'
+    useValue: {
+      dbURL: 'https://farfromgrace-site-default-rtdb.europe-west1.firebasedatabase.app/',
+      serviceURL: 'https://farfromgrace-service.vercel.app/',
+    }
   }]
 };

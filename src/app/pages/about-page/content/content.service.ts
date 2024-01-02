@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { Observable, combineLatest, concatMap, delay, map, of, tap, } from 'rxjs';
+import { Observable, combineLatest, map } from 'rxjs';
 import { IIncomingGig } from '../../../components/homepage-sections/incoming-gigs-section/incoming-gigs-section.component';
 
 export type Role = "Bassist" | "Guitarist" | "Drummer" | "Vocalist/Guitarist";
@@ -43,6 +43,13 @@ interface IIncomingGigFromBackend extends Omit<IIncomingGig, "when"> {
   when: string;
 }
 
+export interface IEmailData {
+  text: string;
+  subject: string;
+  name: string;
+  address: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -68,7 +75,7 @@ export class ContentService {
   private merchContentEN = signal<any>(null);
   private merchContentPL = signal<any>(null);
 
-  constructor(@Inject("Environment") private env: string) { }
+  constructor(@Inject("Environment") private env: {dbURL: string; serviceURL: string}) { }
 
   private mapGigsArray(gigs: IIncomingGigFromBackend[]): IIncomingGig[] {
     const mappedGigs: IIncomingGig[] = [];
@@ -83,8 +90,8 @@ export class ContentService {
   }
 
   getHomePageContent(): Observable<[IHomepageBackendData<IIncomingGig>, IHomepageBackendData<IIncomingGig>]> {
-    const urlEN$ = this.http.get<IHomepageBackendData<IIncomingGigFromBackend>>(`${this.env}eng/home.json`);
-    const urlPL$ = this.http.get<IHomepageBackendData<IIncomingGigFromBackend>>(`${this.env}pl/home.json`);
+    const urlEN$ = this.http.get<IHomepageBackendData<IIncomingGigFromBackend>>(`${this.env.dbURL}eng/home.json`);
+    const urlPL$ = this.http.get<IHomepageBackendData<IIncomingGigFromBackend>>(`${this.env.dbURL}pl/home.json`);
 
     return combineLatest<[IHomepageBackendData<IIncomingGigFromBackend>, IHomepageBackendData<IIncomingGigFromBackend>]>([urlEN$, urlPL$])
             .pipe(
@@ -105,8 +112,8 @@ export class ContentService {
   }
 
   getAboutPageContent(): Observable<[IAboutpageBackendData, IAboutpageBackendData]> {
-    const urlEN$ = this.http.get<IAboutpageBackendData>(`${this.env}eng/about.json`);
-    const urlPL$ = this.http.get<IAboutpageBackendData>(`${this.env}pl/about.json`);
+    const urlEN$ = this.http.get<IAboutpageBackendData>(`${this.env.dbURL}eng/about.json`);
+    const urlPL$ = this.http.get<IAboutpageBackendData>(`${this.env.dbURL}pl/about.json`);
     return combineLatest<[IAboutpageBackendData, IAboutpageBackendData]>([urlEN$,urlPL$])
   }
 
@@ -116,5 +123,15 @@ export class ContentService {
   //     .get<IBackendData>(url)
   //     .subscribe(data => { });
   // }
-}
 
+  sendEmail(data: IEmailData) {
+    const url = `${this.env.serviceURL}api/email/send`;
+    this.http
+      .post(url, data)
+      .subscribe({
+        next: (data) => {
+          console.log(data)
+         }
+      });
+  }
+}

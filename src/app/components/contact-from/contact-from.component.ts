@@ -1,16 +1,12 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { IEmailData } from '../../pages/about-page/content/content.service';
 
 interface IContactForm {
   email: FormControl<string>;
   subject: FormControl<string>;
   message: FormControl<string>;
-}
-
-interface IMessage {
-  email: string;
-  subject: string;
-  message: string;
+  name: FormControl<string>;
 }
 
 @Component({
@@ -27,6 +23,12 @@ export class ContactFromComponent implements OnInit {
       validators: [
         Validators.required,
         Validators.pattern(this.emailRegexp)
+      ]
+    }),
+    name: new FormControl('', {
+      nonNullable: true,
+      validators: [
+        Validators.required
       ]
     }),
     subject: new FormControl('', {
@@ -47,7 +49,7 @@ export class ContactFromComponent implements OnInit {
     const controls = Object.keys(this.contactForm.controls);
     return controls;
   }
-  @Output() sendEmailEmitter = new EventEmitter<IMessage>();
+  @Output() sendEmailEmitter = new EventEmitter<IEmailData>();
 
   constructor() { }
 
@@ -59,11 +61,12 @@ export class ContactFromComponent implements OnInit {
   }
 
   onSendEmail() {
-    const { email, message, subject } = this.contactForm.controls;
-    const emailToSend: IMessage = {
-      email: email.value,
-      message: message.value,
+    const { email, message, subject, name } = this.contactForm.controls;
+    const emailToSend: IEmailData = {
+      address: email.value,
+      text: message.value,
       subject: subject.value,
+      name: name.value,
     }
     this.contactForm.valid  && this.sendEmailEmitter.emit(emailToSend);
   }
