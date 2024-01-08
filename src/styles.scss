@@ -32,15 +32,9 @@ $farfromgrace-site-theme: mat.define-light-theme((color: (primary: $farfromgrace
 
 /* You can add global styles to this file, and also import other style files */
 @font-face {
-  font-family: "Ubuntu";
-  src: src("/src/assets/font/Ubuntu-Bold.ttf");
-  src: src("assets/font/Ubuntu-Bold.ttf");
-  src: src("assets/font/Ubuntu-Italic.ttf");
-  src: src("assets/font/Ubuntu-Light.ttf");
-  src: src("assets/font/Ubuntu-LightItalic.ttf");
-  src: src("assets/font/Ubuntu-Medium.ttf");
-  src: src("assets/font/Ubuntu-MediumItalic.ttf");
-  src: src("assets/font/Ubuntu-Regular.ttf");
+  font-family: "Playfair Display";
+  src: src("assets/font/PlayfairDisplay-VariableFont_wght.ttf");
+  src: src("assets/font/PlayfairDisplay-Italic-VariableFont_wght.ttf");
 }
 
 html,
@@ -63,7 +57,11 @@ body {
   background-position: center;
   background-size: contain;
   margin: 0;
-  font-family: "Ubuntu";
+  font-family: 'Playfair Display', serif !important;
+  font-family: 'Salsa', cursive !important;
+  font-weight: 400;
+  font-size: 1.2rem;
+
 }
 
 .container {
@@ -98,6 +96,10 @@ body {
   &-space-between {
     justify-content: space-between;
   }
+}
+
+.nowrap {
+  flex-wrap: nowrap;
 }
 
 .glass {

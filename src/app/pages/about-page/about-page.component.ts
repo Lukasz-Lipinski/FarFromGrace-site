@@ -1,7 +1,7 @@
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ChangeDetectionStrategy, Component, OnInit, computed, inject, signal } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
-import { ContentService, IMusican } from './content/content.service';
+import { ContentService, IMusican } from '../../content/content.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MusicianDetailsComponent } from '../../components/musician-details/musician-details.component';
 @Component({

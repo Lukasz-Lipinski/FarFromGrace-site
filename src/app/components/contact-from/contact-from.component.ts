@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { IEmailData } from '../../pages/about-page/content/content.service';
+import { IEmailData } from '../../content/content.service';
 
 interface IContactForm {
   email: FormControl<string>;
@@ -67,8 +67,8 @@ export class ContactFromComponent implements OnInit {
       text: message.value,
       subject: subject.value,
       name: name.value,
-    }
-    this.contactForm.valid  && this.sendEmailEmitter.emit(emailToSend);
+    };
+    this.contactForm.valid && this.sendEmailEmitter.emit(emailToSend);
   }
 
   get isFormInvalid() {

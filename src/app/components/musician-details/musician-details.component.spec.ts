@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MusicianDetailsComponent } from './musician-details.component';
 import { MusicianCardComponent } from '../musician-card/musician-card.component';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { IMusican } from '../../pages/about-page/content/content.service';
+import { IMusican } from '../../content/content.service';
 
 describe('Testing Musician Details Component', () => {
   let component: MusicianDetailsComponent;
@@ -17,7 +17,7 @@ describe('Testing Musician Details Component', () => {
     nick: "Test",
     role: "Bassist",
     surname: "Test",
-  }
+  };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -32,13 +32,13 @@ describe('Testing Musician Details Component', () => {
 
     fixture = TestBed.createComponent(MusicianDetailsComponent);
     component = fixture.componentInstance;
-  })
+  });
 
   describe('DOM tests', () => {
     it('should create', () => {
       expect(component).toBeTruthy();
     });
-  })
+  });
 
   describe('Class tests', () => {
     it("return musician data", () => {
@@ -48,7 +48,7 @@ describe('Testing Musician Details Component', () => {
       for (const prop of componentMusicanData) {
         expect(mockMusicanData.includes(prop)).toBeTrue();
       }
-    })
-  })
+    });
+  });
 
 });

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { Role, IMusican, IEquipmentItem } from '../../pages/about-page/content/content.service';
+import { Role, IMusican, IEquipmentItem } from '../../content/content.service';
 
 @Component({
   selector: 'app-musician-card',
@@ -102,7 +102,7 @@ export class MusicianCardComponent {
       imgPosition: this.imgPosition,
       description: this.description,
       equpiment: this.equipment
-    }
+    };
     this.musicianDataEmitter.emit(musicianData);
   }
 }

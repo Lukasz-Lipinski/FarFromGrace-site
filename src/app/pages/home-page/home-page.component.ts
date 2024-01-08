@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
-import { ContentService } from '../about-page/content/content.service';
+import { ContentService } from '../../content/content.service';
 
 @Component({
   selector: 'app-home-page',

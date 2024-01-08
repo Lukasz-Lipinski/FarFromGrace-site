@@ -8,7 +8,7 @@ h2 {
     }
 }
 
-@media only screen and (min-width: 781px) and (max-width: 1199px) {
+@media only screen and (min-width: 781px) and (max-width: 1400px) {
     .allMembersImg {
         margin: 0 auto;
     }
@@ -38,12 +38,19 @@ p {
 }
 
 .pb {
-  padding-top: 8px;
+    padding-top: 8px;
 }
 
 .container {
-    @media only screen and (min-width: 1200px) {
+    @media only screen and (min-width: 1400px) {
         flex-wrap: nowrap;
     }
+}
 
+app-layout {
+    width: 100%;
+
+    @media only screen and (min-width: 1400px) {
+        width: 80%;
+    }
 }

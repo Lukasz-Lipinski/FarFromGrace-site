@@ -1,4 +1,4 @@
-<div>
+<div [ngClass]="getStyles">
     @for (icon of getIcons; track $index) {
     <a
         mat-icon-button

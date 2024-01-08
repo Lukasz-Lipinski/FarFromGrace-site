@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { IMusican } from '../../pages/about-page/content/content.service';
+import { IMusican } from '../../content/content.service';
 
 @Component({
   selector: 'app-musician-details',
@@ -14,8 +14,8 @@ export class MusicianDetailsComponent {
     return this.data;
   }
 
-  public get getFullname() : string {
-    return `${this.data.name} ${this.data.nick} ${this.data.surname}`
+  public get getFullname(): string {
+    return `${this.data.name} ${this.data.nick} ${this.data.surname}`;
   }
 
 }

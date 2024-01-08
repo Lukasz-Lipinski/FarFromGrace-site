@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Observable, combineLatest, map } from 'rxjs';
-import { IIncomingGig } from '../../../components/homepage-sections/incoming-gigs-section/incoming-gigs-section.component';
+import { IIncomingGig } from '../components/homepage-sections/incoming-gigs-section/incoming-gigs-section.component';
 
 export type Role = "Bassist" | "Guitarist" | "Drummer" | "Vocalist/Guitarist";
 
@@ -31,7 +31,7 @@ interface IHomepageBackendData<T> {
 interface IAboutpageBackendData {
   bandImg: string;
   bio: string[];
-  musicians: IMusican[]
+  musicians: IMusican[];
 }
 
 interface IBackendData<T> {
@@ -57,12 +57,12 @@ export class ContentService {
   private http = inject(HttpClient);
 
   private homepage$ = toSignal(this.getHomePageContent());
-   homepageContent = computed<IBackendData<IHomepageBackendData<IIncomingGig>>>(
+  homepageContent = computed<IBackendData<IHomepageBackendData<IIncomingGig>>>(
     () => ({
       eng: this.homepage$()?.[0],
       pl: this.homepage$()?.[1]
     })
-   );
+  );
 
   private aboutpage$ = toSignal(this.getAboutPageContent());
   aboutpageContent = computed<IBackendData<IAboutpageBackendData>>(
@@ -75,7 +75,7 @@ export class ContentService {
   private merchContentEN = signal<any>(null);
   private merchContentPL = signal<any>(null);
 
-  constructor(@Inject("Environment") private env: {dbURL: string; serviceURL: string}) { }
+  constructor(@Inject("Environment") private env: { dbURL: string; serviceURL: string; }) { }
 
   private mapGigsArray(gigs: IIncomingGigFromBackend[]): IIncomingGig[] {
     const mappedGigs: IIncomingGig[] = [];
@@ -83,10 +83,10 @@ export class ContentService {
       mappedGigs.push({
         ...gig,
         when: new Date(gig.when)
-      })
-     };
+      });
+    };
 
-     return mappedGigs;
+    return mappedGigs;
   }
 
   getHomePageContent(): Observable<[IHomepageBackendData<IIncomingGig>, IHomepageBackendData<IIncomingGig>]> {
@@ -94,27 +94,27 @@ export class ContentService {
     const urlPL$ = this.http.get<IHomepageBackendData<IIncomingGigFromBackend>>(`${this.env.dbURL}pl/home.json`);
 
     return combineLatest<[IHomepageBackendData<IIncomingGigFromBackend>, IHomepageBackendData<IIncomingGigFromBackend>]>([urlEN$, urlPL$])
-            .pipe(
-              map(items => {
+      .pipe(
+        map(items => {
 
-               return [
-                {
-                  ...items[0],
-                  gigs: this.mapGigsArray(items[0].gigs)
-                },
-                {
-                  ...items[1],
-                  gigs: this.mapGigsArray(items[1].gigs)
-                }
-               ] as [IHomepageBackendData<IIncomingGig>, IHomepageBackendData<IIncomingGig>]
-              })
-            )
+          return [
+            {
+              ...items[0],
+              gigs: this.mapGigsArray(items[0].gigs)
+            },
+            {
+              ...items[1],
+              gigs: this.mapGigsArray(items[1].gigs)
+            }
+          ] as [IHomepageBackendData<IIncomingGig>, IHomepageBackendData<IIncomingGig>];
+        })
+      );
   }
 
   getAboutPageContent(): Observable<[IAboutpageBackendData, IAboutpageBackendData]> {
     const urlEN$ = this.http.get<IAboutpageBackendData>(`${this.env.dbURL}eng/about.json`);
     const urlPL$ = this.http.get<IAboutpageBackendData>(`${this.env.dbURL}pl/about.json`);
-    return combineLatest<[IAboutpageBackendData, IAboutpageBackendData]>([urlEN$,urlPL$])
+    return combineLatest<[IAboutpageBackendData, IAboutpageBackendData]>([urlEN$, urlPL$]);
   }
 
   // getMetchPageContent() {
@@ -130,8 +130,8 @@ export class ContentService {
       .post(url, data)
       .subscribe({
         next: (data) => {
-          console.log(data)
-         }
+          console.log(data);
+        }
       });
   }
 }

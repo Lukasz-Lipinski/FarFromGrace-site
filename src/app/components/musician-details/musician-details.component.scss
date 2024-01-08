@@ -1,11 +1,13 @@
 @import "../../styles/ffg-styles.scss";
 
 div {
-    background-color: $background;
+  background-color: $background;
 
-    * {
-        color: $dark-primary-text;
-    }
+  * {
+    color: $dark-primary-text;
+    font-family: 'Playfair Display', serif !important;
+    font-family: 'Salsa', cursive !important;
+  }
 }
 
 .mdc-dialog__title {
@@ -22,9 +24,9 @@ div {
 }
 
 .musician-details-avatar {
-    width: auto;
-    border-radius: 12px;
-    height: 200px;
+  width: auto;
+  border-radius: 12px;
+  height: 200px;
 }
 
 h4.role-header {
@@ -40,5 +42,6 @@ h4.role-header {
   @media only screen and (max-width: 768px) {
     flex-wrap: wrap;
   }
+
   flex-wrap: nowrap;
 }

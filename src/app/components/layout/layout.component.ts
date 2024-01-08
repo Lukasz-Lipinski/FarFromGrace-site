@@ -12,12 +12,14 @@ export class LayoutComponent {
   @Input() justifyContentCenter: boolean = false;
   @Input() gap: number = 0;
   @Input() isBackground: boolean = true;
+  @Input() isFullsize: boolean = true;
 
   get getClassOptions() {
     const verticalContent = this.verticalContent ? "container-column" : "";
     const justifyContentCenter = this.justifyContentCenter ? "container-center" : "";
+    const fullsize = this.isFullsize ? "container-full" : "";
     const alignItemsCenter = this.justifyContentCenter && this.verticalContent ? "container-column" : "";
-    return `${verticalContent} ${justifyContentCenter} ${alignItemsCenter}`;
+    return `${verticalContent} ${justifyContentCenter} ${alignItemsCenter} ${fullsize}`;
   }
   get getGap() {
     return this.gap + "px";

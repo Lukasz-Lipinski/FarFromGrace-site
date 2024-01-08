@@ -1,7 +1,14 @@
 @defer (when getMusiciansData){
-<app-layout [verticalContent]="true" [gap]="16">
+<app-layout
+  [verticalContent]="true"
+  [gap]="16"
+>
   <div class="container gap">
-    <img [srcset]="getFFGMembersPicture!" class="allMembersImg" />
+    <img
+      [srcset]="getFFGMembersPicture!"
+      class="allMembersImg"
+    />
+
     <div class="pb">
       @for (paragraph of getBio; track $index) {
       <p>

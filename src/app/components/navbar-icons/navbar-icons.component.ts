@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, signal } from '@angular/core';
 import { IconNamesEnum } from 'ngx-bootstrap-icons';
 
-interface ILinkWithIcon {
+export interface ILinkWithIcon {
   name: IconNamesEnum;
   href: string;
 }
@@ -13,6 +13,7 @@ interface ILinkWithIcon {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavbarIconsComponent {
+  @Input() isCentered: boolean = false;
 
   private icons: ILinkWithIcon[] = [
     {
@@ -34,6 +35,10 @@ export class NavbarIconsComponent {
   ];
   get getIcons() {
     return this.icons;
+  }
+
+  public get getStyles(): string {
+    return this.isCentered ? `container container-full container-center` : "";
   }
 
 }
