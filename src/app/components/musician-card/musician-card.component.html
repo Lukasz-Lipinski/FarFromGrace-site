@@ -1,6 +1,10 @@
 <img
   class="avatar show"
-  [srcset]="GetImageMain"
+  [ngSrc]="GetImageMain"
+  width="500"
+  height="750"
+  sizes="2093w x 3140h"
   [alt]="GetNick"
   (click)="showDetails()"
+  loading="eager"
 />

@@ -5,8 +5,11 @@
 >
   <div class="container gap">
     <img
-      [srcset]="getFFGMembersPicture!"
+      [ngSrc]="getFFGMembersPicture!"
+      width="1280"
+      height="839"
       class="allMembersImg"
+      loading="eager"
     />
 
     <div class="pb">
@@ -37,6 +40,6 @@
     </div>
   </div>
 </app-layout>
-} @placeholder {
+} @loading {
 <app-spinner #spinner />
 }
