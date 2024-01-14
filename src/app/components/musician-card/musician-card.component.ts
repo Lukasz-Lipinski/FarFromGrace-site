@@ -101,7 +101,7 @@ export class MusicianCardComponent {
       role: this.role,
       imgPosition: this.imgPosition,
       description: this.description,
-      equpiment: this.equipment
+      equipment: this.equipment
     };
     this.musicianDataEmitter.emit(musicianData);
   }

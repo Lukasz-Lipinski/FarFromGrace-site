@@ -37,12 +37,10 @@ export class AboutPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  afterRender() {
-
-  }
-
   showDialogWithData($event: IMusican) {
     this.selectedMusician.set($event);
+
+    console.log(this.getSelectedMusician);
 
     if (this.dialog.openDialogs.length) {
       this.dialog.closeAll();

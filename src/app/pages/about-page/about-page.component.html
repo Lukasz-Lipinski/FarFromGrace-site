@@ -1,8 +1,5 @@
 @defer (when getMusiciansData){
-<app-layout
-  [verticalContent]="true"
-  [gap]="16"
->
+<app-layout [verticalContent]="true" [gap]="16">
   <div class="container gap">
     <img
       [ngSrc]="getFFGMembersPicture!"
@@ -32,7 +29,7 @@
         [SetImgPosition]="musician.imgPosition"
         [SetNick]="musician.nick"
         [SetRole]="musician.role"
-        [SetEquipment]="musician.equpiment"
+        [SetEquipment]="musician.equipment"
         [SetImageAvatar]="musician.imgAvatar"
         (musicianDataEmitter)="showDialogWithData($event)"
       />

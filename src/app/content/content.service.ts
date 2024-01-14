@@ -20,7 +20,7 @@ export interface IMusican {
   imgAvatar: string;
   imgPosition: "left" | "right";
   description: string[];
-  equpiment: IEquipmentItem[];
+  equipment: IEquipmentItem[];
 }
 
 interface IHomepageBackendData<T> {
