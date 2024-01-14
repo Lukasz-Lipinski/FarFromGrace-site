@@ -1,5 +1,5 @@
 import { toSignal } from '@angular/core/rxjs-interop';
-import { ChangeDetectionStrategy, Component, OnInit, computed, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, computed, inject, signal, afterRender } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
 import { ContentService, IMusican } from '../../content/content.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -35,6 +35,10 @@ export class AboutPageComponent implements OnInit {
 
   constructor() { }
   ngOnInit(): void {
+  }
+
+  afterRender() {
+
   }
 
   showDialogWithData($event: IMusican) {
