@@ -32,9 +32,9 @@ $farfromgrace-site-theme: mat.define-light-theme((color: (primary: $farfromgrace
 
 /* You can add global styles to this file, and also import other style files */
 @font-face {
-  font-family: "Playfair Display";
-  src: src("assets/font/Bitter-Italic-VariableFont_wght.ttf");
+  font-family: "Bitter";
   src: src("assets/font/Bitter-VariableFont_wght.ttf");
+  src: src("assets/font/Bitter-Italic-VariableFont_wght.ttf");
 }
 
 html,
@@ -57,8 +57,7 @@ body {
   background-position: center;
   background-size: contain;
   margin: 0;
-  font-family: 'Bitter', serif !important;
-  font-family: 'Bitter', cursive !important;
+  font-family: 'Bitter' !important;
   font-weight: 400;
   font-size: 1.2rem;
 
