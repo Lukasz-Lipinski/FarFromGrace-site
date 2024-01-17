@@ -40,8 +40,6 @@ export class AboutPageComponent implements OnInit {
   showDialogWithData($event: IMusican) {
     this.selectedMusician.set($event);
 
-    console.log(this.getSelectedMusician);
-
     if (this.dialog.openDialogs.length) {
       this.dialog.closeAll();
     };
