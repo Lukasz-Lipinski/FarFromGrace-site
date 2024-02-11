@@ -1,10 +1,7 @@
 @defer {
 <app-layout [isSidebar]="true">
   <app-sidebar Sidebar />
-  <div
-    class="box"
-    Content
-  >
+  <div class="box" Content>
     <ul class="list">
       @for (item of getMerch; track $index) {
       <app-item-card
@@ -20,6 +17,6 @@
   </div>
 </app-layout>
 
-}@loading (minimum 2s) {
+}@loading {
 <app-spinner />
-} @error { error }
+}

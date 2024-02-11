@@ -21,10 +21,10 @@ export class NavbarComponent {
       href: "/contact",
       label: "Contact"
     },
-    // {
-    //   href: "/merch",
-    //   label: "Merch"
-    // }
+    {
+      href: "/merch",
+      label: "Merch"
+    }
   ];
 
   public get getLinks(): ILink[] {

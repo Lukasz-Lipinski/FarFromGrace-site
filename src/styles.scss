@@ -39,6 +39,10 @@ $farfromgrace-site-theme: mat.define-light-theme((color: (primary: $farfromgrace
 
 html,
 body {
+  min-height: 100vh;
+  height: auto;
+  margin: 0;
+  overflow: auto;
   color: $dark-primary-text !important;
   box-sizing: border-box;
 
@@ -48,13 +52,12 @@ body {
 }
 
 body {
-  height: 100dvh;
-  background-image: url("./assets/background/background-with-mischief-color.jpg");
   backdrop-filter: brightness(75%);
+  background-image: url("./assets/background/background-with-mischief-color.jpg");
+  background-position: top center;
   background-color: black;
   background-repeat: no-repeat;
   background-origin: content-box;
-  background-position: center;
   background-size: contain;
   margin: 0;
   font-family: 'Bitter' !important;
@@ -118,4 +121,7 @@ body {
 
 .mat-divider.mat-divider-horizontal {
   border-color: $dark-primary-text;
+}
+
+div.cdk-overlay-container {
 }
