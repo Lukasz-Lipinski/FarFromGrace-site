@@ -39,7 +39,6 @@ $farfromgrace-site-theme: mat.define-light-theme((color: (primary: $farfromgrace
 
 html,
 body {
-  height: 100dvh;
   color: $dark-primary-text !important;
   box-sizing: border-box;
 
@@ -49,8 +48,9 @@ body {
 }
 
 body {
+  height: 100dvh;
   background-image: url("./assets/background/background-with-mischief-color.jpg");
-  backdrop-filter: brightness(80%);
+  backdrop-filter: brightness(75%);
   background-color: black;
   background-repeat: no-repeat;
   background-origin: content-box;
