@@ -10,13 +10,20 @@ describe('Testing Musician Details Component', () => {
 
   //mock data using IMusician
   const mockData: IMusican = {
-    name: "Test",
-    description: ["Test"],
-    img: "Test",
+    name: "test-name",
+    description: ["test-description"],
+    imgAvatar: "imgAvatar-test",
+    equipment: [{
+      header: "Amps",
+      list: [
+        "amps-test"
+      ]
+    }],
+    imgMain: "mainimg-test",
     imgPosition: "left",
-    nick: "Test",
+    nick: "nick-test",
     role: "Bassist",
-    surname: "Test",
+    surname: "surname-test",
   };
 
   beforeEach(async () => {

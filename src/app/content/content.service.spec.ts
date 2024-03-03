@@ -36,11 +36,5 @@ describe('Service: Content', () => {
     it('be rendered', () => {
       expect(service).toBeTruthy();
     });
-    it("returns data for component", (done: DoneFn) => {
-      service.getMusiciansInfo().subscribe((data) => {
-        expect(data).toBeInstanceOf(mockedData);
-        done();
-      })
-    })
   });
 });

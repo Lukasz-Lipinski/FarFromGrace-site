@@ -4,5 +4,6 @@
         ".sass",
         ".less",
         ".css"
-    ]
+    ],
+    "karmaTestExplorer.enableExtension": true
 }

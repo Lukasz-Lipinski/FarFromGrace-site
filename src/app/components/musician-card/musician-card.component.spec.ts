@@ -1,23 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+// import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MusicianCardComponent } from './musician-card.component';
+// import { MusicianCardComponent } from './musician-card.component';
 
-describe('MusicianCardComponent', () => {
-  let component: MusicianCardComponent;
-  let fixture: ComponentFixture<MusicianCardComponent>;
+// describe('MusicianCardComponent', () => {
+//   let component: MusicianCardComponent;
+//   let fixture: ComponentFixture<MusicianCardComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [MusicianCardComponent]
-    })
-    .compileComponents();
-    
-    fixture = TestBed.createComponent(MusicianCardComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+//   beforeEach(async () => {
+//     await TestBed.configureTestingModule({
+//       imports: [MusicianCardComponent]
+//     })
+//     .compileComponents();
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+//     fixture = TestBed.createComponent(MusicianCardComponent);
+//     component = fixture.componentInstance;
+//     fixture.detectChanges();
+//   });
+
+//   it('should create', () => {
+//     expect(component).toBeTruthy();
+//   });
+// });

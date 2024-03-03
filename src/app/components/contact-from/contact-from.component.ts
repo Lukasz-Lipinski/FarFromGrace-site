@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IEmailData } from '../../content/content.service';
 
-interface IContactForm {
+export interface IContactForm {
   email: FormControl<string>;
   subject: FormControl<string>;
   message: FormControl<string>;
@@ -16,7 +16,7 @@ interface IContactForm {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContactFromComponent implements OnInit {
-  emailRegexp = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+  private emailRegexp = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
   private contactForm = new FormGroup<IContactForm>({
     email: new FormControl('', {
       nonNullable: true,
