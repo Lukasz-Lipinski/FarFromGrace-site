@@ -1,12 +1,12 @@
 /* tslint:disable:no-unused-variable */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ContactFromComponent, IContactForm } from './contact-from.component';
+import { ContactFromComponent } from './contact-from.component';
 import { SharedModule } from '../../shared/shared.module';
 import { FormGroup } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { EventEmitter } from '@angular/core';
-import { contactFormDataForEmitter } from '../../stubs/forms';
+import { setContactFormFields } from '../../stubs/forms';
+import { By } from '@angular/platform-browser';
 
 describe('ContactFromComponent', () => {
   let component: ContactFromComponent;
@@ -37,25 +37,62 @@ describe('ContactFromComponent', () => {
       })
 
       it("sendEmailEmitter emits object inherited IEmailData", () => {
-        const spyOnEmialEmitter = spyOn(new EventEmitter(), "emit");
+        const spyOnEmialEmitter = spyOn(component.sendEmailEmitter, 'emit');
 
-        for (let control of component.getFormControls) {
-          const ctrl = component.getContactForm.controls[control as keyof IContactForm];
-          console.log(ctrl);
-          ctrl.markAsDirty;
-          ctrl.markAsTouched;
-          ctrl.setValue("tes@test.com");
-        }
+        setContactFormFields(component.getContactForm);
 
         component.onSendEmail();
 
+        expect(component.isFormInvalid).toBeFalse();
         expect(spyOnEmialEmitter).toHaveBeenCalledTimes(1);
        })
-   })
 
-  describe("DOM tests", () => {
-    it('should create', () => {
-      expect(component).toBeTruthy();
-    });
+       it("setPlaceholder returns 'Please assign' + controlName", () => {
+        const placeholder = (controlName: string) => `Please assign ${controlName}`;
+
+        for (let control in component.getContactForm.controls) {
+          expect(component.setPlaceholder(control)).toEqual(placeholder(control));
+        }
+        });
+
+        it("isFormInvalid returns false as default value", () => {
+          expect(component.isFormInvalid).toBeFalse();
+         })
+         it("isFormInvalid returns true when form is invalid", () => {
+          setContactFormFields(component.getContactForm);
+          component.onSendEmail();
+          expect(component.isFormInvalid).toBeTrue();
+         }
+        );
+
+        describe("DOM tests", () => {
+          it('should create', () => {
+            expect(component).toBeTruthy();
+          });
+
+          it('should renders 4 fields', () => {
+            expect(component.getFormControls.length).toEqual(4);
+           });
+
+           describe("Checking submit button", () => {
+
+             it("should renders submit button that is disabled", () => {
+              const btn = fixture.debugElement.query(By.css('button[type="submit"]')).nativeElement as HTMLButtonElement;
+
+              expect(btn).toBeDefined();
+              expect(btn.disabled).toBeTrue();
+              })
+
+              it("should turn on button when form is valid", () => {
+                setContactFormFields(component.getContactForm);
+                const btn = fixture.debugElement.query(By.css('button[type="submit"]')).nativeElement as HTMLButtonElement;
+
+                fixture.detectChanges();
+                expect(btn.disabled).toBeFalse();
+               })
+            }
+           )
+
+         });
    });
-});
+  });
