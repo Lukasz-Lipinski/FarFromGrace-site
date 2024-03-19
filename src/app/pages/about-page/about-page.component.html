@@ -1,4 +1,5 @@
 @defer (when getMusiciansData){
+
 <app-layout
   [verticalContent]="true"
   [gap]="16"
@@ -21,6 +22,7 @@
     </div>
   </div>
   <div class="container container-column container-column-center">
+
     <h2 class="show">Far From Grace Squad</h2>
     <div class="container container-center">
       @for (musician of getMusiciansData; track $index) {
@@ -43,3 +45,7 @@
 } @loading {
 <app-spinner #spinner />
 }
+
+<app-modal [selectedMusican]="getSelectedMusician">
+  <app-musician-details [data]="getSelectedMusician" />
+</app-modal>

@@ -5,7 +5,10 @@
   [style.--gapValue]="getGap"
 >
   <ng-content select="[Sidebar]"></ng-content>
-  <div [ngClass]="getBackground" class="show box container-full">
+  <div
+    [ngClass]="getBackground"
+    class="show box container-full"
+  >
     <ng-content select="[Content]"></ng-content>
   </div>
 </div>

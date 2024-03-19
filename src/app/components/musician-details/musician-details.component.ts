@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ChangeDetectionStrategy, Component, Input, signal } from '@angular/core';
 import { IMusican } from '../../content/content.service';
 
 @Component({
@@ -9,13 +8,15 @@ import { IMusican } from '../../content/content.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MusicianDetailsComponent {
-  private data: IMusican = inject(MAT_DIALOG_DATA);
+  @Input({
+    required: true
+  }) data = signal<IMusican | null>(null);
   get getData() {
-    return this.data;
+    return this.data();
   }
 
   public get getFullname(): string {
-    return `${this.data.name} ${this.data.nick} ${this.data.surname}`;
+    return this.getData ? `${this.getData.name} ${this.getData.nick} ${this.getData.surname}` : "";
   }
 
 }
