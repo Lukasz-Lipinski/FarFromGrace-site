@@ -1,9 +1,36 @@
-div {
-    background-color: rgba($color: #000000, $alpha: 0.3);
-    position: fixed;
-    top: 0;
+@import "../../styles/ffg-styles.scss";
+
+div.modal {
+    background-color: rgba($color: #000000, $alpha: 0.75);
+    position: absolute;
+    height: 100svh;
+    width: 100%;
+    left: 0px;
     z-index: 999;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+
+    &-container{
+      padding: 18px;
+      width: 80%;
+      height: 80%;
+      min-width: 350px;
+
+      &-content {
+        height: 100%;
+      }
+      &-header {
+        h2 {
+          padding: 0 0 0 8px;
+          margin: 0;
+        }
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: nowrap;
+      }
+    }
 }

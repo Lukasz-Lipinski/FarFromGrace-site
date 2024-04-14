@@ -31,9 +31,5 @@ export class AboutPageComponent {
 
   showDialogWithData($event: IMusican) {
     this.selectedMusician.set($event);
-    scrollTo({
-      top: screen.width,
-      behavior: 'smooth'
-    });
   }
 }
