@@ -108,8 +108,6 @@ export class SidebarComponent implements OnInit {
 
   private activatedRoute = inject(ActivatedRoute);
   private router = inject(Router);
-  constructor() { }
-
   private convertToBoolean = (val: "true" | "false" | string) => val === "true" ? true : false;
 
   ngOnInit() {

@@ -6,13 +6,10 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   styleUrls: ['./spinner.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SpinnerComponent implements OnInit {
+export class SpinnerComponent {
   private path = "../../../assets/svg/logo/white.svg";
   get getPath() {
     return this.path;
-  }
-
-  ngOnInit() {
   }
 
 }

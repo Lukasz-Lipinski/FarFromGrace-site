@@ -1,8 +1,8 @@
-  .responsive {
-    @media only screen and (max-width: 376px) {
-      width: 250px;
-      height: 100%;
-    }
-  width: auto;
-  max-height: 250px;
+.mobile-view {
+  padding: 20px;
+
+  @media only screen and (max-width: 560px) {
+    padding: 12px;
+    padding-top: 16px;
+  }
 }

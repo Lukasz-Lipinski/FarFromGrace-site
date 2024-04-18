@@ -9,20 +9,33 @@ describe('SpinnerComponent', () => {
   let component: SpinnerComponent;
   let fixture: ComponentFixture<SpinnerComponent>;
 
-  beforeEach(async(() => {
+  beforeEach((() => {
     TestBed.configureTestingModule({
       declarations: [ SpinnerComponent ]
     })
     .compileComponents();
-  }));
-
-  beforeEach(() => {
     fixture = TestBed.createComponent(SpinnerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
+  }));
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  describe("DOM Tests", () => {
+    it("renders img", () => {
+      const img = fixture.debugElement.query(By.css("img")).nativeElement as HTMLImageElement;
+      expect(img.src).not.toBeNull();
+     });
+     it("renders div", () => {
+      const modal = fixture.debugElement.query(By.css("div")).nativeElement as HTMLDivElement;
+      expect(modal.tagName).toEqual('DIV');
+      });
+      it("returns div with class named 'modal'", () => {
+        const modal = fixture.debugElement.query(By.css("div")).nativeElement as HTMLDivElement;
+        expect(modal).toHaveClass("modal");
+       });
+   });
+  describe("Class Tests", () => {
+    it("returns path for img", () => {
+      expect(component.getPath).toEqual("../../../assets/svg/logo/white.svg");
+     });
+   });
 });

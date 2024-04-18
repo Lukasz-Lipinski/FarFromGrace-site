@@ -39,6 +39,11 @@ $farfromgrace-site-theme: mat.define-light-theme((color: (primary: $farfromgrace
 
 html,
 body {
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+  scrollbar-width: none;
   min-height: 100vh;
   height: auto;
   margin: 0;
@@ -63,7 +68,6 @@ body {
   font-family: 'Bitter' !important;
   font-weight: 400;
   font-size: 1.2rem;
-
 }
 
 .container {
@@ -121,7 +125,4 @@ body {
 
 .mat-divider.mat-divider-horizontal {
   border-color: $dark-primary-text;
-}
-
-div.cdk-overlay-container {
 }

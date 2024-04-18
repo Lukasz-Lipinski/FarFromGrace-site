@@ -56,14 +56,6 @@ export interface IEmailData {
 export class ContentService {
   private http = inject(HttpClient);
 
-  private homepage$ = toSignal(this.getHomePageContent());
-  homepageContent = computed<IBackendData<IHomepageBackendData<IIncomingGig>>>(
-    () => ({
-      eng: this.homepage$()?.[0],
-      pl: this.homepage$()?.[1]
-    })
-  );
-
   private aboutpage$ = toSignal(this.getAboutPageContent());
   aboutpageContent = computed<IBackendData<IAboutpageBackendData>>(
     () => ({
@@ -71,9 +63,6 @@ export class ContentService {
       pl: this.aboutpage$()?.[1]
     })
   );
-
-  private merchContentEN = signal<any>(null);
-  private merchContentPL = signal<any>(null);
 
   constructor(@Inject("Environment") private env: { dbURL: string; serviceURL: string; }) { }
 
@@ -117,7 +106,7 @@ export class ContentService {
     return combineLatest<[IAboutpageBackendData, IAboutpageBackendData]>([urlEN$, urlPL$]);
   }
 
-  // getMetchPageContent() {
+  // getMerchPageContent() {
   //   const url = "";
   //   this.http
   //     .get<IBackendData>(url)
