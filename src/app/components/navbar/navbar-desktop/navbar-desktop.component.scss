@@ -1,0 +1,23 @@
+.navbar {
+  @media only screen and (max-width: 576px) {
+    display: none;
+  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  div {
+    display: flex;
+    align-items: center;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.active {
+  color: #c1afa1 !important;
+  text-shadow: 1px 1px 10px #f6f4f2;
+}

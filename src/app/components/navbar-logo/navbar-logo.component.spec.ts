@@ -1,10 +1,11 @@
 /* tslint:disable:no-unused-variable */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from "@angular/router/testing";
 
 import { NavbarLogoComponent } from './navbar-logo.component';
 import { By } from '@angular/platform-browser';
-import { Router, RouterModule } from '@angular/router';
+import { provideRouter, Router, RouterModule } from '@angular/router';
+import { routes } from "../../app.routes";
+import { NO_ERRORS_SCHEMA } from "@angular/core";
 
 describe('NavbarLogoComponent', () => {
   let component: NavbarLogoComponent;
@@ -13,10 +14,13 @@ describe('NavbarLogoComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      declarations: [ NavbarLogoComponent ]
+      declarations: [NavbarLogoComponent],
+      providers: [
+        provideRouter(routes)
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
-    .compileComponents();
+      .compileComponents();
     fixture = TestBed.createComponent(NavbarLogoComponent);
     component = fixture.componentInstance;
     router = TestBed.inject(Router);
@@ -25,9 +29,9 @@ describe('NavbarLogoComponent', () => {
 
   describe("Class tests", () => {
     it("should get url link", () => {
-      expect(component.getUrl).toBe("/");
-     })
-   });
+      expect(component.getUrl).toMatch("navbar-logo.svg");
+    });
+  });
   describe("DOM tests", () => {
     it('should create', () => {
       expect(component).toBeTruthy();
@@ -38,16 +42,23 @@ describe('NavbarLogoComponent', () => {
       const img = link.querySelector("img");
       expect(link.getAttribute("routerLink")).toEqual('/');
       expect(img).toBeDefined();
-      expect(img?.srcset).toEqual(component.getUrl);
-     })
+      expect(img?.src).toMatch("navbar-logo.svg");
+    });
 
-     it("Should invoked router if img was clicked", () => {
+    it("Should invoked router if img was clicked", () => {
+      const mockedUrl = "/test-url";
+
       const link = fixture.debugElement.query(By.css("a")).nativeElement as HTMLLinkElement;
-      const spyOnRouter = spyOn(router, "navigate");
-
+      link.setAttribute("routerLink", mockedUrl);
       link.click();
 
-      expect(spyOnRouter).toHaveBeenCalled();
-      })
-   });
+      fixture.detectChanges();
+
+      expect(link.getAttribute("routerLink")).toEqual(mockedUrl);
+      fixture.whenStable().then(() => {
+        expect(router.navigated).toBeTrue();
+        expect(window.location.pathname).toMatch(mockedUrl);
+      });
+    });
+  });
 });

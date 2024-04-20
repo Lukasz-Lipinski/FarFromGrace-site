@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
 
-interface ILink {
+export interface ILink {
   href: string;
   label: string;
 }
@@ -31,10 +31,4 @@ export class NavbarComponent {
     return this.links;
   }
 
-  private src: string = "../../../assets/svg/logo/Logo-FFG-01-_2_.svg";
-  get getSrc() {
-    return this.src;
-  }
-
-  trackLink = (index: number): string => `${this.links[index].label}-${index}`;
 }

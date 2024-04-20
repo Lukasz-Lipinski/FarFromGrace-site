@@ -1,0 +1,42 @@
+<div class="mobile">
+  <mat-accordion hideToggle>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <div
+          class="container container-full container-space-between container-align-center"
+        >
+          <button mat-icon-button>
+            <mat-icon color="warn">menu</mat-icon>
+          </button>
+          <app-navbar-logo />
+        </div>
+      </mat-expansion-panel-header>
+      <a
+        class="mobile-link"
+        mat-button
+        color="warn"
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{
+          exact: true
+        }"
+        >Home</a
+      >
+
+      @for (link of getLinks; track trackLink) {
+      <a
+        class="mobile-link"
+        mat-button
+        color="warn"
+        [routerLink]="link.href"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{
+          exact: true
+        }"
+        >{{ link.label }}</a
+      >
+      }
+      <app-navbar-icons [isCentered]="true" />
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

@@ -33,8 +33,10 @@ import { NewsSectionComponent } from '../components/homepage-sections/news-secti
 import { IncomingGigsSectionComponent } from '../components/homepage-sections/incoming-gigs-section/incoming-gigs-section.component';
 import { IncomingGigItemComponent } from '../components/homepage-sections/incoming-gigs-section/incoming-gig-item/incoming-gig-item.component';
 import { ModalComponent } from "../components/modal/modal.component";
+import { NavbarMobileComponent } from "../components/navbar/navbar-mobile/navbar-mobile.component";
+import { NavbarDesktopComponent } from "../components/navbar/navbar-desktop/navbar-desktop.component";
 
-const components: any[] = [NavbarComponent, ItemCardComponent, SpinnerComponent, IncomingGigItemComponent, NewsSectionComponent, IncomingGigsSectionComponent, ModalComponent, ContactFromComponent, MusicianDetailsComponent, NavbarIconsComponent, LayoutComponent, SidebarComponent, NavbarLogoComponent, MusicianCardComponent];
+const components: any[] = [NavbarComponent, ItemCardComponent, SpinnerComponent, IncomingGigItemComponent, NewsSectionComponent, NavbarMobileComponent, NavbarDesktopComponent, IncomingGigsSectionComponent, ModalComponent, ContactFromComponent, MusicianDetailsComponent, NavbarIconsComponent, LayoutComponent, SidebarComponent, NavbarLogoComponent, MusicianCardComponent];
 const services: any[] = [NgxBootstrapIconsModule.pick(allIcons), MatInputModule, NgOptimizedImage, HttpClientModule, MatExpansionModule, MatListModule, MatDividerModule, CommonModule, ReactiveFormsModule, MatSliderModule, MatIconModule, MatFormFieldModule, MatCheckboxModule, MatGridListModule, MatCardModule, MatToolbarModule, MatButtonModule, RouterModule, MatIconModule];
 
 @NgModule({

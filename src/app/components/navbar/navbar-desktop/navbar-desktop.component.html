@@ -1,0 +1,19 @@
+<div class="navbar desktop">
+  <div>
+    @for (link of getLinks; track trackLink) {
+    <a
+      mat-button
+      color="warn"
+      [routerLink]="link.href"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{
+        exact: true
+      }"
+      >{{ link.label }}</a
+    >
+    }
+  </div>
+
+  <app-navbar-logo />
+  <app-navbar-icons />
+</div>
