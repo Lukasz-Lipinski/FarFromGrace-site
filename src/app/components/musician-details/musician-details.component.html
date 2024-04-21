@@ -1,3 +1,18 @@
-<div class="container container-content mobile-view">
-  {{ getMusicianDetails.description }}
+<div class="container container-column container-space-between mobile-view">
+  <p>
+    {{ getMusicianDetails.description }}
+  </p>
+  <div
+    class="container container-column container-column-center container-full social-media"
+  >
+    <h3>Social media</h3>
+    <a
+      mat-icon-button
+      color="primary"
+      [href]="getMusicianDetails.instagram"
+      target="_blank"
+    >
+      <i-bs name="instagram"></i-bs>
+    </a>
+  </div>
 </div>

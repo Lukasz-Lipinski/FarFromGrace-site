@@ -90,6 +90,12 @@ export class MusicianCardComponent {
   }) set SetEquipment(value: IEquipmentItem[]) {
     this.equipment = value;
   }
+  private instagram!: string;
+  @Input({
+    required: true
+  }) set SetInstagram(value: string) {
+    this.instagram = value;
+  }
 
   public showDetails() {
     const musicianData: IMusican = {
@@ -101,7 +107,8 @@ export class MusicianCardComponent {
       role: this.role,
       imgPosition: this.imgPosition,
       description: this.description,
-      equipment: this.equipment
+      equipment: this.equipment,
+      instagram: this.instagram,
     };
     this.musicianDataEmitter.emit(musicianData);
   }
