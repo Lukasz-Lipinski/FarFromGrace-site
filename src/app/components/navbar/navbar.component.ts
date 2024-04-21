@@ -22,8 +22,8 @@ export class NavbarComponent {
       label: "Contact"
     },
     {
-      href: "/merch",
-      label: "Merch"
+      href: "/discography",
+      label: "Discography"
     }
   ];
 
