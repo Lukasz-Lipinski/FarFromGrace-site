@@ -17,9 +17,9 @@ export interface IAlbum {
 export class AlbumSectionComponent {
   @Input({
     required: true
-  }) albums!: Signal<IAlbum[]>;
+  }) albums!: IAlbum[];
   public get getAlbums(): IAlbum[] {
-    return this.albums();
+    return this.albums;
   }
 
 }
