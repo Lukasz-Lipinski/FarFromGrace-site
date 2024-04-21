@@ -17,11 +17,7 @@ export class DiscographyPageComponent {
   private activaedRoute = inject(ActivatedRoute);
   private discography = toSignal<IAlbum[]>(
     this.activaedRoute.data.pipe(
-      map((data) => {
-        console.log(data['discography']);
-
-        return data['discography'][0] || [];
-      })
+      map((data) => data['discography'][0] || [])
     )
   );
 
