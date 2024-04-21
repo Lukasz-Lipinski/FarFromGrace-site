@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, input, InputSignal, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ILink } from "../../navbar/navbar.component";
 
 @Component({

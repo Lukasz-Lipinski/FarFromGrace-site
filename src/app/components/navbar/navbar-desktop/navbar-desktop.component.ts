@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ILink } from "../navbar.component";
 
 @Component({
@@ -8,11 +8,13 @@ import { ILink } from "../navbar.component";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavbarDesktopComponent {
-  links = input.required<ILink[]>();
+  @Input({
+    required: true
+  }) links!: ILink[];
 
   public get getLinks() {
-    return this.links();
+    return this.links;
   }
 
-  trackLink = (index: number): string => `${this.links()[index].label}-${index}`;
+  trackLink = (index: number): string => `${this.links[index].label}-${index}`;
 }

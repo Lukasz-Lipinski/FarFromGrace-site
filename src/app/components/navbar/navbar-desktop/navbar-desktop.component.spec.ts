@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { input, NO_ERRORS_SCHEMA } from '@angular/core';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { NavbarDesktopComponent } from './navbar-desktop.component';
 import { NavbarLogoComponent } from "../../navbar-logo/navbar-logo.component";
@@ -39,7 +39,7 @@ describe('NavbarDesktopComponent', () => {
 
     fixture = TestBed.createComponent(NavbarDesktopComponent);
     component = fixture.componentInstance;
-    fixture.componentRef.setInput("links", mockedLinks);
+    fixture.componentRef.instance.links = mockedLinks;
     fixture.detectChanges();
   });
 

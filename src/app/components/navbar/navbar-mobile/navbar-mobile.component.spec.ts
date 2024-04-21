@@ -42,7 +42,7 @@ describe('NavbarMobileComponent', () => {
 
     fixture = TestBed.createComponent(NavbarMobileComponent);
     component = fixture.componentInstance;
-    fixture.componentRef.setInput("links", mockedLinks);
+    fixture.componentInstance.links = mockedLinks;
     fixture.detectChanges();
 
   }));
