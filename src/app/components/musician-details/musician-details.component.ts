@@ -16,5 +16,4 @@ export class MusicianDetailsComponent {
   public get getMusicianDetails(): IMusican {
     return this.musicianDetails()!;
   }
-
 }

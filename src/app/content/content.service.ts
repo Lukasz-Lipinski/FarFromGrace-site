@@ -22,6 +22,7 @@ export interface IMusican {
   imgPosition: "left" | "right";
   description: string[];
   equipment: IEquipmentItem[];
+  instagram: string;
 }
 
 interface IHomepageBackendData<T> {
