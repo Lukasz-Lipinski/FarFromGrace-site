@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { Observable, combineLatest, map } from 'rxjs';
+import { Observable, combineLatest, map, of } from 'rxjs';
 import { IIncomingGig } from '../components/homepage-sections/incoming-gigs-section/incoming-gigs-section.component';
+import { IAlbum } from "../components/album-section/album-section.component";
 
 export type Role = "Bassist" | "Guitarist" | "Drummer" | "Vocalist/Guitarist";
 
@@ -106,12 +107,12 @@ export class ContentService {
     return combineLatest<[IAboutpageBackendData, IAboutpageBackendData]>([urlEN$, urlPL$]);
   }
 
-  // getMerchPageContent() {
-  //   const url = "";
-  //   this.http
-  //     .get<IBackendData>(url)
-  //     .subscribe(data => { });
-  // }
+  getDiscographyContent(): Observable<[IAlbum[], IAlbum[]]> {
+    const urlEN$ = this.http.get<IAlbum[]>(`${this.env.dbURL}eng/discography.json`);
+    const urlPL$ = this.http.get<IAlbum[]>(`${this.env.dbURL}pl/discography.json`);
+
+    return combineLatest([urlEN$, urlPL$]);
+  }
 
   sendEmail(data: IEmailData) {
     const url = `${this.env.serviceURL}api/email/send`;

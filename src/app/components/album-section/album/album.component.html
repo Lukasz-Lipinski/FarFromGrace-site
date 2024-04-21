@@ -1,0 +1,18 @@
+<div class="album">
+  <h2 class="title">{{ getTitle }}</h2>
+  <div class="container-img">
+    <img [src]="getImg" [alt]="getTitle" />
+  </div>
+  <div>
+    @for (desc of getDescription; track $index) {
+    <p>
+      {{ desc }}
+    </p>
+    }
+  </div>
+  <div class="container container-center links">
+    @for (link of getLinks; track $index) {
+    <a mat-button color="primary" [href]="link.href">{{ link.label }}</a>
+    }
+  </div>
+</div>

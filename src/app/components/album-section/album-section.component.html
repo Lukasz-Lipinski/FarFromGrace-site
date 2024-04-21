@@ -1,0 +1,12 @@
+<ul class="list container">
+  @for (album of getAlbums; track $index) {
+  <li>
+    <app-album
+      [setTitle]="album.title"
+      [setImg]="album.img"
+      [setDescription]="album.description"
+      [setLinks]="album.links"
+    />
+  </li>
+  }
+</ul>

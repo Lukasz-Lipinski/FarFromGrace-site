@@ -1,10 +1,9 @@
 @import "../../../styles/ffg-styles.scss";
 
 .mobile {
-  @media only screen and (min-width: 577px) {
+  @media only screen and (min-width: 621px) {
     display: none;
   }
-
   &-link {
     width: 100%;
     text-align: center;

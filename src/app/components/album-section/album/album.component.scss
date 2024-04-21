@@ -1,0 +1,24 @@
+.album {
+  max-width: 720px;
+  width: 100%;
+}
+
+.title {
+  text-align: center;
+}
+
+.container-img {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+
+  img {
+    max-width: 500px;
+    height: auto;
+  }
+}
+
+  a:not(a:first-child) {
+    margin-left: 28px;
+  }
