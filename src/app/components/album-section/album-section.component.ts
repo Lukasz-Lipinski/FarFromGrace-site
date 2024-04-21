@@ -1,4 +1,4 @@
-import { Component, input, OnInit, afterNextRender, ChangeDetectionStrategy, signal } from "@angular/core";
+import { Component, ChangeDetectionStrategy, Input, Signal } from "@angular/core";
 import { ILink } from "../navbar/navbar.component";
 
 export interface IAlbum {
@@ -15,7 +15,9 @@ export interface IAlbum {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AlbumSectionComponent {
-  albums = input.required<IAlbum[]>();
+  @Input({
+    required: true
+  }) albums!: Signal<IAlbum[]>;
   public get getAlbums(): IAlbum[] {
     return this.albums();
   }
