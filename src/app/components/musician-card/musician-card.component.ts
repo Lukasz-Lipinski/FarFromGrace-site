@@ -112,4 +112,6 @@ export class MusicianCardComponent {
     };
     this.musicianDataEmitter.emit(musicianData);
   }
+
+  public setClass = () => this.GetNick.toLowerCase() === "kali" ? "avatar-kali" : "";
 }
