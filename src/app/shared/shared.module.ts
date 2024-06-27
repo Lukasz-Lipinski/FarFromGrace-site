@@ -15,7 +15,6 @@ import { MatSliderModule } from "@angular/material/slider";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatListModule } from "@angular/material/list";
 import { MatExpansionModule } from "@angular/material/expansion";
-import { HttpClientModule } from "@angular/common/http";
 import { NgOptimizedImage } from "@angular/common";
 import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
 
@@ -39,7 +38,7 @@ import { AlbumSectionComponent } from "../components/album-section/album-section
 import { AlbumComponent } from "../components/album-section/album/album.component";
 
 const components: any[] = [NavbarComponent, ItemCardComponent, AlbumSectionComponent, AlbumComponent, SpinnerComponent, IncomingGigItemComponent, NewsSectionComponent, NavbarMobileComponent, NavbarDesktopComponent, IncomingGigsSectionComponent, ModalComponent, ContactFromComponent, MusicianDetailsComponent, NavbarIconsComponent, LayoutComponent, SidebarComponent, NavbarLogoComponent, MusicianCardComponent];
-const services: any[] = [NgxBootstrapIconsModule.pick(allIcons), MatInputModule, NgOptimizedImage, HttpClientModule, MatExpansionModule, MatListModule, MatDividerModule, CommonModule, ReactiveFormsModule, MatSliderModule, MatIconModule, MatFormFieldModule, MatCheckboxModule, MatGridListModule, MatCardModule, MatToolbarModule, MatButtonModule, RouterModule, MatIconModule];
+const services: any[] = [NgxBootstrapIconsModule.pick(allIcons), MatInputModule, NgOptimizedImage, MatExpansionModule, MatListModule, MatDividerModule, CommonModule, ReactiveFormsModule, MatSliderModule, MatIconModule, MatFormFieldModule, MatCheckboxModule, MatGridListModule, MatCardModule, MatToolbarModule, MatButtonModule, RouterModule, MatIconModule];
 
 @NgModule({
   imports: [
