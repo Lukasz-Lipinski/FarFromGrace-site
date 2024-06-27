@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
@@ -11,9 +11,9 @@ describe('SpinnerComponent', () => {
 
   beforeEach((() => {
     TestBed.configureTestingModule({
-      declarations: [ SpinnerComponent ]
+      declarations: [SpinnerComponent]
     })
-    .compileComponents();
+      .compileComponents();
     fixture = TestBed.createComponent(SpinnerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -23,19 +23,19 @@ describe('SpinnerComponent', () => {
     it("renders img", () => {
       const img = fixture.debugElement.query(By.css("img")).nativeElement as HTMLImageElement;
       expect(img.src).not.toBeNull();
-     });
-     it("renders div", () => {
+    });
+    it("renders div", () => {
       const modal = fixture.debugElement.query(By.css("div")).nativeElement as HTMLDivElement;
       expect(modal.tagName).toEqual('DIV');
-      });
-      it("returns div with class named 'modal'", () => {
-        const modal = fixture.debugElement.query(By.css("div")).nativeElement as HTMLDivElement;
-        expect(modal).toHaveClass("modal");
-       });
-   });
+    });
+    it("returns div with class named 'modal'", () => {
+      const modal = fixture.debugElement.query(By.css("div")).nativeElement as HTMLDivElement;
+      expect(modal).toHaveClass("modal");
+    });
+  });
   describe("Class Tests", () => {
     it("returns path for img", () => {
       expect(component.getPath).toEqual("../../../assets/svg/logo/white.svg");
-     });
-   });
+    });
+  });
 });

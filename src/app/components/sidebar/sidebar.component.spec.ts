@@ -2,8 +2,7 @@ import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { IFilterForm, IQueryParamsDetials, SidebarComponent } from "./sidebar.component";
 import { ActivatedRoute, provideRouter, Router, RouterModule } from "@angular/router";
 import { of } from "rxjs";
-import { RouterTestingHarness } from "@angular/router/testing";
-import { MerchPageComponent } from "../../pages/merch-page/merch-page.component";
+// import { MerchPageComponent } from "../../pages/merch-page/merch-page.component";
 import { SharedModule } from "../../shared/shared.module";
 import { FormGroup } from "@angular/forms";
 import { IContactForm } from "../contact-from/contact-from.component";
@@ -17,12 +16,12 @@ describe("Testing Sidebar Component", () => {
       declarations: [SidebarComponent],
       imports: [RouterModule, SharedModule],
       providers: [
-        provideRouter([
-          {
-            path: "merch",
-            component: MerchPageComponent
-          },
-        ]),
+        // provideRouter([
+        //   {
+        //     path: "merch",
+        //     component: MerchPageComponent
+        //   },
+        // ]),
         {
           provide: ActivatedRoute,
           useValue: {
