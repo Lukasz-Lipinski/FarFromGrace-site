@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, input } from "@angular/core";
 import { ILink } from "../../navbar/navbar.component";
 
 @Component({
@@ -8,41 +8,21 @@ import { ILink } from "../../navbar/navbar.component";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AlbumComponent {
-  private title!: string;
-  @Input({
-    required: true
-  }) set setTitle(text: string) {
-    this.title = text;
-  }
+  public setTitle = input.required<string>();
   public get getTitle(): string {
-    return this.title;
+    return this.setTitle();
   }
-  private img!: string;
-  @Input({
-    required: true
-  }) set setImg(src: string) {
-    this.img = src;
-  }
+  setImg = input.required<string>();
   public get getImg(): string {
-    return this.img;
+    return `assets/discography/${this.setImg()}`;
   }
-  private description!: string[];
-  @Input({
-    required: true
-  }) set setDescription(desc: string[]) {
-    this.description = desc;
-  }
+  public setDescription = input.required<string[]>();
   public get getDescription(): string[] {
-    return this.description;
+    return this.setDescription();
   }
-  private links!: ILink[];
-  @Input({
-    required: true
-  }) set setLinks(links: ILink[]) {
-    this.links = links;
-  }
+  setLinks = input.required<ILink[]>();
   public get getLinks(): ILink[] {
-    return this.links;
+    return this.setLinks();
   }
 
 }

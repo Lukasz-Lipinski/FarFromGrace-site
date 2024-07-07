@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit, input, signal } from '@angular/core';
 
 export interface IIncomingGig {
   where: {
@@ -20,18 +20,9 @@ export interface IIncomingGig {
   styleUrls: ['./incoming-gigs-section.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class IncomingGigsSectionComponent implements OnInit {
-  @Input() set SetIncomingGigs(value: IIncomingGig[]) {
-    this.incomingGigs.set(value);
-  };
-  private incomingGigs = signal<IIncomingGig[]>([]);
+export class IncomingGigsSectionComponent {
+  public SetIncomingGigs = input<IIncomingGig[]>([]);
   public get getIncomingGigs() {
-    return this.incomingGigs();
+    return this.SetIncomingGigs();
   };
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 }

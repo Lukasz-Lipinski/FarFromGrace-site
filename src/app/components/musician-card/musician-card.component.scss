@@ -8,11 +8,6 @@
     border-radius: 12px;
     transition: 0.3s all;
 
-    &-kali {
-      width: auto;
-      max-height: 375px;
-    }
-
     &:hover {
         cursor: pointer;
         filter: brightness(100%);
