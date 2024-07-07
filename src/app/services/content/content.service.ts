@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Observable, combineLatest, map, of } from 'rxjs';
-import { IIncomingGig } from '../components/homepage-sections/incoming-gigs-section/incoming-gigs-section.component';
-import { IAlbum } from "../components/album-section/album-section.component";
+import { IIncomingGig } from '../../components/homepage-sections/incoming-gigs-section/incoming-gigs-section.component';
+import { IAlbum } from "../../components/album-section/album-section.component";
 
 export type Role = "Bassist" | "Guitarist" | "Drummer" | "Vocalist/Guitarist";
 

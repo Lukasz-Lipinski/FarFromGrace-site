@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { Role, IMusican, IEquipmentItem } from '../../content/content.service';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, output } from '@angular/core';
+import { Role, IMusican, IEquipmentItem } from '../../services/content/content.service';
 
 @Component({
   selector: 'app-musician-card',
@@ -8,7 +8,7 @@ import { Role, IMusican, IEquipmentItem } from '../../content/content.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MusicianCardComponent {
-  @Output() musicianDataEmitter = new EventEmitter<IMusican>();
+  musicianDataEmitter = output<IMusican>();
   private name!: string;
   get GetName() {
     return this.name;

@@ -1,12 +1,13 @@
-@defer (when getMusiciansData){
+@defer (when pageIsReadyToDispaly){
 <app-layout [verticalContent]="true" [gap]="16">
   <div class="container gap">
     <img
+      IsLoaded
       [ngSrc]="getFFGMembersPicture!"
       width="1280"
       height="839"
       class="allMembersImg"
-      loading="eager"
+      priority
     />
 
     <div class="pb">

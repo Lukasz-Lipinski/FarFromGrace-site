@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
-import { ContentService, IMusican } from '../../content/content.service';
+import { ContentService, IMusican } from '../../services/content/content.service';
+import { ImgService } from "../../services/img/img.service";
 @Component({
   selector: 'app-about-page',
   templateUrl: './about-page.component.html',
@@ -11,6 +12,15 @@ import { ContentService, IMusican } from '../../content/content.service';
 })
 export class AboutPageComponent {
   private contentService = inject(ContentService);
+  private imgService = inject(ImgService);
+
+  private contentIsLoaded = computed(() => {
+    return this.getMusiciansData && this.imgService.checkIfImagesReadyToDispaly();
+  });
+
+  get pageIsReadyToDispaly() {
+    return this.contentIsLoaded();
+  }
 
   get getBio() {
     return this.contentService.aboutpageContent().eng?.bio;

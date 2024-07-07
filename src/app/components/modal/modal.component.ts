@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, computed, signal, afterNextRender } from '@angular/core';
-import { IMusican } from "../../content/content.service";
+import { IMusican } from "../../services/content/content.service";
 
 @Component({
   selector: 'app-modal',

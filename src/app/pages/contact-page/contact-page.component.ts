@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../shared/shared.module';
-import { ContentService, IEmailData } from '../../content/content.service';
+import { ContentService, IEmailData } from '../../services/content/content.service';
 import { IconNamesEnum } from "ngx-bootstrap-icons";
 import { ILinkWithIcon } from '../../components/navbar-icons/navbar-icons.component';
 

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { IEmailData } from '../../content/content.service';
+import { IEmailData } from '../../services/content/content.service';
 
 export interface IContactForm {
   email: FormControl<string>;

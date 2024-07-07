@@ -7,7 +7,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SpinnerComponent {
-  private path = "../../../assets/svg/logo/white.svg";
+  private path = "assets/svg/logo/white.svg";
   get getPath() {
     return this.path;
   }

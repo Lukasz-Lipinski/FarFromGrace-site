@@ -1,7 +1,7 @@
 import { ResolveFn, Routes } from '@angular/router';
 import { IIncomingGig } from './components/homepage-sections/incoming-gigs-section/incoming-gigs-section.component';
 import { inject } from '@angular/core';
-import { ContentService } from './content/content.service';
+import { ContentService } from './services/content/content.service';
 import { map } from 'rxjs';
 import { IAlbum } from "./components/album-section/album-section.component";
 

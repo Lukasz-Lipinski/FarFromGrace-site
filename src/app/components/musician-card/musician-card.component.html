@@ -1,4 +1,5 @@
 <img
+  IsLoaded
   class="show avatar"
   [ngClass]="setClass()"
   [ngSrc]="GetImageMain"
@@ -7,5 +8,5 @@
   sizes="2093w x 3140h"
   [alt]="GetNick"
   (click)="showDetails()"
-  loading="eager"
+  priority
 />
