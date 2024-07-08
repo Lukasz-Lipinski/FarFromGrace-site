@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, OnInit } from '@angular/core';
 import { SharedModule } from "../../shared/shared.module";
 import { ActivatedRoute } from "@angular/router";
 import { toSignal } from "@angular/core/rxjs-interop";
@@ -23,6 +23,10 @@ export class DiscographyPageComponent {
 
   public get getDiscography(): IAlbum[] {
     return this.discography()!;
+  }
+  private contentIsFullyLoaded = computed(() => !!this.discography());
+  get pageIsReadyToDisplay() {
+    return this.contentIsFullyLoaded();
   }
 
 }

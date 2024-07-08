@@ -1,5 +1,8 @@
-@defer (when pageIsReadyToDispaly){
-<app-layout [verticalContent]="true" [gap]="16">
+<app-layout
+  [verticalContent]="true"
+  [gap]="16"
+  [pageisReadyToDisplay]="pageIsReadyToDispaly"
+>
   <div class="container gap">
     <img
       IsLoaded
@@ -39,9 +42,6 @@
     </div>
   </div>
 </app-layout>
-} @loading {
-<app-spinner #spinner />
-}
 
 <app-modal [selectedMusican]="getSelectedMusician">
   @if (getSelectedMusician()) {

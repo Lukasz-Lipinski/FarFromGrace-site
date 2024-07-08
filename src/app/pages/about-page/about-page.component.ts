@@ -15,7 +15,7 @@ export class AboutPageComponent {
   private imgService = inject(ImgService);
 
   private contentIsLoaded = computed(() => {
-    return this.getMusiciansData && this.imgService.checkIfImagesReadyToDispaly();
+    return this.getMusiciansData && this.imgService.checkIfImagesReadyToDispaly() || false;
   });
 
   get pageIsReadyToDispaly() {

@@ -1,4 +1,8 @@
-<app-layout [verticalContent]="true" [gap]="28">
+<app-layout
+  [verticalContent]="true"
+  [gap]="28"
+  [pageisReadyToDisplay]="pageIsReadyToDispaly"
+>
   @if (getNews) {
   <app-news-section [SetNews]="getNews" />
   } @else {

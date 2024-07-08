@@ -1,8 +1,7 @@
-import { ChangeDetectionStrategy, Component, OnInit, computed, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
-import { ContentService } from '../../services/content/content.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { concatMap, Observable, of, switchMap } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { Observable, of, switchMap } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { IIncomingGig } from '../../components/homepage-sections/incoming-gigs-section/incoming-gigs-section.component';
 
@@ -36,5 +35,10 @@ export class HomePageComponent {
   public get getNews() {
     return this.news();
   }
-
+  private contentIsLoaded = computed(
+    () => this.gigs() && this.news() ? true : false
+  );
+  get pageIsReadyToDispaly() {
+    return this.contentIsLoaded();
+  }
 }

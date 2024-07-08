@@ -1,5 +1,8 @@
-@defer {
-<app-layout [isBackground]="false" [isFullsize]="false">
+<app-layout
+  [isBackground]="false"
+  [isFullsize]="false"
+  [pageisReadyToDisplay]="true"
+>
   <div class="box show glass glass-border">
     <div class="form-box">
       <app-contact-from (sendEmailEmitter)="onSend($event)" />
@@ -17,7 +20,13 @@
       <p>or contact by social media:</p>
       <div class="container center">
         @for (icon of getLinks; track $index) {
-        <a mat-fab extended color="primary" [href]="icon.href" target="_blank">
+        <a
+          mat-fab
+          extended
+          color="primary"
+          [href]="icon.href"
+          target="_blank"
+        >
           <i-bs [name]="icon.name"></i-bs>
           <span>
             {{ icon.label }}
@@ -28,6 +37,3 @@
     </div>
   </div>
 </app-layout>
-} @loading {
-<app-spinner />
-}
