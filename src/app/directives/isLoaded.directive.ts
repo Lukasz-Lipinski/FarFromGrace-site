@@ -10,7 +10,7 @@ export class IsLoadedDirective {
 
   @HostListener('load')
   checkIfLoaded() {
-    this.imgService.setFlagForAboutPage(this.imgRef);
+    this.imgService.setFlag(this.imgRef);
   }
 
 }

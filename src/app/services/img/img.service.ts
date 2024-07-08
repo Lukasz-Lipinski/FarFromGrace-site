@@ -4,10 +4,10 @@ import { ElementRef, Injectable, OnInit, computed, signal } from '@angular/core'
   providedIn: 'root'
 })
 export class ImgService {
-  private aboutPageImages = signal<Set<ElementRef<HTMLImageElement>>>(new Set());
-  private aboutPagesImagesLoaded = computed(() => {
+  private images = signal<Set<ElementRef<HTMLImageElement>>>(new Set());
+  private imagesAreFullyLoaded = computed(() => {
     let areLoaded = true;
-    for (let img of this.aboutPageImages().values()) {
+    for (let img of this.images().values()) {
       if (!img.nativeElement.complete) {
         areLoaded = false;
       }
@@ -15,15 +15,15 @@ export class ImgService {
     return areLoaded;
   });
 
-  setFlagForAboutPage(img: ElementRef<HTMLImageElement>) {
-    if (this.aboutPageImages().has(img)) {
-      this.aboutPageImages().delete(img);
-      this.aboutPageImages().add(img);
+  setFlag(img: ElementRef<HTMLImageElement>) {
+    if (this.images().has(img)) {
+      this.images().delete(img);
+      this.images().add(img);
     } else {
-      this.aboutPageImages().add(img);
+      this.images().add(img);
     }
   }
 
-  checkIfImagesReadyToDispaly = () => this.aboutPagesImagesLoaded();
+  checkIfImagesReadyToDispaly = () => this.imagesAreFullyLoaded();
 
 }

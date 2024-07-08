@@ -1,7 +1,11 @@
 <div class="album">
   <h2 class="title">{{ getTitle }}</h2>
   <div class="container-img">
-    <img [src]="getImg" [alt]="getTitle" />
+    <img
+      IsLoaded
+      [src]="getImg"
+      [alt]="getTitle"
+    />
   </div>
   <div>
     @for (desc of getDescription; track $index) {
@@ -12,7 +16,11 @@
   </div>
   <div class="container container-center links">
     @for (link of getLinks; track $index) {
-    <a mat-button color="primary" [href]="link.href">{{ link.label }}</a>
+    <a
+      mat-button
+      color="primary"
+      [href]="link.href"
+    >{{ link.label }}</a>
     }
   </div>
 </div>
