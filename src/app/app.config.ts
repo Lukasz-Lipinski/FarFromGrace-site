@@ -1,4 +1,4 @@
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig, provideExperimentalZonelessChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -7,11 +7,11 @@ import { provideHttpClient } from "@angular/common/http";
 
 export const appConfig: ApplicationConfig = {
 
-  providers: [provideRouter(routes), provideAnimations(), provideHttpClient(), {
+  providers: [provideRouter(routes), provideAnimations(), provideExperimentalZonelessChangeDetection(), provideHttpClient(), {
     provide: "Environment",
     useValue: {
       dbURL: 'https://farfromgrace-site-default-rtdb.europe-west1.firebasedatabase.app/',
       serviceURL: 'https://farfromgrace-service.vercel.app/',
-    }
+    },
   }]
 };
