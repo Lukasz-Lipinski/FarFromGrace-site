@@ -53,6 +53,4 @@ export class ContactPageComponent {
       }
     });
   }
-  resolved($event: string | null) {
-  }
 }
