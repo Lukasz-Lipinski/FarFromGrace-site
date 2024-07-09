@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EnvironmentInjector, Inject, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../shared/shared.module';
 import { ContentService, IEmailData } from '../../services/content/content.service';
@@ -12,13 +12,14 @@ interface IContactLink extends ILinkWithIcon {
 @Component({
   selector: 'app-contact-page',
   standalone: true,
-  imports: [CommonModule, SharedModule],
+  imports: [CommonModule, SharedModule,],
   templateUrl: './contact-page.component.html',
   styleUrl: './contact-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContactPageComponent {
-  private contentService = inject(ContentService);
+  private readonly contentService = inject(ContentService);
+
   private links: IContactLink[] = [
     {
       label: "Facebook",
