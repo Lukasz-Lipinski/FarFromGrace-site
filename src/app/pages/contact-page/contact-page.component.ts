@@ -4,7 +4,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { ContentService, IEmailData } from '../../services/content/content.service';
 import { IconNamesEnum } from "ngx-bootstrap-icons";
 import { ILinkWithIcon } from '../../components/navbar-icons/navbar-icons.component';
-import { RecaptchaFormsModule, RecaptchaModule, RecaptchaV3Module, ReCaptchaV3Service } from "ng-recaptcha";
+import { RecaptchaFormsModule, RecaptchaModule, RecaptchaV3Module, ReCaptchaV3Service } from "ng-recaptcha-2";
 
 interface IContactLink extends ILinkWithIcon {
   label: string;

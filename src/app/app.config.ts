@@ -4,7 +4,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideHttpClient } from "@angular/common/http";
-import { RECAPTCHA_SETTINGS, RECAPTCHA_V3_SITE_KEY, RecaptchaSettings } from "ng-recaptcha";
+import { RECAPTCHA_SETTINGS, RECAPTCHA_V3_SITE_KEY } from "ng-recaptcha-2";
 
 export const appConfig: ApplicationConfig = {
 
