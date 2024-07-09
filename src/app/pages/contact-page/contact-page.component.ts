@@ -4,7 +4,6 @@ import { SharedModule } from '../../shared/shared.module';
 import { ContentService, IEmailData } from '../../services/content/content.service';
 import { IconNamesEnum } from "ngx-bootstrap-icons";
 import { ILinkWithIcon } from '../../components/navbar-icons/navbar-icons.component';
-import { RecaptchaFormsModule, RecaptchaModule, RecaptchaV3Module, ReCaptchaV3Service } from "ng-recaptcha-2";
 
 interface IContactLink extends ILinkWithIcon {
   label: string;
@@ -13,16 +12,13 @@ interface IContactLink extends ILinkWithIcon {
 @Component({
   selector: 'app-contact-page',
   standalone: true,
-  imports: [CommonModule, SharedModule, RecaptchaModule, RecaptchaFormsModule, RecaptchaV3Module,],
+  imports: [CommonModule, SharedModule,],
   templateUrl: './contact-page.component.html',
   styleUrl: './contact-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContactPageComponent {
   private readonly contentService = inject(ContentService);
-  private readonly recapchaService = inject(ReCaptchaV3Service);
-
-  constructor(@Inject("Environment") private readonly env: any) { }
 
   private links: IContactLink[] = [
     {
@@ -41,16 +37,7 @@ export class ContactPageComponent {
     return this.links;
   }
 
-  public get getSiteKey() {
-    return this.env.siteKey;
-  }
-
   onSend(emailData: IEmailData) {
     this.contentService.sendEmail(emailData);
-    this.recapchaService.execute('importantAction').subscribe({
-      next: (token) => {
-        console.log(token);
-      }
-    });
   }
 }

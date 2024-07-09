@@ -1,6 +1,9 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Inject, inject, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IEmailData } from '../../services/content/content.service';
+import { ReCaptchaV3Service } from "ng-recaptcha-2";
+import { switchMap } from "rxjs";
+import { toSignal } from "@angular/core/rxjs-interop";
 
 export interface IContactForm {
   email: FormControl<string>;
@@ -15,7 +18,11 @@ export interface IContactForm {
   styleUrls: ['./contact-from.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ContactFromComponent implements OnInit {
+export class ContactFromComponent {
+  @Output() private readonly sendEmailEmitter = new EventEmitter<IEmailData>();
+  private readonly recapchaService = inject(ReCaptchaV3Service);
+  private readonly token = toSignal(this.recapchaService.execute('importantAction'));
+
   private emailRegexp = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
   private contactForm = new FormGroup<IContactForm>({
     email: new FormControl('', {
@@ -44,16 +51,16 @@ export class ContactFromComponent implements OnInit {
       ]
     }),
   });
+  constructor(@Inject("Environment") private readonly env: any) { }
+
+  public get getSiteKey() {
+    return this.env.siteKey;
+  }
+
   get getContactForm() { return this.contactForm; }
   get getFormControls() {
     const controls = Object.keys(this.contactForm.controls);
     return controls;
-  }
-  @Output() sendEmailEmitter = new EventEmitter<IEmailData>();
-
-  constructor() { }
-
-  ngOnInit() {
   }
 
   setPlaceholder(control: string) {
@@ -68,7 +75,8 @@ export class ContactFromComponent implements OnInit {
       subject: subject.value,
       name: name.value,
     };
-    this.contactForm.valid && this.sendEmailEmitter.emit(emailToSend);
+    this.contactForm.valid && this.token() && this.sendEmailEmitter.emit(emailToSend);
+
   }
 
   get isFormInvalid() {
