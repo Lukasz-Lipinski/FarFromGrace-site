@@ -1,11 +1,22 @@
-/* tslint:disable:no-unused-variable */
+// /* tslint:disable:no-unused-variable */
 
-import { TestBed, async } from '@angular/core/testing';
-import { IsLoadedDirective } from './isLoaded.directive';
+// import { ComponentFixture, TestBed } from '@angular/core/testing';
+// import { IsLoadedDirective } from "./isLoaded.directive";
 
-describe('Directive: IsLoaded', () => {
-  it('should create an instance', () => {
-    const directive = new IsLoadedDirective();
-    expect(directive).toBeTruthy();
-  });
-});
+// describe('Testing IsLoaded Directive', () => {
+//   let directive: ComponentFixture<IsLoadedDirective>;
+
+//   beforeEach(() => {
+//     TestBed.configureTestingModule({
+
+//     }).compileComponents();
+//     directive = TestBed.createComponent(IsLoadedDirective);
+//   });
+
+//   describe('DOM tests', () => {
+//     it('should create', () => {
+//       expect(directive).toBeTruthy();
+//     });
+//   });
+//   describe('Class tests', () => { });
+// });

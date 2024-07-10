@@ -4,6 +4,7 @@ import { LayoutComponent } from './layout.component';
 import { SharedModule } from '../../shared/shared.module';
 import { By } from '@angular/platform-browser';
 import { SidebarComponent } from '../sidebar/sidebar.component';
+import { input, signal } from "@angular/core";
 
 describe('LayoutComponent', () => {
   let component: LayoutComponent;
@@ -14,7 +15,7 @@ describe('LayoutComponent', () => {
       imports: [SharedModule],
       declarations: [LayoutComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(LayoutComponent);
     component = fixture.componentInstance;
@@ -26,7 +27,7 @@ describe('LayoutComponent', () => {
       expect(component).toBeTruthy();
     });
     it("Returns layout with sidebar if props equals true", () => {
-      component.isSidebar = true;
+      fixture.componentRef.setInput("isSidebar", true);
       fixture.detectChanges();
 
       setTimeout(() => {
@@ -34,22 +35,23 @@ describe('LayoutComponent', () => {
 
         expect(sidebar).toBeDefined();
       });
-     })
-     it("Returns layout without sidebar", () => {
+    });
+    it("Returns layout without sidebar", () => {
       const sidebar = fixture.debugElement.query(By.directive(SidebarComponent))?.nativeElement;
 
       expect(sidebar).toBeUndefined();
 
-      })
-   });
+    });
+  });
   describe("Class tests", () => {
     it("Return true if to input was passed true", () => {
-      component.isSidebar = true;
+      fixture.componentRef.setInput("isSidebar", true);
+      fixture.detectChanges();
 
       expect(component.isSidebar).toBeTrue();
-     })
-     it("Return false defaultly", () => {
+    });
+    it("Return false defaultly", () => {
       expect(component.isSidebar).toBeFalse();
-      })
-  })
+    });
+  });
 });

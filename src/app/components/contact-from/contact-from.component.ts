@@ -1,8 +1,7 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Inject, inject, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Inject, inject, output, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IEmailData } from '../../services/content/content.service';
 import { ReCaptchaV3Service } from "ng-recaptcha-2";
-import { switchMap } from "rxjs";
 import { toSignal } from "@angular/core/rxjs-interop";
 
 export interface IContactForm {
@@ -19,7 +18,7 @@ export interface IContactForm {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContactFromComponent {
-  @Output() private readonly sendEmailEmitter = new EventEmitter<IEmailData>();
+  readonly sendEmailEmitter = output<IEmailData>();
   private readonly recapchaService = inject(ReCaptchaV3Service);
   private readonly token = toSignal(this.recapchaService.execute('importantAction'));
 
@@ -78,7 +77,9 @@ export class ContactFromComponent {
     this.contactForm.valid && this.token() && this.sendEmailEmitter.emit(emailToSend);
 
   }
-
+  get getToken() {
+    return this.token();
+  }
   get isFormInvalid() {
     return this.contactForm.invalid;
   }
