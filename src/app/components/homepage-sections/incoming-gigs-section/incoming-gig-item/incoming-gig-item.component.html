@@ -4,27 +4,36 @@
     <h4>{{ getGig.when }}</h4>
     <div>
       @for (band of getGig.who; track $index) {
-      {{ band }}
+      <span class="band">
+        {{ band }}
+      </span>
       }
     </div>
     <div>
-      <span>
+      <span class="address">
         {{ getAddress }}
       </span>
     </div>
     <div>
-      <span>
+      <span class="club">
         {{ getClub }}
       </span>
     </div>
   </div>
   <div class="container container-column">
-    <a [href]="getGig.link" mat-raised-button color="warn">LINK</a>
+    <a
+      [href]="getGig.link"
+      mat-raised-button
+      color="warn"
+    >LINK</a>
     @if (getGig.ticketsLink) {
-    <a [href]="getGig.ticketsLink" mat-stroked-button color="warn">TICKETS</a>
+    <a
+      [href]="getGig.ticketsLink"
+      mat-stroked-button
+      color="warn"
+    >TICKETS</a>
     }
   </div>
 </li>
 <mat-divider></mat-divider>
-
 }

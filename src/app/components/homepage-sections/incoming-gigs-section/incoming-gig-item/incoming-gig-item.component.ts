@@ -1,18 +1,18 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit, signal, input, computed } from '@angular/core';
 import { IIncomingGig } from '../incoming-gigs-section.component';
 
-interface IGigItem extends Omit<IIncomingGig, "when"> {
+export interface IGigItem extends Omit<IIncomingGig, "when"> {
   when: string;
 }
 
 enum DaysDictionary {
+  "Sunday",
   "Monday",
   "Tuesday",
   "Wednesday",
   "Thursday",
   "Friday",
   "Sutarday",
-  "Sunday"
 };
 
 enum MonthsDictionary {
@@ -36,17 +36,15 @@ enum MonthsDictionary {
   styleUrls: ['./incoming-gig-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class IncomingGigItemComponent implements OnInit {
-  @Input({
-    required: true,
-  }) set setIncomingGig(val: IIncomingGig | undefined) {
-    val ? this.gig.set({
-      ...val,
-      when: `${DaysDictionary[val.when.getDay()]}-${MonthsDictionary[val.when.getMonth()]}-${val.when.getFullYear()}`
-    })
-    : this.gig.set(null);
-  };
-  private gig = signal<IGigItem | null>(null);
+export class IncomingGigItemComponent {
+  readonly setIncomingGig = input.required<IIncomingGig | undefined>();
+  private gig = computed<IGigItem | undefined>(() =>
+    this.setIncomingGig() ? {
+      ...this.setIncomingGig(),
+      when: `${DaysDictionary[this.setIncomingGig()!.when.getDay()]}-${MonthsDictionary[this.setIncomingGig()!.when.getMonth()]}-${this.setIncomingGig()!.when.getFullYear()}`
+    } as IGigItem
+      : undefined
+  );
   get getGig() {
     return this.gig();
   }
@@ -55,10 +53,6 @@ export class IncomingGigItemComponent implements OnInit {
   }
   get getClub() {
     return `${this.gig()?.where.address}, ${this.gig()?.where.club}`;
-  }
-  constructor() { }
-
-  ngOnInit() {
   }
 
 }
