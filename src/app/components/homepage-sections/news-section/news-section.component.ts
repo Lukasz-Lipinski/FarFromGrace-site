@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit, signal, input } from '@angular/core';
 
 @Component({
   selector: 'app-news-section',
@@ -6,19 +6,10 @@ import { ChangeDetectionStrategy, Component, Input, OnInit, signal } from '@angu
   styleUrls: ['./news-section.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NewsSectionComponent implements OnInit {
-  @Input({
-    required: true
-  }) set SetNews(news: string[]) {
-    this.news.set(news);
-  }
-  private news = signal<string[]>([]);
+export class NewsSectionComponent {
+  public readonly SetNews = input.required<string[]>();
   get getNews() {
-    return this.news();
-  }
-  constructor() { }
-
-  ngOnInit() {
+    return this.SetNews();
   }
 
 }
