@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { IconNamesEnum } from 'ngx-bootstrap-icons';
 
 export interface ILinkWithIcon {

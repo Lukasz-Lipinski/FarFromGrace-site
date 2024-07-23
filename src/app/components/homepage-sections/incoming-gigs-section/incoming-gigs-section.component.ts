@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 export interface IIncomingGig {
   where: {

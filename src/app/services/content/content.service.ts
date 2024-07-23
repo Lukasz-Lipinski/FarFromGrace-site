@@ -81,7 +81,11 @@ export class ContentService {
   }
 
   getHomePageContent(): Observable<[IHomepageBackendData<IIncomingGig>, IHomepageBackendData<IIncomingGig>]> {
-    const urlEN$ = this.http.get<IHomepageBackendData<IIncomingGigFromBackend>>(`${this.env.dbURL}eng/home.json`);
+    const urlEN$ = this.http.get<IHomepageBackendData<IIncomingGigFromBackend>>(`${this.env.dbURL}eng/home.json`, {
+      headers: {
+        "Accept-Encoding": "gzip",
+      }
+    });
     const urlPL$ = this.http.get<IHomepageBackendData<IIncomingGigFromBackend>>(`${this.env.dbURL}pl/home.json`);
 
     return combineLatest<[IHomepageBackendData<IIncomingGigFromBackend>, IHomepageBackendData<IIncomingGigFromBackend>]>([urlEN$, urlPL$])
@@ -103,13 +107,21 @@ export class ContentService {
   }
 
   getAboutPageContent(): Observable<[IAboutpageBackendData, IAboutpageBackendData]> {
-    const urlEN$ = this.http.get<IAboutpageBackendData>(`${this.env.dbURL}eng/about.json`);
+    const urlEN$ = this.http.get<IAboutpageBackendData>(`${this.env.dbURL}eng/about.json`, {
+      headers: {
+        "Accept-Encoding": "gzip",
+      }
+    });
     const urlPL$ = this.http.get<IAboutpageBackendData>(`${this.env.dbURL}pl/about.json`);
     return combineLatest<[IAboutpageBackendData, IAboutpageBackendData]>([urlEN$, urlPL$]);
   }
 
   getDiscographyContent(): Observable<[IAlbum[], IAlbum[]]> {
-    const urlEN$ = this.http.get<IAlbum[]>(`${this.env.dbURL}eng/discography.json`);
+    const urlEN$ = this.http.get<IAlbum[]>(`${this.env.dbURL}eng/discography.json`, {
+      headers: {
+        "Accept-Encoding": "gzip",
+      }
+    });
     const urlPL$ = this.http.get<IAlbum[]>(`${this.env.dbURL}pl/discography.json`);
 
     return combineLatest([urlEN$, urlPL$]);

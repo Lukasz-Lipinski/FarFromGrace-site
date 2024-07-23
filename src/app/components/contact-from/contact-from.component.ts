@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Inject, inject, output, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, inject, output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IEmailData } from '../../services/content/content.service';
 import { ReCaptchaV3Service } from "ng-recaptcha-2";
