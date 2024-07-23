@@ -1,11 +1,17 @@
 <div class="mobile">
-  <mat-accordion hideToggle>
+  <mat-accordion
+    hideToggle
+    id="accordion"
+  >
     <mat-expansion-panel>
       <mat-expansion-panel-header>
-        <div
-          class="container container-full container-space-between container-align-center"
-        >
-          <button mat-icon-button>
+        <div class="container container-full container-space-between container-align-center">
+          <button
+            role="button"
+            aria-label="extend-panel"
+            aria-labelledby="accordion"
+            mat-icon-button
+          >
             <mat-icon color="warn">menu</mat-icon>
           </button>
           <app-navbar-logo />
@@ -20,8 +26,7 @@
         [routerLinkActiveOptions]="{
           exact: true
         }"
-        >Home</a
-      >
+      >Home</a>
 
       @for (link of getLinks; track trackLink) {
       <a
@@ -33,8 +38,7 @@
         [routerLinkActiveOptions]="{
           exact: true
         }"
-        >{{ link.label }}</a
-      >
+      >{{ link.label }}</a>
       }
       <app-navbar-icons [isCentered]="true" />
     </mat-expansion-panel>
