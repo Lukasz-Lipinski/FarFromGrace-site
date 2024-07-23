@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, computed, signal, afterNextRender } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, computed, signal } from '@angular/core';
 import { IMusican } from "../../services/content/content.service";
 
 @Component({

@@ -7,10 +7,9 @@ import { FormGroup } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { setContactFormFields } from '../../stubs/forms';
 import { By } from '@angular/platform-browser';
-import { provideExperimentalZonelessChangeDetection, signal } from "@angular/core";
+import { provideExperimentalZonelessChangeDetection } from "@angular/core";
 import { RECAPTCHA_SETTINGS, RECAPTCHA_V3_SITE_KEY, ReCaptchaV3Service } from "ng-recaptcha-2";
 import { of } from "rxjs";
-import { toSignal } from "@angular/core/rxjs-interop";
 
 // mocks
 const mockedKey = "test key";

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit, signal, input, computed } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, computed } from '@angular/core';
 import { IIncomingGig } from '../incoming-gigs-section.component';
 
 export interface IGigItem extends Omit<IIncomingGig, "when"> {

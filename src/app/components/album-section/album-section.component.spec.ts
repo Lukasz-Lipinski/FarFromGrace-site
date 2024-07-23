@@ -4,7 +4,6 @@ import { SharedModule } from "../../shared/shared.module";
 import { provideExperimentalZonelessChangeDetection } from "@angular/core";
 import { By } from "@angular/platform-browser";
 import { AlbumComponent } from "./album/album.component";
-import { archive } from "ngx-bootstrap-icons";
 
 const mockedAlbums: IAlbum[] = [
   {
