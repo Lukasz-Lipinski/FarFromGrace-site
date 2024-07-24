@@ -1,10 +1,10 @@
  @use '@angular/material' as mat;
  @import "./app/styles/ffg-styles.scss";
  @include mat.core();
- $farfromgrace-site-primary: mat.define-palette($md-ffgpallete);
- $farfromgrace-site-accent: mat.define-palette($md-ffgwarn, A400, A100, A700);
- $farfromgrace-site-warn: mat.define-palette($md-ffgerror, A200, A100, A400);
- $farfromgrace-site-theme: mat.define-light-theme((color:(primary:$farfromgrace-site-primary, accent:$farfromgrace-site-accent, warn:$farfromgrace-site-warn, ), ));
+ $farfromgrace-site-primary: mat.m2-define-palette($md-ffgpallete);
+ $farfromgrace-site-accent: mat.m2-define-palette($md-ffgwarn, A400, A100, A700);
+ $farfromgrace-site-warn: mat.m2-define-palette($md-ffgerror, A200, A100, A400);
+ $farfromgrace-site-theme: mat.m2-define-light-theme((color:(primary:$farfromgrace-site-primary, accent:$farfromgrace-site-accent, warn:$farfromgrace-site-warn, ), ));
  @include mat.all-component-themes($farfromgrace-site-theme);
 
  @font-face {
