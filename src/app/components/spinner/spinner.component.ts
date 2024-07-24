@@ -11,5 +11,4 @@ export class SpinnerComponent {
   get getPath() {
     return this.path;
   }
-
 }
