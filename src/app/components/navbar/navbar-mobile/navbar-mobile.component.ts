@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, input, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { ILink } from "../navbar.component";
+import { IconNamesEnum } from "ngx-bootstrap-icons";
 
 @Component({
   selector: 'app-navbar-mobile',
@@ -9,6 +10,10 @@ import { ILink } from "../navbar.component";
 })
 export class NavbarMobileComponent {
   links = input.required<ILink[]>();
+
+  public get getIcon() {
+    return IconNamesEnum.MenuButton;
+  }
 
   public get getLinks(): ILink[] {
     return this.links();
