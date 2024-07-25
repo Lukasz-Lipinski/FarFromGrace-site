@@ -1,4 +1,4 @@
-@defer (when pageIsReady) {
+@defer (on viewport; when pageIsReady) {
 @if (getIsSidebar) {
 <div
   class="container sidebar-box mobile"
@@ -26,4 +26,6 @@
 }
 } @loading {
 <app-spinner />
+} @placeholder {
+<p>loading...</p>
 }
