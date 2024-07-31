@@ -41,4 +41,6 @@ export class NavbarIconsComponent {
     return this.isCentered ? `container container-full container-center` : "";
   }
 
+  public trackBy = (index: number) => `${this.icons[index].name}-${index}`;
+
 }

@@ -1,28 +1,24 @@
-// /* tslint:disable:no-unused-variable */
-// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-// import { By } from '@angular/platform-browser';
-// import { DebugElement } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ItemCardComponent } from "./item-card.component";
+import { SharedModule } from "../../shared/shared.module";
 
-// import { ItemCardComponent } from './item-card.component';
+describe('Testing ItemCard Component', () => {
+    let component: ItemCardComponent;
+    let fixture: ComponentFixture<ItemCardComponent>;
 
-// describe('ItemCardComponent', () => {
-//   let component: ItemCardComponent;
-//   let fixture: ComponentFixture<ItemCardComponent>;
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            imports: [SharedModule]
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ ItemCardComponent ]
-//     })
-//     .compileComponents();
-//   }));
+        }).compileComponents();
+        fixture = TestBed.createComponent(ItemCardComponent);
+        component = fixture.componentInstance;
+    });
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(ItemCardComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
-
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+    describe('DOM tests', () => {
+        it('should create', () => {
+            expect(component).toBeTruthy();
+        });
+    });
+    describe('Class tests', () => { });
+});

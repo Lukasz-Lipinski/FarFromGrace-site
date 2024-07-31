@@ -16,5 +16,5 @@ export class NavbarDesktopComponent {
     return this.links;
   }
 
-  trackLink = (index: number): string => `${this.links[index].label}-${index}`;
+  trackLink = (index: number): string => `${this.links[index].label}-${Math.random()}`;
 }

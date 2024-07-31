@@ -1,5 +1,5 @@
 <div [ngClass]="getStyles">
-    @for (icon of getIcons; track $index) {
+    @for (icon of getIcons; track trackBy) {
     <a
         mat-icon-button
         color="warn"
