@@ -37,13 +37,11 @@ enum MonthsDictionary {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IncomingGigItemComponent {
-  readonly setIncomingGig = input.required<IIncomingGig | undefined>();
-  private gig = computed<IGigItem | undefined>(() =>
-    this.setIncomingGig() ? {
-      ...this.setIncomingGig(),
-      when: `${DaysDictionary[this.setIncomingGig()!.when.getDay()]}-${MonthsDictionary[this.setIncomingGig()!.when.getMonth()]}-${this.setIncomingGig()!.when.getFullYear()}`
-    } as IGigItem
-      : undefined
+  readonly setIncomingGig = input.required<IIncomingGig>();
+  private gig = computed<IGigItem>(() => ({
+    ...this.setIncomingGig(),
+    when: `${DaysDictionary[this.setIncomingGig()!.when.getDay()]}-${MonthsDictionary[this.setIncomingGig()!.when.getMonth()]}-${this.setIncomingGig()!.when.getFullYear()}`
+  }) as IGigItem
   );
   get getGig() {
     return this.gig();

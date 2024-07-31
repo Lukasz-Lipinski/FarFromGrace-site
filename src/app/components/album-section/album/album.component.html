@@ -1,11 +1,18 @@
 <div class="album">
-  <h2 class="title">{{ getTitle }}</h2>
+  <h2
+    #albumTitle
+    class="title"
+  >{{ getTitle }}</h2>
   <div class="container-img">
+    @defer (prefetch on viewport(albumTitle) ) {
     <img
       IsLoaded
       [src]="getImg"
       [alt]="getTitle"
     />
+    } @placeholder {
+    <p>loading...</p>
+    }
   </div>
   <div class="test">
     @for (desc of getDescription; track $index) {
