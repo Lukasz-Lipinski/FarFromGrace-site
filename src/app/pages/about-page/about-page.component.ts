@@ -25,8 +25,9 @@ export class AboutPageComponent {
   get getBio() {
     return this.contentService.aboutpageContent().eng?.bio;
   }
-  get getFFGMembersPicture() {
-    return this.contentService.aboutpageContent().eng?.bandImg;
+
+  get getPicture() {
+    return '/assets/photos/toghether/all_members_mid.avif';
   }
   private musiciansData = computed(
     () => this.contentService.aboutpageContent().eng?.musicians

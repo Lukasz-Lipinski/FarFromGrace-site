@@ -4,14 +4,9 @@
   [pageisReadyToDisplay]="pageIsReadyToDispaly"
 >
   <div class="container gap">
-    <img
-      IsLoaded
-      [ngSrc]="getFFGMembersPicture!"
-      width="1280"
-      height="839"
-      class="allMembersImg"
-      priority
-    />
+    <div class="allMembersImg">
+      <img [ngSrc]="getPicture" fill priority style="height: auto" />
+    </div>
 
     <div class="pb">
       @for (paragraph of getBio; track $index) {

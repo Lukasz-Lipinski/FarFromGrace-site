@@ -1,5 +1,11 @@
 main {
   padding: 1rem 4px;
+  img {
+    z-index: -1;
+    height: auto;
+    margin: 5dvw auto 0 auto;
+    max-width: 1200px;
+  }
 }
 
 .first-spinner {
