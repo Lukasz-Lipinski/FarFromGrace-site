@@ -1,10 +1,10 @@
 @import "../../styles/ffg-styles.scss";
 
 .avatar {
+    position: relative;
     filter: brightness(40%);
-    max-width: 250px;
-    height: auto;
-    max-height: 375px;
+    width: 250px;
+    height: 166px;
     border-radius: 12px;
     transition: 0.3s all;
 

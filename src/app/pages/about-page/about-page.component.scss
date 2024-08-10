@@ -29,12 +29,6 @@ p {
     position: relative;
     width: 720px;
     height: 481px;
-
-  img {
-    border-radius: 20px;
-    align-self: center;
-    box-shadow: 0px 2px 8px 2px black;
-  }
 }
 
 .gap {
@@ -42,8 +36,11 @@ p {
 }
 
 .pb {
-    max-width: calc(100% - 750px);
-    padding-top: 8px;
+  padding-top: 8px;
+
+  @media only screen and (min-width: 1400px) {
+      max-width: calc(100% - 750px);
+  }
 }
 
 .container {

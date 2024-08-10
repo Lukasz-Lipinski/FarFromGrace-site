@@ -20,4 +20,8 @@ export class NavbarLogoComponent implements OnInit {
   ngOnInit() {
   }
 
+  onClick(event: MouseEvent) {
+    event.stopPropagation();
+  }
+
 }
