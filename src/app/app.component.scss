@@ -1,10 +1,16 @@
 main {
   padding: 1rem 4px;
+}
+
+.background {
+  position: relative;
+  z-index: -1;
+
   img {
-    z-index: -1;
-    height: auto;
-    margin: 5dvw auto 0 auto;
-    max-width: 1200px;
+
+    margin: 0 auto 0 auto;
+    max-width: 720px;
+    max-height: 720px;
   }
 }
 

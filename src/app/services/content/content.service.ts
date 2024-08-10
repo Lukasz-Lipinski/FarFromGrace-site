@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { Observable, combineLatest, map, of } from 'rxjs';
+import { Observable, catchError, combineLatest, map, of } from 'rxjs';
 import { IIncomingGig } from '../../components/homepage-sections/incoming-gigs-section/incoming-gigs-section.component';
 import { IAlbum } from "../../components/album-section/album-section.component";
 
@@ -91,7 +91,6 @@ export class ContentService {
     return combineLatest<[IHomepageBackendData<IIncomingGigFromBackend>, IHomepageBackendData<IIncomingGigFromBackend>]>([urlEN$, urlPL$])
       .pipe(
         map(items => {
-
           return [
             {
               ...items[0],
@@ -102,7 +101,11 @@ export class ContentService {
               gigs: this.mapGigsArray(items[1].gigs)
             }
           ] as [IHomepageBackendData<IIncomingGig>, IHomepageBackendData<IIncomingGig>];
-        })
+        }),
+        catchError((err) => of([
+          {},
+          {},
+        ] as [IHomepageBackendData<IIncomingGig>, IHomepageBackendData<IIncomingGig>]))
       );
   }
 

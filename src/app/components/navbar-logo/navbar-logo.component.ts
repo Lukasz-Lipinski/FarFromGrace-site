@@ -10,6 +10,11 @@ export class NavbarLogoComponent implements OnInit {
   get getUrl() {
     return this.url;
   }
+  private ratio = 1.53;
+  get getWidth() {
+    return 65;
+  }
+  setHeight = (width: number): number => width / this.ratio;
   constructor() { }
 
   ngOnInit() {
