@@ -1,14 +1,14 @@
 @defer(when isReadyToDisplay) {
-<app-navbar />
 <div class="background">
   <img
     [ngSrc]="getBackgroundSrc"
     alt="background"
-    fill
     style="height: auto"
+    fill
     priority
   />
 </div>
+<app-navbar />
 <main>
   <router-outlet />
 </main>
