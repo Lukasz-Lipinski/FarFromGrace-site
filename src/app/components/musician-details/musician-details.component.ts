@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, signal } from '@angular/core';
+import { afterNextRender, ChangeDetectionStrategy, Component, input, Input, OnInit, signal } from '@angular/core';
 import { IMusican } from '../../services/content/content.service';
 
 @Component({
@@ -8,12 +8,23 @@ import { IMusican } from '../../services/content/content.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MusicianDetailsComponent {
-
-  @Input({
-    required: true
-  }) musicianDetails = signal<IMusican | null>(null);
+  musicianDetails = input.required<IMusican | null>();
+  private readonly y = window.scrollY;
+  private readonly x = window.scrollX;
 
   public get getMusicianDetails(): IMusican {
     return this.musicianDetails()!;
+  }
+
+  constructor() {
+    afterNextRender(() => {
+      window.onscroll = () => {
+        window.scrollTo(this.x, this.y);
+      };
+    });
+  }
+
+  ngOnDestroy() {
+    window.onscroll = function () { };
   }
 }

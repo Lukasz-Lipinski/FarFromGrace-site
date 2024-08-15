@@ -27,7 +27,7 @@ export class AboutPageComponent {
   }
 
   get getPicture() {
-    return '/assets/photos/toghether/all_members_mid.avif';
+    return '/assets/photos/toghether/all_members_mid.webp';
   }
   private musiciansData = computed(
     () => this.contentService.aboutpageContent().eng?.musicians
