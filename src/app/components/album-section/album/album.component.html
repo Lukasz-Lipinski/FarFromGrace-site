@@ -1,20 +1,21 @@
 <div class="album">
-  <h2
-    #albumTitle
-    class="title"
-  >{{ getTitle }}</h2>
+  <h2 #albumTitle class="title">{{ getTitle }}</h2>
   <div class="container-img">
     @defer (prefetch on viewport(albumTitle) ) {
-    <img
-      IsLoaded
-      [src]="getImg"
-      [alt]="getTitle"
-    />
+    <div>
+      <img
+        IsLoaded
+        [ngSrc]="getImg"
+        [alt]="getTitle"
+        fill
+        style="height: auto"
+      />
+    </div>
     } @placeholder {
     <p>loading...</p>
     }
   </div>
-  <div class="test">
+  <div>
     @for (desc of getDescription; track $index) {
     <p>
       {{ desc }}
@@ -23,11 +24,7 @@
   </div>
   <div class="container container-center links">
     @for (link of getLinks; track $index) {
-    <a
-      mat-button
-      color="primary"
-      [href]="link.href"
-    >{{ link.label }}</a>
+    <a mat-button color="primary" [href]="link.href">{{ link.label }}</a>
     }
   </div>
 </div>

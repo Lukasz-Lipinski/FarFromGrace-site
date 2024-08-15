@@ -1,9 +1,18 @@
-@defer {
+@defer(when isReadyToDisplay) {
+<div class="background">
+  <img
+    [ngSrc]="getBackgroundSrc"
+    alt="background"
+    style="height: auto"
+    fill
+    priority
+  />
+</div>
 <app-navbar />
 <main>
   <router-outlet />
 </main>
-} @loading (minimum 2s) {
+} @loading {
 <div class="first-spinner">
   <app-spinner />
 </div>

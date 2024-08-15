@@ -4,14 +4,9 @@
   [pageisReadyToDisplay]="pageIsReadyToDispaly"
 >
   <div class="container gap">
-    <img
-      IsLoaded
-      [ngSrc]="getFFGMembersPicture!"
-      width="720"
-      height="500"
-      class="allMembersImg"
-      priority
-    />
+    <div class="allMembersImg">
+      <img [ngSrc]="getPicture" fill priority style="height: auto" />
+    </div>
 
     <div class="pb">
       @for (paragraph of getBio; track $index) {
@@ -45,6 +40,6 @@
 
 <app-modal [selectedMusican]="getSelectedMusician">
   @if (getSelectedMusician()) {
-  <app-musician-details [musicianDetails]="getSelectedMusician" />
+  <app-musician-details [musicianDetails]="getSelectedMusician()" />
   }
 </app-modal>

@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
+import { toSignal } from "@angular/core/rxjs-interop";
 
 @Component({
   selector: 'app-root',
@@ -13,4 +14,14 @@ import { SharedModule } from './shared/shared.module';
 })
 export class AppComponent {
   title = 'farfromgrace-site';
+  private readonly routerStatus = toSignal(inject(Router).events);
+
+  private backgroundSrc = "assets/background/background-with-mischief-color.webp";
+  get getBackgroundSrc() {
+    return this.backgroundSrc;
+  }
+
+  get isReadyToDisplay() {
+    return this.routerStatus() instanceof NavigationEnd ? true : false;
+  }
 }

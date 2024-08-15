@@ -1,6 +1,6 @@
 <div class="navbar desktop">
   <div>
-    @for (link of getLinks; track trackLink) {
+    @for (link of getLinks(); track link.href) {
     <a
       mat-button
       color="warn"

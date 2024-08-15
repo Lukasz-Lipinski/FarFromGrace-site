@@ -1,5 +1,7 @@
-img {
-  padding: 10px;
-  height: 60px;
-  width: auto !important;
+a {
+  display: flex;
+  height: 100%;
+  img {
+    align-self: center;
+  }
 }

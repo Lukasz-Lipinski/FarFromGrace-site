@@ -19,6 +19,4 @@ export class NavbarMobileComponent {
     return this.links();
   }
 
-  trackLink = (index: number): string => `${this.links()[index].label}-${index}`;
-
 }

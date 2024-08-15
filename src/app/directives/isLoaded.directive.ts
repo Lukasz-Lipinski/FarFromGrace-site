@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, OnInit, inject, output, signal, viewChild } from '@angular/core';
+import { Directive, ElementRef, HostListener, inject } from '@angular/core';
 import { ImgService } from "../services/img/img.service";
 
 @Directive({

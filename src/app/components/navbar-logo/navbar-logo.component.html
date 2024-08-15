@@ -1,9 +1,10 @@
-<a routerLink="/">
+<a (click)="onClick($event)" routerLink="/">
   <img
+    class="nav_logo"
     [ngSrc]="getUrl"
     alt="farfromgrace-logo"
-    height="60"
-    width="10"
+    [width]="getWidth"
+    [height]="setHeight(getWidth)"
     priority
   />
 </a>

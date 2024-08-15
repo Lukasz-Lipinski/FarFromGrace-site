@@ -3,11 +3,11 @@
   [gap]="28"
   [pageisReadyToDisplay]="pageIsReadyToDispaly"
 >
-  @if (getNews) {
+  @if (getNews.length) {
   <app-news-section [SetNews]="getNews" />
   } @else {
   <h2>No news added</h2>
-  } @if (getGigs) {
+  } @if (getGigs.length) {
   <app-incoming-gigs-section [SetIncomingGigs]="getGigs" />
   } @else {
   <h2>No gigs are currently planned</h2>

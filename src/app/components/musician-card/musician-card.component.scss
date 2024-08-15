@@ -1,7 +1,11 @@
 @import "../../styles/ffg-styles.scss";
 
 .avatar {
+    position: relative;
     filter: brightness(40%);
+    width: 250px;
+    height: 166px;
+
     border-radius: 12px;
     transition: 0.3s all;
 

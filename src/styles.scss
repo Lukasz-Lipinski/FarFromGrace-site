@@ -56,14 +56,14 @@ body {
   }
 }
 
+img:not(.nav_logo) {
+  border-radius: 20px;
+  align-self: center;
+  box-shadow: 0px 2px 8px 2px black;
+}
+
 body {
-  backdrop-filter: brightness(75%);
-  background-image: url("./assets/background/background-with-mischief-color.avif");
-  background-position: top center;
   background-color: black;
-  background-repeat: no-repeat;
-  background-origin: content-box;
-  background-size: contain;
   margin: 0;
   font-family: 'Bitter' !important;
   font-weight: 400;

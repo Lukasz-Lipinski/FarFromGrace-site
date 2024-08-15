@@ -1,12 +1,13 @@
 <div [ngClass]="getStyles">
-    @for (icon of getIcons; track trackBy) {
-    <a
-        mat-icon-button
-        color="warn"
-        [href]="icon.href"
-        target="_blank"
-    >
-        <i-bs [name]="icon.name"></i-bs>
-    </a>
-    }
+  @for (icon of getIcons; track icon.href) {
+  <a
+    mat-icon-button
+    color="warn"
+    [href]="icon.href"
+    target="_blank"
+    [ariaLabel]="icon.href"
+  >
+    <i-bs [name]="icon.name"></i-bs>
+  </a>
+  }
 </div>

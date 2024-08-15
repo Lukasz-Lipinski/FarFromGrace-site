@@ -1,12 +1,10 @@
-<img
-  IsLoaded
-  class="show avatar"
-  [ngClass]="setClass()"
-  [ngSrc]="GetImageMain"
-  width="500"
-  height="334"
-  [alt]="GetNick"
-  (click)="showDetails()"
-  fetchpriority="hight"
-  loading="eager"
-/>
+<div class="show avatar" [ngClass]="setClass()" (click)="showDetails()">
+  <img
+    IsLoaded
+    style="height: auto"
+    [ngSrc]="GetImageMain"
+    [alt]="GetNick"
+    fill
+    priority
+  />
+</div>
