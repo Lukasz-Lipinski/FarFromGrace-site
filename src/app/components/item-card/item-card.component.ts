@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, Input, OnInit, signal } from '@angular/core';
 import { Category } from './IMerch';
 
 @Component({
@@ -7,56 +7,25 @@ import { Category } from './IMerch';
   styleUrls: ['./item-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ItemCardComponent implements OnInit {
-  private name = signal<string>("");
-  @Input({
-    required: true
-  }) set setName(val: string) {
-    this.name.set(val);
-  }
+export class ItemCardComponent {
+  setName = input.required<string>();
   get getName() {
-    return this.name();
+    return this.setName();
   }
-  private price = signal<number>(0);
-  @Input({
-    required: true
-  }) set setPrice(val: number) {
-    this.price.set(val);
-  }
+  setPrice = input.required<number>();
   get getPrice() {
-    return this.price();
+    return this.setPrice();
   }
-  private img = signal<string>("");
-  @Input({
-    required: true
-  }) set setImg(val: string) {
-    this.img.set(val);
-  }
+  setImg = input.required<string>();
   get getImg() {
-    return this.img();
+    return this.setImg();
   }
-  private description = signal<string>("");
-  @Input({
-    required: true
-  }) set setDescription(val: string) {
-    this.description.set(val);
-  }
+  setDescription = input.required<string>();
   get getDesctiption() {
-    return this.description();
+    return this.setDescription();
   }
-  private category = signal<string>(Category[Category.Hat]);
-  @Input({
-    required: true
-  }) set setCategory(val: number) {
-    this.category.set(Category[val]);
-  }
+  setCategory = input.required<typeof Category[Category.Hat]>();
   get getCategory() {
-    return this.category();
+    return this.setCategory();
   }
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 }

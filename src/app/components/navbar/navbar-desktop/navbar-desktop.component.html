@@ -1,18 +1,18 @@
 <div class="navbar desktop">
+  <app-navbar-logo />
   <div>
-    @for (link of getLinks(); track link.href) {
+    @for (link of getLinks; track link.href) {
     <a
       mat-button
-      color="warn"
+      color="accent"
       [routerLink]="link.href"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{
         exact: true
       }"
-      >{{ link.label }}</a
+      >{{ link.label | uppercase }}</a
     >
     }
   </div>
-  <app-navbar-logo />
   <app-navbar-icons />
 </div>

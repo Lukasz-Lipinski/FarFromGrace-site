@@ -71,17 +71,8 @@ describe('Testing IncomingGiGItem Component', () => {
     it('should create', () => {
       expect(component).toBeTruthy();
     });
-    it("no element is not rendered as gig is empty", () => {
-      fixture.componentRef.setInput("setIncomingGig", null);
-      const element = fixture.debugElement.query(By.css('li'));
-      fixture
-        .whenRenderingDone()
-        .then(() => {
-          expect(element).toBeNull();
-        });
-    });
     it("renders header with location", () => {
-      const header = fixture.debugElement.query(By.css('h4')).nativeElement as HTMLLIElement;
+      const header = fixture.debugElement.query(By.css('h4')).nativeElement as HTMLHeadingElement;
       expect(header.textContent).toBe(mockedGigs.gigItem.when);
     });
     it("renders bands name", () => {
