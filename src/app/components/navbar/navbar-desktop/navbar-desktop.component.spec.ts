@@ -39,7 +39,7 @@ describe('NavbarDesktopComponent', () => {
 
     fixture = TestBed.createComponent(NavbarDesktopComponent);
     component = fixture.componentInstance;
-    fixture.componentRef.instance.links = mockedLinks;
+    fixture.componentRef.setInput("links", mockedLinks);
     fixture.detectChanges();
   });
 
@@ -67,11 +67,6 @@ describe('NavbarDesktopComponent', () => {
         expect(component.getLinks[i].href).toEqual(mockedLinks[i].href);
         expect(component.getLinks[i].label).toEqual(mockedLinks[i].label);
       }
-    });
-    it("trackLink returns special string", () => {
-      const index = 1;
-      const schemaOfTrackLink = `${component.getLinks[index].label}-${index}`;
-      expect(component.trackLink(index)).toEqual(schemaOfTrackLink);
     });
   });
 });

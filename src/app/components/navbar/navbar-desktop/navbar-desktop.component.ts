@@ -11,6 +11,6 @@ export class NavbarDesktopComponent {
   links = input.required<ILink[]>();
 
   public get getLinks() {
-    return this.links;
+    return this.links();
   }
 }

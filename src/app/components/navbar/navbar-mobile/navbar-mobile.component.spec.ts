@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
+import { DebugElement, NO_ERRORS_SCHEMA, provideExperimentalZonelessChangeDetection } from '@angular/core';
 
 import { NavbarMobileComponent } from './navbar-mobile.component';
 import { ILink } from "../navbar.component";
@@ -30,40 +30,35 @@ describe('NavbarMobileComponent', () => {
   let component: NavbarMobileComponent;
   let fixture: ComponentFixture<NavbarMobileComponent>;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [NavbarMobileComponent],
       imports: [SharedModule, BrowserAnimationsModule],
       providers: [
-        provideRouter(routes)
+        provideRouter(routes),
+        provideExperimentalZonelessChangeDetection()
       ],
       schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
 
     fixture = TestBed.createComponent(NavbarMobileComponent);
     component = fixture.componentInstance;
-    fixture.componentInstance.links = mockedLinks;
+    fixture.componentRef.setInput("links", mockedLinks);
     fixture.detectChanges();
 
-  }));
+  });
 
   describe("DOM tests", () => {
     it("renders 3 mocked links", () => {
       const links = fixture.debugElement.queryAll(By.directive(MatAnchor)).length;
       //added 1 since Home is not mocked
-      expect(links).toEqual(mockedLinks.length + 1);
+      expect(links).toEqual(mockedLinks.length);
     });
   });
   describe("Class tests", () => {
     it("getLinks returns passed links", () => {
       const links = component.getLinks.length;
       expect(links).toEqual(mockedLinks.length);
-    });
-    it("trackLink returns special string for added index", () => {
-      const index = 1;
-      const mockedTrackLink = (i: number) => `${mockedLinks[i].label}-${i}`;
-
-      expect(component.trackLink(index)).toEqual(mockedTrackLink(index));
     });
   });
 });

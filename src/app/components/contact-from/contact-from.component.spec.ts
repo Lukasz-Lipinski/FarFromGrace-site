@@ -13,6 +13,7 @@ import { of } from "rxjs";
 
 // mocks
 const mockedKey = "test key";
+const mockSiteKey = "mockedSiteKey";
 
 describe('ContactFromComponent', () => {
   let component: ContactFromComponent;
@@ -27,15 +28,16 @@ describe('ContactFromComponent', () => {
         useValue: {
           dbURL: 'test-db',
           serviceURL: 'test-service',
+          siteKey: mockSiteKey
         },
       }, {
         provide: RECAPTCHA_V3_SITE_KEY,
-        useValue: 'test key'
+        useValue: mockedKey
       },
       {
         provide: RECAPTCHA_SETTINGS,
         useValue: {
-          siteKey: 'test key',
+          siteKey: mockedKey,
         },
       },
       {
@@ -99,7 +101,7 @@ describe('ContactFromComponent', () => {
     it("getSiteKey returns key", () => {
       fixture.whenStable().then(
         () => {
-          expect(component.getSiteKey).toBe(mockedKey);
+          expect(component.getSiteKey).toBe(mockSiteKey);
         }
       );
     });

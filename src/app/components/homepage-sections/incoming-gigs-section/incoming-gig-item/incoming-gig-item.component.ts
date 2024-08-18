@@ -12,7 +12,7 @@ enum DaysDictionary {
   "Wednesday",
   "Thursday",
   "Friday",
-  "Sutarday",
+  "Saturday",
 };
 
 enum MonthsDictionary {

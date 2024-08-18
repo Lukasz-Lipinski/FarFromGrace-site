@@ -1,28 +1,39 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { NO_ERRORS_SCHEMA, provideExperimentalZonelessChangeDetection } from '@angular/core';
 
 import { ContentLoaderComponent } from './content-loader.component';
+import { CommonModule, NgOptimizedImage } from "@angular/common";
 
-describe('ContentLoaderComponent', () => {
+describe('Testing ContentLoaderComponent', () => {
   let component: ContentLoaderComponent;
   let fixture: ComponentFixture<ContentLoaderComponent>;
 
-  beforeEach(async(() => {
+  beforeEach((() => {
     TestBed.configureTestingModule({
-      declarations: [ ContentLoaderComponent ]
-    })
-    .compileComponents();
-  }));
+      declarations: [ContentLoaderComponent],
+      imports: [CommonModule, NgOptimizedImage],
+      providers: [provideExperimentalZonelessChangeDetection()],
+      schemas: [NO_ERRORS_SCHEMA],
+    }).compileComponents();
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(ContentLoaderComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture.changeDetectorRef.markForCheck();
+  }));
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe("DOM tests", () => {
+    it("renders img", () => {
+      fixture.whenRenderingDone().then(() => {
+        const img = fixture.debugElement.query(By.css("img")).nativeElement as HTMLImageElement;
+        expect(img).toBeDefined();
+      });
+    });
+  });
+  describe("Class tests", () => {
+    it("returns img source", () => {
+      expect(component.getLoaderSrc).toBe("assets/svg/white.svg");
+    });
   });
 });

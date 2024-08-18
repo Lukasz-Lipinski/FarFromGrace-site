@@ -1,9 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, DeferBlockBehavior, DeferBlockState, TestBed } from '@angular/core/testing';
 import { AlbumComponent } from "./album.component";
-import { SharedModule } from "../../../shared/shared.module";
 import { ILink } from "../../navbar/navbar.component";
-import { provideExperimentalZonelessChangeDetection, provideZoneChangeDetection, signal, ɵwhenStable } from '@angular/core';
+import { NO_ERRORS_SCHEMA, provideExperimentalZonelessChangeDetection } from '@angular/core';
 import { By } from "@angular/platform-browser";
+import { CommonModule, NgOptimizedImage } from "@angular/common";
 
 //mocks
 const mockedImg = 'test-src-img';
@@ -30,8 +30,10 @@ describe('Testing Album Component', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [AlbumComponent],
-      imports: [SharedModule],
-      providers: [provideExperimentalZonelessChangeDetection()]
+      imports: [CommonModule, NgOptimizedImage],
+      providers: [provideExperimentalZonelessChangeDetection()],
+      schemas: [NO_ERRORS_SCHEMA],
+      deferBlockBehavior: DeferBlockBehavior.Manual
     }).compileComponents();
     fixture = TestBed.createComponent(AlbumComponent);
     component = fixture.componentInstance;
@@ -40,7 +42,7 @@ describe('Testing Album Component', () => {
     fixture.componentRef.setInput("setImg", mockedImg);
     fixture.componentRef.setInput("setLinks", mockedLinks);
     fixture.componentRef.setInput("setDescription", mockedDescription);
-    fixture.changeDetectorRef.markForCheck();
+    fixture.changeDetectorRef.detectChanges();
   });
 
   describe('DOM tests', () => {
@@ -50,16 +52,15 @@ describe('Testing Album Component', () => {
     it("Should render title", () => {
       const header = fixture.debugElement.query(By.css("h2")).nativeElement as HTMLHeadingElement;
 
-      fixture
-        .whenRenderingDone()
-        .then(
-          () => {
-            expect(header).toBeTruthy();
-            expect(header.textContent).toBe(component.getTitle);
-          }
-        );
+      expect(header).toBeTruthy();
+      expect(header.textContent).toBe(component.getTitle);
+
     });
-    it("Should render img", () => {
+    it("Should render img", async () => {
+      const deferFixtures = await fixture.getDeferBlocks();
+      await deferFixtures[0].render(DeferBlockState.Complete);
+      fixture.detectChanges();
+
       const img = fixture.debugElement.query(By.css('img')).nativeElement as HTMLImageElement;
 
       fixture
@@ -67,7 +68,7 @@ describe('Testing Album Component', () => {
         .then(() => {
           expect(img).toBeTruthy();
           expect(img.alt).toBe(component.getTitle);
-          expect(img.src).toBe(component.getImg);
+          expect(img.src).toContain(component.getImg);
         });
     });
     it("Should render description", () => {

@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { SharedModule } from "../../shared/shared.module";
 
 @Component({
   selector: 'app-content-loader',
@@ -8,11 +7,8 @@ import { SharedModule } from "../../shared/shared.module";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContentLoaderComponent {
-  private readonly loaderSrc: string = "assets/svg/white.svg";
+  private readonly loaderSrc = "assets/svg/white.svg";
   get getLoaderSrc() {
     return this.loaderSrc;
   }
-
-  constructor() { }
-
 }
