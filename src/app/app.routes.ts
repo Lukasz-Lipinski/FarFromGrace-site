@@ -1,7 +1,7 @@
 import { ResolveFn, Routes } from '@angular/router';
 import { IIncomingGig } from './components/homepage-sections/incoming-gigs-section/incoming-gigs-section.component';
 import { inject } from '@angular/core';
-import { ContentService } from './services/content/content.service';
+import { ContentService, IAboutpageBackendData } from './services/content/content.service';
 import { map } from 'rxjs';
 import { IAlbum } from "./components/album-section/album-section.component";
 
@@ -13,6 +13,14 @@ const HomepageResolver: ResolveFn<{ gigs: IIncomingGig[], news: string[]; }> = (
       gigs: homepageData[0].gigs ?? [],
       news: homepageData[0].news ?? []
     }))
+  );
+};
+
+const AboutpageResolver: ResolveFn<IAboutpageBackendData> = () => {
+  const content = inject(ContentService);
+
+  return content.getAboutPageContent().pipe(
+    map((data) => data[0])
   );
 };
 
@@ -40,6 +48,9 @@ export const routes: Routes = [
   {
     path: 'about',
     loadComponent: () => import("./pages/about-page/about-page.component").then(m => m.AboutPageComponent),
+    resolve: {
+      about: AboutpageResolver
+    }
   },
   {
     path: 'contact',

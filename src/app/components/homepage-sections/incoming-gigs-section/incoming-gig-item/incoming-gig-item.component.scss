@@ -4,30 +4,32 @@ a {
   text-decoration: none;
 }
 
-h4 {
+h3 {
   margin: 0;
-  padding-bottom: 12px;
+  padding-bottom: 14px;
+  font-size: xx-large;
 }
 
 li {
   &:hover {
     cursor: pointer;
-    background-color: #9a0004;
-    transition: 0.4s background-color;
+    color: black;
+    background-color: #e5b54e;
+    transition: 0.4s all;
   }
-  transition: 0.4s background-color;
-  padding: 16px 0;
+
+  transition: 0.4s all;
+  padding: 32px 0;
 }
 
-.mat-mdc-raised-button.mat-warn {
-  color: $dark-primary-text !important;
-  font-size: 0.8rem;
-}
-
-.mat-mdc-outlined-button.mat-warn {
-  font-size: 0.8rem;
+.band {
+  &:not(:first-of-type):before {
+    content: '\002B';
+    font-family: fantasy;
+  }
 }
 
 .container {
+  font-family: monospace;
   gap: 6px;
 }

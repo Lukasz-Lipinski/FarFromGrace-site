@@ -40,9 +40,12 @@ export class IncomingGigItemComponent {
   readonly setIncomingGig = input.required<IIncomingGig>();
   private gig = computed<IGigItem>(() => ({
     ...this.setIncomingGig(),
-    when: `${DaysDictionary[this.setIncomingGig()!.when.getDay()]}-${MonthsDictionary[this.setIncomingGig()!.when.getMonth()]}-${this.setIncomingGig()!.when.getFullYear()}`
+    when: `${this.setIncomingGig()!.when.getDate()}-${MonthsDictionary[this.setIncomingGig()!.when.getMonth()]}-${this.setIncomingGig()!.when.getFullYear()}`
   }) as IGigItem
   );
+  get getDay() {
+    return DaysDictionary[this.setIncomingGig().when.getDay()];
+  }
   get getGig() {
     return this.gig();
   }

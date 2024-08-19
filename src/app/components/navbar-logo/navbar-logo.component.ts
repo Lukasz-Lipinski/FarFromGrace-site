@@ -12,7 +12,7 @@ export class NavbarLogoComponent implements OnInit {
   }
   private ratio = 1.53;
   get getWidth() {
-    return 65;
+    return 100;
   }
   setHeight = (width: number): number => width / this.ratio;
   constructor() { }

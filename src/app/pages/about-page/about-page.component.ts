@@ -1,7 +1,10 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
-import { ContentService, IMusican } from '../../services/content/content.service';
+import { ContentService, IAboutpageBackendData, IMusican } from '../../services/content/content.service';
 import { ImgService } from "../../services/img/img.service";
+import { ActivatedRoute } from "@angular/router";
+import { takeUntilDestroyed, toSignal } from "@angular/core/rxjs-interop";
+import { Observable, of, switchMap } from "rxjs";
 @Component({
   selector: 'app-about-page',
   templateUrl: './about-page.component.html',
@@ -11,8 +14,12 @@ import { ImgService } from "../../services/img/img.service";
   imports: [SharedModule],
 })
 export class AboutPageComponent {
-  private contentService = inject(ContentService);
+  private activatedRoute = inject(ActivatedRoute);
   private imgService = inject(ImgService);
+  private aboutContent = toSignal(this.activatedRoute.data.pipe(
+    takeUntilDestroyed(),
+    switchMap((aboutContent) => of(aboutContent['about']) as Observable<IAboutpageBackendData>)
+  ));
 
   private contentIsLoaded = computed(() => {
     return this.getMusiciansData && this.imgService.checkIfImagesReadyToDispaly() || false;
@@ -23,14 +30,14 @@ export class AboutPageComponent {
   }
 
   get getBio() {
-    return this.contentService.aboutpageContent().eng?.bio;
+    return this.aboutContent()?.bio;
   }
 
   get getPicture() {
     return '/assets/photos/toghether/all_members_mid.webp';
   }
   private musiciansData = computed(
-    () => this.contentService.aboutpageContent().eng?.musicians
+    () => this.aboutContent()?.musicians
   );
   get getMusiciansData() {
     return this.musiciansData();
