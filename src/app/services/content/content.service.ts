@@ -30,7 +30,7 @@ interface IHomepageBackendData<T> {
   news: string[];
 }
 
-interface IAboutpageBackendData {
+export interface IAboutpageBackendData {
   bandImg: string;
   bio: string[];
   musicians: IMusican[];

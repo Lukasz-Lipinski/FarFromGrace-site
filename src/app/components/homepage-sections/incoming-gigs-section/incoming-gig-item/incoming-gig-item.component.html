@@ -1,6 +1,6 @@
 <li class="container container-space-between container-align-center">
   <div>
-    <h4>{{ getGig.when }}</h4>
+    <h3>{{ getGig.when }} ({{ getDay }})</h3>
     <div>
       @for (band of getGig.who; track $index) {
       <span class="band">
@@ -20,11 +20,18 @@
     </div>
   </div>
   <div class="container container-column">
-    <a [href]="getGig.link" mat-raised-button color="accent">LINK</a>
+    <a
+      [href]="getGig.link"
+      mat-stroked-button
+      color="accent"
+    >LINK</a>
     @if (getGig.ticketsLink) {
-    <a [href]="getGig.ticketsLink" mat-stroked-button color="accent">TICKETS</a>
+    <a
+      [href]="getGig.ticketsLink"
+      mat-stroked-button
+      color="accent"
+    >TICKETS</a>
     }
   </div>
 </li>
 <mat-divider></mat-divider>
-

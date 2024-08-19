@@ -12,7 +12,7 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$farfromgrace-site-primary: mat.m2-define-palette($md-ffgpallete);
+$farfromgrace-site-primary: mat.m2-define-palette($md-ffgpallete, 700, A700, 800);
 $farfromgrace-site-accent: mat.m2-define-palette($md-ffgwarn, A400, A100, A700);
 $farfromgrace-site-warn: mat.m2-define-palette($md-ffgerror, A400, A100, A400);
 
@@ -43,6 +43,7 @@ body {
     width: 0;
     height: 0;
   }
+
   scrollbar-width: none;
   min-height: 100vh;
   height: auto;
@@ -64,9 +65,17 @@ img:not(.nav_logo) {
 
 body {
   background-color: black;
+  line-height: 24px;
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-weight: 400;
+}
+
+.homepage-section {
+  margin-block: 72px;
+
+  @media only screen and (max-width: 576px) {
+    margin-block: 32px;
+  }
 }
 
 .container {
@@ -75,7 +84,8 @@ body {
 
   .content {
     text-align: justify;
-    padding: 0 24px;
+    font-size: 18px;
+    line-height: 38px;
   }
 
   &-column {
@@ -116,9 +126,23 @@ body {
   text-align: center;
   font-size: xx-large;
   letter-spacing: 16px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 64px;
 }
 
 .mat-divider.mat-divider-horizontal {
   border-color: $dark-primary-text;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.show {
+  animation: show 1s normal 0s;
 }

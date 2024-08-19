@@ -14,9 +14,9 @@ import { IAlbum } from "../../components/album-section/album-section.component";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DiscographyPageComponent {
-  private activaedRoute = inject(ActivatedRoute);
+  private activatedRoute = inject(ActivatedRoute);
   private discography = toSignal<IAlbum[]>(
-    this.activaedRoute.data.pipe(
+    this.activatedRoute.data.pipe(
       map((data) => data['discography'][0] || [])
     )
   );

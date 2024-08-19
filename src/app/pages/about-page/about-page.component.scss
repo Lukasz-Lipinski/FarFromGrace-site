@@ -4,8 +4,8 @@ h2 {
 
 @media only screen and (max-width: 780px) {
     .allMembersImg {
-      max-width: 720px;
-      min-width: 256px;
+        max-width: 720px;
+        min-width: 256px;
     }
 }
 
@@ -36,23 +36,23 @@ p {
 }
 
 .pb {
-  padding-top: 8px;
+    padding-top: 8px;
 
-  @media only screen and (min-width: 1400px) {
-      max-width: calc(100% - 750px);
-  }
+    @media only screen and (min-width: 1400px) {
+        max-width: calc(100% - 750px);
+    }
 }
 
 .container {
-  @media only screen and (min-width: 1400px) {
-      flex-wrap: nowrap;
-  }
+    @media only screen and (min-width: 1400px) {
+        flex-wrap: nowrap;
+    }
 }
 
 app-layout {
-  width: 100%;
+    width: 100%;
 
-  @media only screen and (min-width: 1400px) {
-      width: 80%;
-  }
+    @media only screen and (min-width: 1400px) {
+        width: 80%;
+    }
 }
