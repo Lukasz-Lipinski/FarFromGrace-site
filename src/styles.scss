@@ -13,7 +13,7 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $farfromgrace-site-primary: mat.m2-define-palette($md-ffgpallete, 700, A700, 800);
-$farfromgrace-site-accent: mat.m2-define-palette($md-ffgwarn, A400, A100, A700);
+$farfromgrace-site-accent: mat.m2-define-palette($md-ffgwarn, A700, A100, A700);
 $farfromgrace-site-warn: mat.m2-define-palette($md-ffgerror, A400, A100, A400);
 
 // Create the theme object. A theme consists of configurations for individual
@@ -127,7 +127,7 @@ body {
   font-size: xx-large;
   letter-spacing: 16px;
   margin-bottom: 64px;
-}
+  color: #ff2e2e;
 
 .mat-divider.mat-divider-horizontal {
   border-color: $dark-primary-text;
@@ -145,4 +145,4 @@ body {
 
 .show {
   animation: show 1s normal 0s;
-}
+  }
