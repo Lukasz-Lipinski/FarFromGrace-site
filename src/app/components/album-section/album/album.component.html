@@ -24,7 +24,7 @@
   </div>
   <div class="container container-center links">
     @for (link of getLinks; track $index) {
-    <a mat-button color="primary" [href]="link.href">{{ link.label }}</a>
+    <a mat-flat-button color="accent" [href]="link.href">{{ link.label }}</a>
     }
   </div>
 </div>
