@@ -6,12 +6,13 @@ form {
 
 mat-form-field {
   font-size: 0.9rem;
+
   mat-label {
     color: $background;
   }
 
 }
+
 .mdc-text-field--filled:not(.mdc-text-field--disabled) {
   background-color: #c1afa1;
 }
-

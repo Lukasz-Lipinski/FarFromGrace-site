@@ -39,8 +39,9 @@ import { AlbumComponent } from "../components/album-section/album/album.componen
 import { IsLoadedDirective } from "../directives/isLoaded.directive";
 import { RecaptchaFormsModule, RecaptchaModule, RecaptchaV3Module } from "ng-recaptcha-2";
 import { ContentLoaderComponent } from "../components/content-loader/content-loader.component";
+import { DataBadgeComponent } from "../components/homepage-sections/incoming-gigs-section/data-badge/data-badge.component";
 
-const components: any[] = [NavbarComponent, ItemCardComponent, AlbumSectionComponent, AlbumComponent, ContentLoaderComponent, SpinnerComponent, IncomingGigItemComponent, NewsSectionComponent, NavbarMobileComponent, IsLoadedDirective, NavbarDesktopComponent, IncomingGigsSectionComponent, ModalComponent, ContactFromComponent, MusicianDetailsComponent, NavbarIconsComponent, LayoutComponent, SidebarComponent, NavbarLogoComponent, MusicianCardComponent];
+const components: any[] = [NavbarComponent, ItemCardComponent, AlbumSectionComponent, AlbumComponent, ContentLoaderComponent, DataBadgeComponent, SpinnerComponent, IncomingGigItemComponent, NewsSectionComponent, NavbarMobileComponent, IsLoadedDirective, NavbarDesktopComponent, IncomingGigsSectionComponent, ModalComponent, ContactFromComponent, MusicianDetailsComponent, NavbarIconsComponent, LayoutComponent, SidebarComponent, NavbarLogoComponent, MusicianCardComponent];
 const services: any[] = [NgxBootstrapIconsModule.pick(allIcons), MatInputModule, NgOptimizedImage, MatExpansionModule, MatListModule, RecaptchaModule, RecaptchaFormsModule, RecaptchaV3Module, MatDividerModule, CommonModule, ReactiveFormsModule, MatSliderModule, MatIconModule, MatFormFieldModule, MatCheckboxModule, MatGridListModule, MatCardModule, MatToolbarModule, MatButtonModule, RouterModule, MatIconModule];
 
 @NgModule({

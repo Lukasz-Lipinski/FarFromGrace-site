@@ -1,7 +1,18 @@
 a {
   display: flex;
   height: 100%;
-  img {
-    align-self: center;
+
+  div {
+    position: relative;
+    width: 100px;
+    height: auto;
+
+    @media only screen and (max-width: 690px) {
+      width: 50px;
+    }
+
+    img {
+      align-self: center;
+    }
   }
 }

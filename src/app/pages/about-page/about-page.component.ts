@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
-import { ContentService, IAboutpageBackendData, IMusican } from '../../services/content/content.service';
+import { IAboutpageBackendData, IMusican } from '../../services/content/content.service';
 import { ImgService } from "../../services/img/img.service";
 import { ActivatedRoute } from "@angular/router";
 import { takeUntilDestroyed, toSignal } from "@angular/core/rxjs-interop";
@@ -18,8 +18,7 @@ export class AboutPageComponent {
   private imgService = inject(ImgService);
   private aboutContent = toSignal(this.activatedRoute.data.pipe(
     takeUntilDestroyed(),
-    switchMap((aboutContent) => of(aboutContent['about']) as Observable<IAboutpageBackendData>)
-  ));
+    switchMap((aboutContent) => of(aboutContent['about']) as Observable<IAboutpageBackendData>)));
 
   private contentIsLoaded = computed(() => {
     return this.getMusiciansData && this.imgService.checkIfImagesReadyToDispaly() || false;
