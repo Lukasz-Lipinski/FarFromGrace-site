@@ -13,7 +13,6 @@ import { toSignal } from "@angular/core/rxjs-interop";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
-  title = 'farfromgrace-site';
   private readonly routerStatus = toSignal(inject(Router).events);
 
   private backgroundSrc = "assets/background/background-with-mischief-color.webp";

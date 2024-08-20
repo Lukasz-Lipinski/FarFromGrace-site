@@ -1,17 +1,18 @@
 <div class="mobile">
-  <mat-accordion hideToggle id="accordion">
+  <mat-accordion
+    hideToggle
+    id="accordion"
+  >
     <mat-expansion-panel>
       <mat-expansion-panel-header>
-        <div
-          class="container container-full container-space-between container-align-center"
-        >
+        <div class="container container-full container-space-between container-align-center">
           <button
             role="button"
             aria-label="extend-panel"
             aria-labelledby="accordion"
             mat-icon-button
           >
-            <mat-icon color="warn"> <i-bs [name]="getIcon"></i-bs> </mat-icon>
+            <mat-icon color="accent"> <i-bs [name]="getIcon"></i-bs> </mat-icon>
           </button>
         </div>
         <app-navbar-logo />
@@ -21,14 +22,13 @@
       <a
         class="mobile-link"
         mat-button
-        color="warn"
+        color="accent"
         [routerLink]="link.href"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{
           exact: true
         }"
-        >{{ link.label }}</a
-      >
+      >{{ link.label }}</a>
       }
       <app-navbar-icons [isCentered]="true" />
     </mat-expansion-panel>

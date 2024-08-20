@@ -1,25 +1,31 @@
-<li class="container container-space-between container-align-center">
-  <div>
-    <h3>{{ getGig.when }} ({{ getDay }})</h3>
-    <div>
-      @for (band of getGig.who; track $index) {
-      <span class="band">
-        {{ band }}
-      </span>
-      }
+<li class="container nowrap container-align-center">
+  <div class="container container-full container-space-between">
+    <div class="container container-align-center">
+      <app-data-badge
+        [day]="getDay"
+        [month]="getMonth"
+      />
+      <div class="container container-column padding">
+        <div>
+          @for (band of getGig.who; track $index) {
+          <span class="band">
+            {{ band | uppercase }}
+          </span>
+          }
+        </div>
+        <span class="address">
+          {{ getAddress }}
+        </span>
+      </div>
     </div>
-    <div>
-      <span class="address">
-        {{ getAddress }}
-      </span>
-    </div>
-    <div>
-      <span class="club">
+    <div class="container club container-align-center">
+      <span>
+        <i-bs [name]="getLocationIcon"></i-bs>
         {{ getClub }}
       </span>
     </div>
   </div>
-  <div class="container container-column">
+  <div class="container container-column buttons">
     <a
       [href]="getGig.link"
       mat-stroked-button
@@ -32,6 +38,7 @@
       color="accent"
     >TICKETS</a>
     }
+
   </div>
 </li>
 <mat-divider></mat-divider>

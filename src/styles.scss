@@ -124,10 +124,11 @@ body {
 
 .header-section {
   text-align: center;
+  line-height: normal;
   font-size: xx-large;
   letter-spacing: 16px;
   margin-bottom: 64px;
-  color: #ff2e2e;
+}
 
 .mat-divider.mat-divider-horizontal {
   border-color: $dark-primary-text;
@@ -145,4 +146,4 @@ body {
 
 .show {
   animation: show 1s normal 0s;
-  }
+}

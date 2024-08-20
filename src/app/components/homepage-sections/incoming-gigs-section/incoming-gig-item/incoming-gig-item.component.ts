@@ -1,33 +1,34 @@
 import { ChangeDetectionStrategy, Component, input, computed } from '@angular/core';
 import { IIncomingGig } from '../incoming-gigs-section.component';
+import { IconNamesEnum } from 'ngx-bootstrap-icons';
 
 export interface IGigItem extends Omit<IIncomingGig, "when"> {
   when: string;
 }
 
 enum DaysDictionary {
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
+  "Sun",
+  "Mon",
+  "Tues",
+  "Wed",
+  "Thurs",
+  "Fri",
+  "Sat",
 };
 
 enum MonthsDictionary {
-  "January",
-  "February",
-  "March",
-  "April",
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
   "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December"
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sept",
+  "Oct",
+  "Nov",
+  "Dec"
 }
 
 @Component({
@@ -44,16 +45,25 @@ export class IncomingGigItemComponent {
   }) as IGigItem
   );
   get getDay() {
-    return DaysDictionary[this.setIncomingGig().when.getDay()];
+    return this.setIncomingGig().when.getDate();
+  }
+  get getMonth() {
+    return MonthsDictionary[this.setIncomingGig().when.getMonth()];
   }
   get getGig() {
     return this.gig();
   }
-  get getAddress() {
+  get getCountry() {
     return `${this.gig()?.where.city}, ${this.gig()?.where.country}`;
   }
   get getClub() {
-    return `${this.gig()?.where.address}, ${this.gig()?.where.club}`;
+    return this.gig()?.where.club;
+  }
+  get getAddress() {
+    return this.gig()?.where.address;
+  }
+  get getLocationIcon() {
+    return IconNamesEnum.GeoAltFill;
   }
 
 }

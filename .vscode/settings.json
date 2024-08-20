@@ -7,5 +7,11 @@
     ],
     "karmaTestExplorer.enableExtension": true,
     "typescript.tsdk": "node_modules\\typescript\\lib",
-    "angular.forceStrictTemplates": false
+    "angular.forceStrictTemplates": false,
+    "angular-schematics.schematicsDefaultOptions": {
+        "angular-*": {
+            "externalTemplate": true,
+            "style": "scss"
+        }
+    }
 }
