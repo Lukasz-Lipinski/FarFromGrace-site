@@ -1,9 +1,9 @@
 <app-layout
-  [isBackground]="false"
-  [isFullsize]="false"
+  [isBackground]="true"
+  [isFullsize]="true"
   [pageisReadyToDisplay]="true"
 >
-  <div class="box show glass container container-column">
+  <div class="box show container container-column">
     <div class="box-inform">
       <h3>Contact Us!</h3>
       <p>
@@ -32,7 +32,7 @@
         }
       </div>
     </div>
-    <div class="box-form">
+    <div class="box-form container container-center">
       <app-contact-from (sendEmailEmitter)="onSend($event)" />
     </div>
   </div>

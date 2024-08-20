@@ -1,7 +1,7 @@
 <form
   [formGroup]="getContactForm"
   (ngSubmit)="onSendEmail()"
-  class="container container-column"
+  class="container glass-border"
 >
   @for (control of getFormControls; track $index) { @if (control !== "message")
   {

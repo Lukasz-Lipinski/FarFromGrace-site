@@ -26,7 +26,7 @@ export class LayoutComponent {
     return `${this.gap()}px`;
   };
   get getBackground() {
-    return this.isBackground() ? "glass glass-border" : "";
+    return this.isBackground() ? "glass" : "";
   }
   get getIsSidebar() {
     return this.isSidebar();
