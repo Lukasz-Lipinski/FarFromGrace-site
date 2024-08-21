@@ -1,23 +1,28 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ModalComponent } from "./modal.component";
+import { SharedModule } from "../../shared/shared.module";
+import { provideExperimentalZonelessChangeDetection } from "@angular/core";
 
-import { ModalComponent } from './modal.component';
-
-describe('ModalComponent', () => {
+describe('Testing Modal Component', () => {
   let component: ModalComponent;
   let fixture: ComponentFixture<ModalComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [ModalComponent]
-    })
-      .compileComponents();
-
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [ModalComponent],
+      imports: [SharedModule],
+      providers: [provideExperimentalZonelessChangeDetection()]
+    }).compileComponents();
     fixture = TestBed.createComponent(ModalComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+
+    fixture.componentRef.changeDetectorRef.markForCheck();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('DOM tests', () => {
+    it('should create', () => {
+      expect(component).toBeTruthy();
+    });
   });
+  describe('Class tests', () => { });
 });

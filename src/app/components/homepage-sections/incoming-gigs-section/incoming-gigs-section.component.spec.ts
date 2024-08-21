@@ -41,7 +41,7 @@ describe("Testing Incoming Gigs Section Component", () => {
     it("Renders header with text 'Incoming gigs'", () => {
       const mockTitle = "Incoming gigs";
       const header = fixture.debugElement.query(By.css("h2")).nativeElement as HTMLHeadingElement;
-      expect(header.textContent?.trim()).toEqual(mockTitle);
+      expect(header.textContent?.trim()).toEqual(mockTitle.toUpperCase());
     });
     it("Renders mocked elements", () => {
       fixture.componentRef.setInput("SetIncomingGigs", mockGigs);

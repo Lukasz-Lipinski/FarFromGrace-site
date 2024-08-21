@@ -15,6 +15,9 @@ export class ModalComponent {
     return `${this.selectedMusican()!.name} ${this.selectedMusican()!.surname}`;
   }
   isShown = computed<boolean>(() => !!this.selectedMusican());
+  get getIsShown() {
+    return this.isShown();
+  }
   private comuptedHeight = computed(
     () => this.isShown() ? `${window.scrollY}px` : "0px"
   );

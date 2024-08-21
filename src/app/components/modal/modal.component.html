@@ -1,4 +1,4 @@
-@if(isShown()) {
+@if(getIsShown) {
 <div
   class="modal"
   [ngStyle]="{
@@ -12,7 +12,11 @@
   >
     <div class="modal-container-header">
       <h2>{{ getFullname }}</h2>
-      <button mat-flat-button color="warn" (click)="onClose()">X</button>
+      <button
+        mat-flat-button
+        color="warn"
+        (click)="onClose()"
+      >X</button>
     </div>
     <div class="modal-container-content">
       <ng-content></ng-content>
