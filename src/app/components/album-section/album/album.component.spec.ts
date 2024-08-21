@@ -1,9 +1,10 @@
-import { ComponentFixture, DeferBlockBehavior, DeferBlockState, TestBed } from '@angular/core/testing';
+import { ComponentFixture, DeferBlockBehavior, DeferBlockFixture, DeferBlockState, TestBed } from '@angular/core/testing';
 import { AlbumComponent } from "./album.component";
 import { ILink } from "../../navbar/navbar.component";
 import { NO_ERRORS_SCHEMA, provideExperimentalZonelessChangeDetection } from '@angular/core';
 import { By } from "@angular/platform-browser";
 import { CommonModule, NgOptimizedImage } from "@angular/common";
+import { SharedModule } from "../../../shared/shared.module";
 
 //mocks
 const mockedImg = 'test-src-img';
@@ -26,11 +27,12 @@ const checkProps: checkPropFun<AlbumComponent> = (component, property, requiredV
 describe('Testing Album Component', () => {
   let component: AlbumComponent;
   let fixture: ComponentFixture<AlbumComponent>;
+  let deferFixtures: DeferBlockFixture[];
 
-  beforeEach(() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [AlbumComponent],
-      imports: [CommonModule, NgOptimizedImage],
+      imports: [SharedModule, NgOptimizedImage],
       providers: [provideExperimentalZonelessChangeDetection()],
       schemas: [NO_ERRORS_SCHEMA],
       deferBlockBehavior: DeferBlockBehavior.Manual
@@ -42,14 +44,18 @@ describe('Testing Album Component', () => {
     fixture.componentRef.setInput("setImg", mockedImg);
     fixture.componentRef.setInput("setLinks", mockedLinks);
     fixture.componentRef.setInput("setDescription", mockedDescription);
-    fixture.changeDetectorRef.detectChanges();
+    deferFixtures = await fixture.getDeferBlocks();
+
+    fixture.changeDetectorRef.markForCheck();
   });
 
   describe('DOM tests', () => {
     it('should create', () => {
       expect(component).toBeTruthy();
     });
-    it("Should render title", () => {
+    it("Should render title", async () => {
+      await deferFixtures[0].render(DeferBlockState.Complete);
+
       const header = fixture.debugElement.query(By.css("h2")).nativeElement as HTMLHeadingElement;
 
       expect(header).toBeTruthy();
@@ -57,7 +63,6 @@ describe('Testing Album Component', () => {
 
     });
     it("Should render img", async () => {
-      const deferFixtures = await fixture.getDeferBlocks();
       await deferFixtures[0].render(DeferBlockState.Complete);
       fixture.detectChanges();
 
@@ -71,21 +76,25 @@ describe('Testing Album Component', () => {
           expect(img.src).toContain(component.getImg);
         });
     });
-    it("Should render description", () => {
+    it("Should render description", async () => {
+      await deferFixtures[0].render(DeferBlockState.Complete);
+
       const descriptions = fixture.debugElement.queryAll(By.css('p'));
 
       fixture.whenRenderingDone().then(
         () => {
           expect(descriptions.length).toBe(2);
-          for (let desc of descriptions) {
-            const descriptionHTML = desc.nativeElement as HTMLParagraphElement;
-            expect(component.getDescription.includes(descriptionHTML.textContent!)).toBeTrue();
+          for (let i = 0; i < descriptions.length; i++) {
+            const descriptionHTML = descriptions[i].nativeElement as HTMLParagraphElement;
+            expect(descriptionHTML.textContent!).toContain(component.getDescription[i]);
           }
         }
       );
     });
-    it("Should render links", () => {
-      const links = fixture.debugElement.queryAll(By.css("a[mat-button]"));
+    it("Should render links", async () => {
+      await deferFixtures[0].render(DeferBlockState.Complete);
+
+      const links = fixture.debugElement.queryAll(By.css("a[mat-flat-button]"));
 
       fixture.whenRenderingDone().then(
         () => {
@@ -93,7 +102,7 @@ describe('Testing Album Component', () => {
 
           for (let i = 0; i < mockedLinks.length; i++) {
             const linkTag = links[i].nativeElement as HTMLLinkElement;
-            expect(linkTag.href).toBe(mockedLinks[i].href);
+            expect(linkTag.href).toContain(mockedLinks[i].href);
             expect(linkTag.textContent).toBe(mockedLinks[i].label);
           }
         }

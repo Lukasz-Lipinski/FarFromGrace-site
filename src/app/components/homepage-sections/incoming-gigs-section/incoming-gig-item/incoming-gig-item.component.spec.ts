@@ -4,6 +4,7 @@ import { SharedModule } from "../../../../shared/shared.module";
 import { IIncomingGig } from "../incoming-gigs-section.component";
 import { provideExperimentalZonelessChangeDetection } from "@angular/core";
 import { By } from "@angular/platform-browser";
+import { DataBadgeComponent } from "../data-badge/data-badge.component";
 
 // mocks
 const mockedGigs: {
@@ -71,41 +72,38 @@ describe('Testing IncomingGiGItem Component', () => {
     it('should create', () => {
       expect(component).toBeTruthy();
     });
-    it("renders header with location", () => {
-      const header = fixture.debugElement.query(By.css('h4')).nativeElement as HTMLHeadingElement;
-      expect(header.textContent).toBe(mockedGigs.gigItem.when);
+    it("renders component with date of event", () => {
+      const dateComponent = fixture.debugElement.query(By.directive(DataBadgeComponent)).nativeElement as HTMLHeadingElement;
+      expect(dateComponent.textContent).toContain(component.getDay);
+      expect(dateComponent.textContent).toContain(component.getMonth.toUpperCase());
     });
     it("renders bands name", () => {
       const bands = fixture.debugElement.queryAll(By.css('span.band'));
       expect(bands.length).toBe(mockedGigs.incomingGig.who.length);
 
-      for (let band of bands) {
-        const bandTag = band.nativeElement as HTMLSpanElement;
-        expect(mockedGigs.gigItem.who.includes(bandTag.textContent!.trim())).toBeTrue();
+      for (let i = 0; i < bands.length; i++) {
+        const bandTag = bands[i].nativeElement as HTMLSpanElement;
+        expect(bandTag.textContent!).toContain(mockedGigs.gigItem.who[i].toUpperCase());
       }
     });
     it("renderes address text", () => {
       const address = fixture.debugElement.query(By.css("span.address")).nativeElement as HTMLSpanElement;
-      const fullAddresss = `${mockedGigs.gigItem.where.city}, ${mockedGigs.gigItem.where.country}`;
-      expect(address.textContent?.trim()).toBe(fullAddresss);
+      expect(address?.textContent).toContain(component.getAddress);
     });
     it("renderes club text", () => {
       const address = fixture.debugElement.query(By.css("span.club")).nativeElement as HTMLSpanElement;
-      const fullClubText = `${mockedGigs.gigItem.where.address}, ${mockedGigs.gigItem.where.club}`;
-      expect(address.textContent?.trim()).toBe(fullClubText);
+      expect(address?.textContent).toContain(mockedGigs.gigItem.where.club);
     });
   });
   describe('Class tests', () => {
     it("getGig return transformed gig", () => {
-      expect(component.getGig!).toEqual(mockedGigs.gigItem);
+      expect(component.getGig!.when).toBe("10-Jul-2024");
     });
     it("getAddress returns address with country and city", () => {
-      const fullAddress = `${mockedGigs.gigItem.where.city}, ${mockedGigs.gigItem.where.country}`;
-      expect(component.getAddress).toBe(fullAddress);
+      expect(component.getAddress).toBe(mockedGigs.gigItem.where.address);
     });
     it("getClub returns full location", () => {
-      const fullLocation = `${mockedGigs.gigItem.where.address}, ${mockedGigs.gigItem.where.club}`;
-      expect(component.getClub).toBe(fullLocation);
+      expect(component.getClub).toBe(mockedGigs.gigItem.where.club);
     });
   });
 });

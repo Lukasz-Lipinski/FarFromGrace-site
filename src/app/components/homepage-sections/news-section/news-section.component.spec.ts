@@ -33,7 +33,7 @@ describe('Testing NewSection Component', () => {
     it("renders header with title", () => {
       const header = fixture.debugElement.query(By.css("h2")).nativeElement as HTMLHeadingElement;
 
-      expect(header.textContent).toContain("News");
+      expect(header.textContent).toContain("NEWS");
     });
     it("renders 3 mocked news", () => {
       const news = fixture.debugElement.queryAll(By.css("p"));
