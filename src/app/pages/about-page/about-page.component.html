@@ -43,7 +43,10 @@
   </div>
 </app-layout>
 
-<app-modal [selectedMusican]="getSelectedMusician">
+<app-modal
+  [selectedMusician]="getSelectedMusician()"
+  (unselectMusician)="onselectMusician()"
+>
   @if (getSelectedMusician()) {
   <app-musician-details [musicianDetails]="getSelectedMusician()" />
   }

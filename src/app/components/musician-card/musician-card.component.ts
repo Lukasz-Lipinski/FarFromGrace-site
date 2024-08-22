@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, Input, output } from '@angular/core';
 import { Role, IMusican, IEquipmentItem } from '../../services/content/content.service';
 
 @Component({
@@ -9,106 +9,60 @@ import { Role, IMusican, IEquipmentItem } from '../../services/content/content.s
 })
 export class MusicianCardComponent {
   musicianDataEmitter = output<IMusican>();
-  private name!: string;
   get GetName() {
-    return this.name;
+    return this.SetName();
   };
-  @Input({
-    required: true
-  }) set SetName(value: string) {
-    this.name = value;
-  };
-  private surname!: string;
+  readonly SetName = input.required<string>();
+
   get GetSurname() {
-    return this.surname;
+    return this.SetSurname();
   };
-  @Input({
-    required: true
-  }) set SetSurname(value: string) {
-    this.surname = value;
-  };
-  private nick!: string;
+  readonly SetSurname = input.required<string>();
   get GetNick() {
-    return this.nick;
+    return this.SetNick();
   };
-  @Input({
-    required: true
-  }) set SetNick(value: string) {
-    this.nick = value;
-  }
-  private imageMain!: string;
+  readonly SetNick = input.required<string>();
   get GetImageMain() {
-    return this.imageMain;
+    return this.SetImageMain();
   };
-  @Input({
-    required: true
-  }) set SetImageMain(value: string) {
-    this.imageMain = value;
-  };
-  private imageAvatar!: string;
+  readonly SetImageMain = input.required<string>();
   get GetImageAvatar() {
-    return this.imageAvatar;
+    return this.SetImageAvatar();
   };
-  @Input({
-    required: true
-  }) set SetImageAvatar(value: string) {
-    this.imageAvatar = value;
-  };
-  private role!: Role;
+  readonly SetImageAvatar = input.required<string>();
   get GetRole() {
-    return this.role;
+    return this.SetRole();
   };
-  @Input({
-    required: true
-  }) set SetRole(value: Role) {
-    this.role = value;
-  }
-  private imgPosition!: "left" | "right";
+  readonly SetRole = input.required<Role>();
   get GetImgPosition() {
-    return this.imgPosition;
+    return this.SetImgPosition();
   };
-  @Input({
-    required: true
-  }) set SetImgPosition(value: "left" | "right") {
-    this.imgPosition = value;
-  };
-  private description!: string[];
+  readonly SetImgPosition = input.required<"left" | "right">();
   get GetDescription() {
-    return this.description;
+    return this.SetDescription();
   };
-  @Input({
-    required: true
-  }) set SetDescription(value: string[]) {
-    this.description = value;
-  };
-  private equipment!: IEquipmentItem[];
+  readonly SetDescription = input.required<string[]>();
   get getEquipment() {
-    return this.equipment;
+    return this.SetEquipment();
   };
-  @Input({
-    required: true
-  }) set SetEquipment(value: IEquipmentItem[]) {
-    this.equipment = value;
-  }
-  private instagram!: string;
-  @Input({
-    required: true
-  }) set SetInstagram(value: string) {
-    this.instagram = value;
+  readonly SetEquipment = input.required<IEquipmentItem[]>();
+  readonly SetInstagram = input.required<string>();
+  get getInstagram() {
+    return this.SetInstagram();
   }
 
   public showDetails() {
     const musicianData: IMusican = {
-      name: this.name,
-      surname: this.surname,
-      nick: this.nick,
-      imgAvatar: this.imageAvatar,
-      imgMain: this.imageMain,
-      role: this.role,
-      imgPosition: this.imgPosition,
-      description: this.description,
-      equipment: this.equipment,
-      instagram: this.instagram,
+      name: this.GetName,
+      surname: this.GetSurname,
+      nick: this.GetNick,
+      imgAvatar: this.GetImageAvatar,
+      imgMain: this.GetImageMain,
+      role: this.GetRole,
+      imgPosition: this.GetImgPosition,
+      description: this.GetDescription,
+      equipment: this.getEquipment,
+      instagram: this.getInstagram,
     };
     this.musicianDataEmitter.emit(musicianData);
   }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, computed, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, computed, input, output, signal } from '@angular/core';
 import { IMusican } from "../../services/content/content.service";
 
 @Component({
@@ -8,16 +8,22 @@ import { IMusican } from "../../services/content/content.service";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ModalComponent {
-  @Input({
-    required: true,
-  }) selectedMusican = signal<IMusican | null>(null);
-  get getFullname() {
-    return `${this.selectedMusican()!.name} ${this.selectedMusican()!.surname}`;
+  readonly selectedMusician = input<IMusican | null>(null);
+  unselectMusician = output();
+
+  get getMusician() {
+    return this.selectedMusician();
   }
-  isShown = computed<boolean>(() => !!this.selectedMusican());
+
+  get getFullname() {
+    return `${this.selectedMusician()!.name} ${this.selectedMusician()!.surname}`;
+  }
+
+  private isShown = computed<boolean>(() => !!this.selectedMusician());
   get getIsShown() {
     return this.isShown();
   }
+
   private comuptedHeight = computed(
     () => this.isShown() ? `${window.scrollY}px` : "0px"
   );
@@ -26,7 +32,7 @@ export class ModalComponent {
   }
 
   onClose() {
-    this.selectedMusican.set(null);
+    this.unselectMusician.emit();
   }
   onBlockClosing(event: MouseEvent) {
     event.stopPropagation();
