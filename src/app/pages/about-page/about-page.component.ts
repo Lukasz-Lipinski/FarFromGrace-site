@@ -45,6 +45,9 @@ export class AboutPageComponent {
   get getSelectedMusician() {
     return this.selectedMusician;
   }
+  onselectMusician() {
+    this.selectedMusician.set(null);
+  }
 
   showDialogWithData($event: IMusican) {
     this.selectedMusician.set($event);
