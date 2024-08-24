@@ -8,6 +8,11 @@ h2 {
         min-width: 256px;
     }
 }
+@media only screen and (max-width: 520px) {
+  .allMembersImg {
+      max-height: 317px;
+    }
+}
 
 @media only screen and (min-width: 781px) and (max-width: 1400px) {
     .allMembersImg {
@@ -17,7 +22,6 @@ h2 {
 
 p {
     text-align: justify;
-    // padding: 6px 14px;
 
     @media only screen and (max-width: 1200px) {
         padding: 0;
@@ -27,7 +31,8 @@ p {
 
 .allMembersImg {
     position: relative;
-    width: 720px;
+    max-width: 720px;
+    width: 100%;
     height: 481px;
 }
 
@@ -36,7 +41,9 @@ p {
 }
 
 .pb {
-    padding-top: 8px;
+    padding-block: 48px;
+    font-size: large;
+    font-weight: 300;
 }
 
 .container {
@@ -45,10 +52,3 @@ p {
     }
 }
 
-app-layout {
-    width: 100%;
-
-    @media only screen and (min-width: 1400px) {
-        width: 80%;
-    }
-}

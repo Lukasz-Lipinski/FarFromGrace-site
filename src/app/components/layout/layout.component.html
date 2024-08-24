@@ -5,10 +5,7 @@
   [style.--gapValue]="getGap"
 >
   <ng-content select="[Sidebar]"></ng-content>
-  <div
-    [ngClass]="getBackground"
-    class="show box"
-  >
+  <div [ngClass]="getBackground" class="show box content">
     <ng-content select="[Content]"></ng-content>
   </div>
 </div>
@@ -18,15 +15,14 @@
   [ngClass]="getBackground"
 >
   <div
-    class="box show"
+    class="box show content"
     [ngClass]="getClassOptions"
     [style.gap]="getGap"
   >
     <ng-content></ng-content>
   </div>
 </div>
-}
-} @loading {
+} } @loading {
 <app-spinner />
 } @placeholder {
 <app-content-loader />
