@@ -17,7 +17,8 @@ export default [
     imgMain: "",
     imgPosition: "left",
     role: "Drummer",
-    surname: "Test Surname"
+    surname: "Test Surname",
+    instagram: "test-instragram"
   }
 ] as IMusican[];
 

@@ -5,7 +5,8 @@ import { NavbarLogoComponent } from './navbar-logo.component';
 import { By } from '@angular/platform-browser';
 import { provideRouter, Router, RouterModule } from '@angular/router';
 import { routes } from "../../app.routes";
-import { NO_ERRORS_SCHEMA } from "@angular/core";
+import { NO_ERRORS_SCHEMA, provideExperimentalZonelessChangeDetection } from "@angular/core";
+import { SharedModule } from "../../shared/shared.module";
 
 describe('NavbarLogoComponent', () => {
   let component: NavbarLogoComponent;
@@ -15,12 +16,13 @@ describe('NavbarLogoComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [NavbarLogoComponent],
+      imports: [SharedModule],
       providers: [
-        provideRouter(routes)
+        provideRouter(routes),
+        provideExperimentalZonelessChangeDetection()
       ],
       schemas: [NO_ERRORS_SCHEMA]
-    })
-      .compileComponents();
+    }).compileComponents();
     fixture = TestBed.createComponent(NavbarLogoComponent);
     component = fixture.componentInstance;
     router = TestBed.inject(Router);
@@ -42,7 +44,7 @@ describe('NavbarLogoComponent', () => {
       const img = link.querySelector("img");
       expect(link.getAttribute("routerLink")).toEqual('/');
       expect(img).toBeDefined();
-      expect(img?.src).toMatch("navbar-logo.svg");
+      expect(img?.src).toContain("navbar-logo.svg");
     });
 
     it("Should invoked router if img was clicked", () => {
@@ -59,6 +61,14 @@ describe('NavbarLogoComponent', () => {
         expect(router.navigated).toBeTrue();
         expect(window.location.pathname).toMatch(mockedUrl);
       });
+    });
+
+    it("stop propagination is being invoked using onClick", () => {
+      const mouseEvent = new MouseEvent("click");
+      const spyOnMouseEvent = spyOn(mouseEvent, "stopPropagation");
+
+      component.onClick(mouseEvent);
+      expect(spyOnMouseEvent).toHaveBeenCalled();
     });
   });
 });
