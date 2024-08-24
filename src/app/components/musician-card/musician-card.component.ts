@@ -42,12 +42,12 @@ export class MusicianCardComponent {
     return this.SetDescription();
   };
   readonly SetDescription = input.required<string[]>();
-  get getEquipment() {
+  get GetEquipment() {
     return this.SetEquipment();
   };
   readonly SetEquipment = input.required<IEquipmentItem[]>();
   readonly SetInstagram = input.required<string>();
-  get getInstagram() {
+  get GetInstagram() {
     return this.SetInstagram();
   }
 
@@ -61,8 +61,8 @@ export class MusicianCardComponent {
       role: this.GetRole,
       imgPosition: this.GetImgPosition,
       description: this.GetDescription,
-      equipment: this.getEquipment,
-      instagram: this.getInstagram,
+      equipment: this.GetEquipment,
+      instagram: this.GetInstagram,
     };
     this.musicianDataEmitter.emit(musicianData);
   }

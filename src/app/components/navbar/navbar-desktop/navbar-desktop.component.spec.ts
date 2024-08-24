@@ -1,13 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { NO_ERRORS_SCHEMA, provideExperimentalZonelessChangeDetection } from '@angular/core';
 
 import { NavbarDesktopComponent } from './navbar-desktop.component';
 import { NavbarLogoComponent } from "../../navbar-logo/navbar-logo.component";
 import { NavbarIconsComponent } from "../../navbar-icons/navbar-icons.component";
 import { SharedModule } from "../../../shared/shared.module";
+import { ILink } from "../navbar.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { provideRouter } from "@angular/router";
+import { routes } from "../../../app.routes";
 
-const mockedLinks = [
+const mockedLinks: ILink[] = [
   {
     href: "link-test-1",
     label: "link-test-1"
@@ -33,7 +37,8 @@ describe('NavbarDesktopComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [NavbarDesktopComponent],
-      imports: [SharedModule],
+      imports: [SharedModule, BrowserAnimationsModule],
+      providers: [provideExperimentalZonelessChangeDetection(), provideRouter(routes)],
       schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
 
@@ -45,7 +50,7 @@ describe('NavbarDesktopComponent', () => {
 
   describe("DOM Tests", () => {
     it("renders links", () => {
-      const links = fixture.debugElement.queryAll(By.directive(HTMLLinkElement));
+      const links = fixture.debugElement.queryAll(By.css("a[mat-button]"));
       expect(links.length).toEqual(component.getLinks.length);
     });
     it("renders logo component", () => {
@@ -54,8 +59,9 @@ describe('NavbarDesktopComponent', () => {
       expect(logo).toBeDefined();
     });
     it("renders icons", () => {
-      const icons = fixture.debugElement.queryAll(By.directive(NavbarIconsComponent)).length;
-      expect(icons).toEqual(4);
+      const icons = fixture.debugElement.query(By.directive(NavbarIconsComponent)).nativeElement as HTMLDivElement;
+      expect(icons).toBeDefined();
+      expect(icons.querySelectorAll("a").length).toBe(4);
 
     });
   });

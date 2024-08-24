@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NavbarIconsComponent } from './navbar-icons.component';
 import { By } from '@angular/platform-browser';
 import { SharedModule } from '../../shared/shared.module';
+import { NO_ERRORS_SCHEMA, provideExperimentalZonelessChangeDetection } from "@angular/core";
 
 describe('NavbarIconsComponent', () => {
   let component: NavbarIconsComponent;
@@ -11,7 +12,9 @@ describe('NavbarIconsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [NavbarIconsComponent],
-      imports: [SharedModule]
+      imports: [SharedModule],
+      providers: [provideExperimentalZonelessChangeDetection()],
+      schemas: [NO_ERRORS_SCHEMA],
     })
       .compileComponents();
 
@@ -27,7 +30,7 @@ describe('NavbarIconsComponent', () => {
     it("returns labels for links", () => {
       const links = fixture.debugElement.queryAll(By.css("a")).length;
 
-    })
+    });
   });
 
   describe("Class tests", () => {
@@ -41,6 +44,6 @@ describe('NavbarIconsComponent', () => {
       for (let i = 0; i < links.length; i++) {
         expect(links[i].name).toBe(component.getIcons[i].name);
       }
-    })
-  })
+    });
+  });
 });
