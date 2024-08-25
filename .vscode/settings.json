@@ -13,5 +13,6 @@
             "externalTemplate": true,
             "style": "scss"
         }
-    }
+    },
+    "html-to-css-autocompletion.autocompletionFilesScope": "linked-files"
 }
