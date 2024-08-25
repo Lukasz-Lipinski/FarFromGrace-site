@@ -6,6 +6,8 @@ export interface ILinkWithIcon {
   href: string;
 }
 
+export type TypeIconSize = "medium" | "large" | "small";
+
 @Component({
   selector: 'app-navbar-icons',
   templateUrl: './navbar-icons.component.html',
@@ -14,6 +16,10 @@ export interface ILinkWithIcon {
 })
 export class NavbarIconsComponent {
   isCentered = input<boolean>(false);
+  iconSize = input<TypeIconSize>("medium");
+  get getIconSize() {
+    return this.iconSize();
+  }
 
   private icons: ILinkWithIcon[] = [
     {

@@ -5,12 +5,7 @@
 >
   <div class="container container-column container-column-center gap">
     <div class="allMembersImg">
-      <img
-        [ngSrc]="getPicture"
-        fill
-        priority
-        style="height: auto"
-      />
+      <img [ngSrc]="getPicture" fill priority style="height: auto" />
     </div>
 
     <div class="pb">
@@ -22,7 +17,7 @@
     </div>
   </div>
   <div class="container container-column container-column-center">
-    <h2 class="header-section">Far From Grace Squad</h2>
+    <h2 class="header-section animation_lights">Far From Grace Squad</h2>
     <div class="container container-center">
       @for (musician of getMusiciansData; track $index) {
       <app-musician-card

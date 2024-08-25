@@ -5,8 +5,13 @@ $dark-secondary-text2: #625E5D;
 $background: hsl(258, 14%, 14%);
 $glass-background: hsla(258, 14%, 14%, 0.96);
 
+// buttons
+$hoverButtonText: #a37e42;
+
 $ffg-card-size: 200px;
 $ffg-card-musician-background: #ff7a7a;
+
+$ffg-neon: #8a1c20;
 
 //primary color
 $md-ffgpallete: (
@@ -56,7 +61,7 @@ $md-ffgwarn: (
     A100 : #faefd3,
     A200 : #f2d997,
     A400 : #ebc363,
-    A700 : #e0a93c,
+    A700 : #a37e42,
     contrast: (50: $background,
         100: $background,
         200: $background,
