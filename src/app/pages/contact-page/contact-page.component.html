@@ -5,16 +5,18 @@
 >
   <div class="box show container container-column">
     <div class="box-inform">
-      <h3>Contact Us!</h3>
+      <h3>{{ getTranslations['header'] | uppercase}}</h3>
       <p>
-        Have a question about gigs, tours, merch, or anything else? <br /> Please use
-        our contact form to reach out. We're eager to hear from you!
+      {{ getTranslations['paragraph_1'] }}
+      <br />
+      {{ getTranslations['paragraph_2'] }}
       </p>
       <p class="email-info">
-        You can also write to us using our email: <br />
-        <em>officialfarfromgrace&#64;gmail.com</em>
+        {{getTranslations['email_info']}}
       </p>
-      <p>or contact by social media:</p>
+      <p>
+        {{getTranslations['social_media_contact']}} <em>officialfarfromgrace&#64;gmail.com</em>
+      </p>
       <div class="container center">
         @for (icon of getLinks; track $index) {
         <a
@@ -33,7 +35,7 @@
       </div>
     </div>
     <div class="box-form container container-center">
-      <app-contact-from (sendEmailEmitter)="onSend($event)" />
+      <app-contact-from (sendEmailEmitter)="onSend($event)"  />
     </div>
   </div>
 </app-layout>

@@ -4,11 +4,11 @@
   [pageisReadyToDisplay]="pageIsReadyToDispaly"
 >
   @if (getNews.length) {
-  <app-news-section [SetNews]="getNews" />
+  <app-news-section [SetNews]="getNews" [header]="getTranslations['news']" />
   } @else {
   <h2>No news added</h2>
   } @if (getGigs.length) {
-  <app-incoming-gigs-section [SetIncomingGigs]="getGigs" />
+  <app-incoming-gigs-section [SetIncomingGigs]="getGigs" [header]="getTranslations['incoming_gigs']" [ticketsButtonLabel]="getTranslations['tickets']" />
   } @else {
   <h2>No gigs are currently planned</h2>
   }

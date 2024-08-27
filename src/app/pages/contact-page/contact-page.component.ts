@@ -1,25 +1,32 @@
-import { ChangeDetectionStrategy, Component, EnvironmentInjector, Inject, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { SharedModule } from '../../shared/shared.module';
-import { ContentService, IEmailData } from '../../services/content/content.service';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+} from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { SharedModule } from "../../shared/shared.module";
+import {
+  ContentService,
+  IEmailData,
+} from "../../services/content/content.service";
 import { IconNamesEnum } from "ngx-bootstrap-icons";
-import { ILinkWithIcon } from '../../components/navbar-icons/navbar-icons.component';
+import { ILinkWithIcon } from "../../components/navbar-icons/navbar-icons.component";
 
 interface IContactLink extends ILinkWithIcon {
   label: string;
-};
+}
 
 @Component({
-  selector: 'app-contact-page',
+  selector: "app-contact-page",
   standalone: true,
-  imports: [CommonModule, SharedModule,],
-  templateUrl: './contact-page.component.html',
-  styleUrl: './contact-page.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  imports: [CommonModule, SharedModule],
+  templateUrl: "./contact-page.component.html",
+  styleUrl: "./contact-page.component.scss",
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContactPageComponent {
   private readonly contentService = inject(ContentService);
-
   private links: IContactLink[] = [
     {
       label: "Facebook",
@@ -39,5 +46,9 @@ export class ContactPageComponent {
 
   onSend(emailData: IEmailData) {
     this.contentService.sendEmail(emailData);
+  }
+
+  get getTranslations() {
+    return this.contentService.translations()!.contactpage;
   }
 }

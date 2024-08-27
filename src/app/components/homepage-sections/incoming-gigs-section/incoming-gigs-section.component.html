@@ -1,9 +1,9 @@
 <div class="homepage-section">
-  <h2 class="header-section animation_glow">INCOMING GIGS</h2>
+  <h2 class="header-section animation_glow">{{ getHeader | uppercase }}</h2>
   <ul class="content">
     <mat-divider></mat-divider>
     @for (incomingGig of getIncomingGigs; track $index) {
-    <app-incoming-gig-item [setIncomingGig]="incomingGig" />
+    <app-incoming-gig-item [setIncomingGig]="incomingGig" [ticketsButtonLabel]="getTicketsButtonLabel" />
     }
   </ul>
 </div>
