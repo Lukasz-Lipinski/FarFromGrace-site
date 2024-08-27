@@ -1,6 +1,6 @@
 <li class="container nowrap container-align-center">
-  <div class="container container-full container-space-between">
-    <div class="container container-align-center">
+  <div class="container container-full container-space-between nowrap">
+    <div class="container container-align-center nowrap">
       <app-data-badge
         [day]="getDay"
         [month]="getMonth"
@@ -36,7 +36,9 @@
       [href]="getGig.ticketsLink"
       mat-stroked-button
       color="accent"
-    >TICKETS</a>
+    >
+      {{ getTicketsButtonLabel | uppercase }}
+  </a>
     }
 
   </div>

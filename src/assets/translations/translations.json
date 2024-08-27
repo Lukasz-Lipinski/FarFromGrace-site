@@ -1,0 +1,42 @@
+{
+  "eng": {
+    "contactpage": {
+      "paragraph_1": "Have a question about gigs, tours, merch, or anything else?",
+      "paragraph_2": "Please use our contact form to reach out. We're eager to hear from you!",
+      "email_info": "You can also write to us using our email:",
+      "social_media_contanct": "or contact by social media:",
+      "header": "Contact Us!",
+      "form": {
+        "name": "Name",
+        "subject": "Subject",
+        "message": "Message",
+        "sendButton": "Send"
+      }
+    },
+    "homepage": {
+      "news": "news",
+      "incoming_gigs": "incoming gigs",
+      "tickets": "tickets"
+    }
+  },
+  "pl": {
+    "contactpage": {
+      "paragraph_1": "Masz pytania o gig, trasę, merch, lub coś innego?",
+      "paragraph_2": "Użyj naszego formularza, aby z nami się skontaktować!",
+      "email_info": "Możesz napisać do nas przez adres email: ",
+      "social_media_contanct": "lub skontaktuj się przez social media:",
+      "header": "Napisz do nas!",
+      "form": {
+        "name": "Imię",
+        "subject": "Temat",
+        "message": "Wiadomość",
+        "sendButton": "Wyślij"
+      }
+    },
+    "homepage": {
+      "news": "nowości",
+      "incoming_gigs": "nadchodzące wydarzenia",
+      "tickets": "bilety"
+    }
+  }
+}

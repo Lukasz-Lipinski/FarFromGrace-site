@@ -1,5 +1,5 @@
 <div class="homepage-section">
-  <h2 class="header-section animation_glow">NEWS</h2>
+  <h2 class="header-section animation_glow">{{ getHeader | uppercase }}</h2>
   <div class="container container-column">
     @for (p of getNews; track $index) {
     <p>{{ p }}</p>

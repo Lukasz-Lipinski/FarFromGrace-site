@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from "@angular/core";
 
 export interface IIncomingGig {
   where: {
@@ -15,14 +15,22 @@ export interface IIncomingGig {
 }
 
 @Component({
-  selector: 'app-incoming-gigs-section',
-  templateUrl: './incoming-gigs-section.component.html',
-  styleUrls: ['./incoming-gigs-section.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  selector: "app-incoming-gigs-section",
+  templateUrl: "./incoming-gigs-section.component.html",
+  styleUrls: ["./incoming-gigs-section.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IncomingGigsSectionComponent {
   public SetIncomingGigs = input<IIncomingGig[]>([]);
   public get getIncomingGigs() {
     return this.SetIncomingGigs();
-  };
+  }
+  readonly header = input.required<string>();
+  get getHeader() {
+    return this.header();
+  }
+  readonly ticketsButtonLabel = input.required<string>();
+  get getTicketsButtonLabel() {
+    return this.ticketsButtonLabel();
+  }
 }

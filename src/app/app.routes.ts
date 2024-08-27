@@ -1,63 +1,48 @@
-import { ResolveFn, Routes } from '@angular/router';
-import { IIncomingGig } from './components/homepage-sections/incoming-gigs-section/incoming-gigs-section.component';
-import { inject } from '@angular/core';
-import { ContentService, IAboutpageBackendData } from './services/content/content.service';
-import { map } from 'rxjs';
-import { IAlbum } from "./components/album-section/album-section.component";
-
-const HomepageResolver: ResolveFn<{ gigs: IIncomingGig[], news: string[]; }> = () => {
-  const content = inject(ContentService);
-
-  return content.getHomePageContent().pipe(
-    map((homepageData) => ({
-      gigs: homepageData[0].gigs ?? [],
-      news: homepageData[0].news ?? []
-    }))
-  );
-};
-
-const AboutpageResolver: ResolveFn<IAboutpageBackendData> = () => {
-  const content = inject(ContentService);
-
-  return content.getAboutPageContent().pipe(
-    map((data) => data[0])
-  );
-};
-
-const DiscographyResolver: ResolveFn<[IAlbum[], IAlbum[]]> = () => {
-  const content = inject(ContentService);
-
-  return content.getDiscographyContent();
-};
+import { Routes } from "@angular/router";
+import { HomepageResolver } from "./services/resolvers/homepage.resolver";
+import { AboutpageResolver } from "./services/resolvers/aboutpage.resolver";
+import { DiscographyResolver } from "./services/resolvers/discography.resolver";
 
 export const routes: Routes = [
   {
-    path: '',
-    loadComponent: () => import("./pages/home-page/home-page.component").then(m => m.HomePageComponent),
+    path: "",
+    loadComponent: () =>
+      import("./pages/home-page/home-page.component").then(
+        (m) => m.HomePageComponent
+      ),
     resolve: {
       gigsAndNews: HomepageResolver,
-    }
+    },
   },
   {
-    path: 'discography',
-    loadComponent: () => import("./pages/discography-page/discography-page.component").then(m => m.DiscographyPageComponent),
+    path: "discography",
+    loadComponent: () =>
+      import("./pages/discography-page/discography-page.component").then(
+        (m) => m.DiscographyPageComponent
+      ),
     resolve: {
       discography: DiscographyResolver,
-    }
+    },
   },
   {
-    path: 'about',
-    loadComponent: () => import("./pages/about-page/about-page.component").then(m => m.AboutPageComponent),
+    path: "about",
+    loadComponent: () =>
+      import("./pages/about-page/about-page.component").then(
+        (m) => m.AboutPageComponent
+      ),
     resolve: {
-      about: AboutpageResolver
-    }
+      about: AboutpageResolver,
+    },
   },
   {
-    path: 'contact',
-    loadComponent: () => import("./pages/contact-page/contact-page.component").then(m => m.ContactPageComponent)
+    path: "contact",
+    loadComponent: () =>
+      import("./pages/contact-page/contact-page.component").then(
+        (m) => m.ContactPageComponent
+      ),
   },
   {
-    path: '**',
-    redirectTo: '',
-  }
+    path: "**",
+    redirectTo: "",
+  },
 ];
